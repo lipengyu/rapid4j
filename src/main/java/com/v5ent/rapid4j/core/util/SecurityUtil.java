@@ -3,7 +3,7 @@ package com.v5ent.rapid4j.core.util;
 import java.security.MessageDigest;
 
 public class SecurityUtil {
-	 public static String md5(String s) {
+	/* public static String md5(String s) {
 	        try {
 	            MessageDigest md = MessageDigest.getInstance("md5");
 	            byte b[] = md.digest(s.getBytes());
@@ -14,9 +14,9 @@ public class SecurityUtil {
 	        } catch (Exception e) {
 	            throw new RuntimeException(e);
 	        }
-	    }
+	    }*/
 	 
-	    public static String base64Encode(String s) {
+	    /*public static String base64Encode(String s) {
 	        BASE64Encoder base64 = new BASE64Encoder();
 	        return base64.encode(s.getBytes());
 	    }
@@ -28,5 +28,5 @@ public class SecurityUtil {
 	        } catch (Exception e) {
 	            throw new RuntimeException(e);
 	        }
-	    }
+	    }*/
 	}
