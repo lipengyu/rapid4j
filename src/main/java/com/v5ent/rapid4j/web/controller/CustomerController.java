@@ -84,7 +84,10 @@ public class CustomerController {
 		m.put("TotalPages", 2);
 		return m;
 	}
-    
+    /**
+     * 翻页的例子
+     * @return
+     */
     @RequestMapping(value="",   method=RequestMethod.GET)  
     public Page<Customer> getCustomers() {  
     	CustomerExample example = new CustomerExample();
