@@ -12,7 +12,11 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
-
+/**
+ * 压力测试
+ * @author Mignet
+ *
+ */
 public class PressTest {
 	private static int thread_num = 1;
 	private static int client_num = 500;
