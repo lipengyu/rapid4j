@@ -24,6 +24,6 @@
 > #### 2、 Eclipse
 * File -> Import -> Existing Maven Projects -> ...
 
-## If you have a better suggestion,Please feel free to contract me.
+## If you have a better suggestion,Please feel free to contract me Or open a issue.
 > Author ：CaiWee  
 > Email  ：mignetwee@gmail.com  
