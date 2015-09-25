@@ -15,7 +15,7 @@ $(function() {
             });
         };
 
-        // 处理子菜单点击
+        // 处理子菜单点击[点击之后，在中间内容区域加载内容]
         me.handleSubMenuClick = function() {
             $('#page-sidebar-menu li a').click(function(e) {
                 e.preventDefault();
@@ -37,6 +37,6 @@ $(function() {
     })();
 
     Index.init();
-
+    //触发点击事件
     $('#btn-dashboard').trigger("click");
 });
