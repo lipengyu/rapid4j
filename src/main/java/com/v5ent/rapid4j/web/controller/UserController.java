@@ -105,6 +105,15 @@ public class UserController {
     public String admin() {
         return "拥有admin角色,能访问";
     }
+    
+    /**
+     * 基于角色 比如拥有admin角色，才可以查看用户列表
+     */
+    @RequestMapping(value = "")
+    @RequiresRoles(value = RoleSign.ADMIN)
+    public String users() {
+    	return "/user/user-list";
+    }
 
     /**
      * 基于权限标识的权限控制案例

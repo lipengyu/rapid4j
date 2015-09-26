@@ -121,7 +121,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                             </a>
                             <ul class="sub-menu">
                                 <li>
-                                    <a href="javascript:;">
+                                    <a href="rest/user">
                                         用户管理
                                     </a>
                                 </li>
@@ -159,6 +159,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                 <shiro:hasAnyRoles name="super_admin">
                                     <li>
                                         <a href="javascript:;">super_admin 拥有此角色</a>
+                                    </li>
+                                </shiro:hasAnyRoles>
+                                
+                                <shiro:hasAnyRoles name="admin">
+                                    <li>
+                                        <a href="javascript:;">admin 拥有此角色</a>
                                     </li>
                                 </shiro:hasAnyRoles>
                                 
