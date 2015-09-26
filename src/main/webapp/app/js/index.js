@@ -12,6 +12,8 @@ $(function() {
 
                 // 添加选中 打开的样式
                 // $(this).addClass('active');
+                
+                //TODO:设置index-page-title显示
             });
         };
 
@@ -21,6 +23,8 @@ $(function() {
                 e.preventDefault();
                 var url = this.href;
                 if (url != null && url != 'javascript:;') {
+                	//TODO:设置引导显示menu>menu2
+                	
                     $.get(url, function(data) {
                         $('#main-content').html(data);
                     });
