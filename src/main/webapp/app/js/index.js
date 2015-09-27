@@ -12,7 +12,8 @@ $(function() {
 
                 // 添加选中 打开的样式
                 $(this).addClass('active');
-                
+                var a = $(this).find("a");
+                var span = $(this).find("span");
                 //TODO:设置index-page-title显示
             });
         };

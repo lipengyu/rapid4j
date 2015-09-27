@@ -12,7 +12,7 @@
         <!-- base setting -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.locales>zh_CN</project.build.locales>
-        <!--  移除diamond 运算符之后,可以使用大家通用的1.6版本 -->
+        <!--  移除diamond 运算符之后,大家可以使用1.6版本 -->
         <project.build.jdk>1.6</project.build.jdk>
 
         <!-- plugin setting -->
@@ -154,11 +154,11 @@
             <version>${druid.version}</version>
         </dependency>
 
-		<dependency>
+	<!-- 	<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>dubbo</artifactId>
 			<version>${dubbo.version}</version>
-		</dependency>
+		</dependency> -->
 
         <!-- jackson -->
         <!-- <dependency>
@@ -318,7 +318,8 @@
             <type>jar</type>
             <scope>test</scope>
         </dependency>
-
+        
+		<!-- Redis  -->
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
