@@ -6,6 +6,7 @@
     <th>state</th>
     <th>firstname</th>
     <th>createTime</th>
+    <th>操作</th>
   </tr>
 	<c:forEach items="${users}" var="item" varStatus="status">  
 	  <tr >  
@@ -13,6 +14,7 @@
 	    <td><dfn>￥</dfn>${item.state}</td>  
 	    <td>${item.firstname}</td>  
 	    <td>${item.createTime}</td>  
+	    <td><button  class="btn" type="button">edit</button></td>  
 	  </tr>  
 	</c:forEach>  
 </table>
