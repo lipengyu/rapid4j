@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 
+import com.v5ent.rapid4j.core.feature.orm.mybatis.Page;
 import com.v5ent.rapid4j.core.generic.GenericDao;
 import com.v5ent.rapid4j.core.generic.GenericServiceImpl;
 import com.v5ent.rapid4j.web.dao.UserMapper;
@@ -49,6 +51,11 @@ public class UserServiceImpl extends GenericServiceImpl<User, Long> implements U
     public User selectById(Long id) {
         return userMapper.selectByPrimaryKey(id);
     }
+
+    @Override
+	public List<User> selectByExample(UserExample example,RowBounds rb) {
+		return userMapper.selectByExampleAndPage(example,rb);
+	}
 
     @Override
     public GenericDao<User, Long> getDao() {

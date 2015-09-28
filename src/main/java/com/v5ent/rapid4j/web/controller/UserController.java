@@ -28,7 +28,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.v5ent.rapid4j.core.feature.orm.mybatis.Page;
+import com.v5ent.rapid4j.web.model.Customer;
+import com.v5ent.rapid4j.web.model.CustomerExample;
 import com.v5ent.rapid4j.web.model.User;
+import com.v5ent.rapid4j.web.model.UserExample;
 import com.v5ent.rapid4j.web.security.PermissionSign;
 import com.v5ent.rapid4j.web.security.RoleSign;
 import com.v5ent.rapid4j.web.service.UserService;
@@ -115,10 +119,12 @@ public class UserController {
     /**
      * 基于角色 比如拥有admin角色，才可以查看用户列表
      */
-    @RequestMapping(value = "")
+    @RequestMapping(value="",   method=RequestMethod.GET)  
     @RequiresRoles(value = RoleSign.ADMIN)
     public String users(Model model) {
-    	List<User> users = userService.selectList();
+    	UserExample example = new UserExample();
+    	Page<User> page = new Page<User>(1,10);
+    	List<User> users = userService.selectByExample(example,page);  
     	LOGGER.debug("userService.selectList() size:"+users);
     	model.addAttribute("users",users);
     	return "/user/user-list";

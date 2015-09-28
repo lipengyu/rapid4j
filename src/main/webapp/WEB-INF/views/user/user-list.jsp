@@ -1,9 +1,5 @@
 <%@ page language="java" pageEncoding="utf-8"%>
-<ul>
-<li>user1</li>
-<li>user2</li>
-<li>user3</li>
-</ul>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <table>
   <tr>
     <th>UserName</th>

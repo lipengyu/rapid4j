@@ -1,7 +1,12 @@
 package com.v5ent.rapid4j.web.service;
 
+import java.util.List;
+
+import org.apache.ibatis.session.RowBounds;
+
 import com.v5ent.rapid4j.core.generic.GenericService;
 import com.v5ent.rapid4j.web.model.User;
+import com.v5ent.rapid4j.web.model.UserExample;
 
 /**
  * 用户 业务 接口
@@ -26,4 +31,12 @@ public interface UserService extends GenericService<User, Long> {
      * @return
      */
     User selectByUsername(String username);
+
+    /**
+     * 查询用户
+     * @param example
+     * @param page
+     * @return
+     */
+	List<User> selectByExample(UserExample example, RowBounds page);
 }

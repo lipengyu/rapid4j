@@ -3,8 +3,8 @@ package com.v5ent.rapid4j.web.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
-import com.v5ent.rapid4j.core.feature.orm.mybatis.Page;
 import com.v5ent.rapid4j.core.generic.GenericDao;
 import com.v5ent.rapid4j.web.model.User;
 import com.v5ent.rapid4j.web.model.UserExample;
@@ -27,7 +27,7 @@ public interface UserMapper extends GenericDao<User, Long> {
     int insertSelective(User record);
 
     List<User> selectByExample(UserExample example);
-
+    
     User selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
@@ -53,5 +53,5 @@ public interface UserMapper extends GenericDao<User, Long> {
      * @param example
      * @return
      */
-    List<User> selectByExampleAndPage(Page<User> page, UserExample example);
+    List<User> selectByExampleAndPage(UserExample example,RowBounds rb);
 }
