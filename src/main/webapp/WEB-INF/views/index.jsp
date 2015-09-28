@@ -280,13 +280,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                             <ul class="page-breadcrumb breadcrumb">
                                 <li>
                                     <i class="fa fa-home"></i>
-                                    <a href="javascript:;">
+                                    <a href="javascript:;" id="index-menu">
                                         ${menu }
                                     </a>
                                     <i class="fa fa-angle-right"></i>
                                 </li>
                                 <li>
-                                    <a href="javascript:;">
+                                    <a href="javascript:;" id="index-menu2">
                                         ${menu2 }
                                     </a>
                                 </li>

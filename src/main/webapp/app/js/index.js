@@ -4,17 +4,20 @@ $(function() {
     var Index = (function() {
         var me = {};
 
+        function changeMenu(title){
+        	$('#index-page-title').html(title);
+        	$('#index-menu2').html(title);
+        	
+        }
+        function changeHeader(header){
+        	$('#index-menu').html(header)
+        }
         // 处理一级菜单点击
         me.handleMenuClick = function() {
             $('#page-sidebar-menu > li').click(function(e) {
+            	//移除其他选择样式
                 var menu = $('#page-sidebar-menu');
                 var li = menu.find('li.active').removeClass('active');
-
-                // 添加选中 打开的样式
-                $(this).addClass('active');
-                var a = $(this).find("a");
-                var span = $(this).find("span");
-                //TODO:设置index-page-title显示
             });
         };
 
@@ -25,7 +28,7 @@ $(function() {
                 var url = this.href;
                 if (url != null && url != 'javascript:;') {
                 	//TODO:设置引导显示menu>menu2
-                	
+                	changeMenu(this.text);
                     $.get(url, function(data) {
                         $('#main-content').html(data);
                     });
