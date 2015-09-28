@@ -57,6 +57,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <!-- END LOGO -->
 <!-- BEGIN LOGIN -->
 <div class="content">
+	<p class="text-error">${error }</p>
 	<!-- BEGIN LOGIN FORM -->
 	<form class="login-form" action="rest/user/login" method="post">
 		<h3 class="form-title">用户登录</h3>
