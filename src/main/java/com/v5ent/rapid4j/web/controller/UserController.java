@@ -1,5 +1,7 @@
 package com.v5ent.rapid4j.web.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,6 +18,8 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -39,6 +43,8 @@ import com.v5ent.rapid4j.web.service.UserService;
 @RequestMapping(value = "/user")
 public class UserController {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+	
     @Resource
     private UserService userService;
 
@@ -105,13 +111,16 @@ public class UserController {
     public String admin() {
         return "拥有admin角色,能访问";
     }
-    
+
     /**
      * 基于角色 比如拥有admin角色，才可以查看用户列表
      */
     @RequestMapping(value = "")
     @RequiresRoles(value = RoleSign.ADMIN)
-    public String users() {
+    public String users(Model model) {
+    	List<User> users = userService.selectList();
+    	LOGGER.debug("userService.selectList() size:"+users);
+    	model.addAttribute("users",users);
     	return "/user/user-list";
     }
 
