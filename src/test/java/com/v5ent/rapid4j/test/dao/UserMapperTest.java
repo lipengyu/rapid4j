@@ -22,7 +22,7 @@ public class UserMapperTest extends TestSupport {
         Page<User> page = new Page<User>(1, 3);
         UserExample example = new UserExample();
         example.createCriteria().andIdGreaterThan(0L);
-        final List<User> users = userMapper.selectByExampleAndPage(page, example);
+        final List<User> users = userMapper.selectByExampleAndPage(example,page);
         for (User user : users) {
             System.err.println(user);
         }
