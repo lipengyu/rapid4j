@@ -29,8 +29,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.v5ent.rapid4j.core.feature.orm.mybatis.Page;
-import com.v5ent.rapid4j.web.model.Customer;
-import com.v5ent.rapid4j.web.model.CustomerExample;
 import com.v5ent.rapid4j.web.model.User;
 import com.v5ent.rapid4j.web.model.UserExample;
 import com.v5ent.rapid4j.web.security.PermissionSign;

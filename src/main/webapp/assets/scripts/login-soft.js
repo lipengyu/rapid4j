@@ -277,7 +277,11 @@ var Login = function() {
     return {
         // main function to initiate the module
         init : function() {
-            console.log(12);
+        	//让登录界面成为顶层界面
+        	if(window.location.href.indexOf('/page/login')==-1){
+				alert('你需要重新登录！');
+				window.location.reload();
+			}
             handleLogin();
             handleForgetPassword();
             handleRegister();

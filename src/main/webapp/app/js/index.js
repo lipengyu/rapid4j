@@ -27,7 +27,8 @@ $(function() {
                 e.preventDefault();
                 var url = this.href;
                 if (url != null && url != 'javascript:;') {
-                	//TODO:设置引导显示menu>menu2
+                	//设置引导显示menu>menu2
+                	console.log('url:'+url);
                 	changeMenu(this.text);
                     $.get(url, function(data) {
                         $('#main-content').html(data);
