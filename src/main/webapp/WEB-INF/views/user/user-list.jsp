@@ -15,7 +15,7 @@
 	    <td><dfn>￥</dfn>${item.state}</td>  
 	    <td>${item.firstname}</td>  
 	    <td>${item.createTime}</td>  
-	    <td><button  class="btn" type="button">edit</button></td>  
+	    <td><button  class="btn btn-primary" type="button">edit</button></td>  
 	  </tr>  
 	</c:forEach>  
 </table>
