@@ -63,7 +63,7 @@ public class UserController {
     	Subject currentUser = SecurityUtils.getSubject();
 		// 已登陆 则跳到首页
 		if (currentUser.isAuthenticated()) {
-			return "redirect:/";
+			return "redirect:/rest/index";
 		}
 		if (result.hasErrors()) {
 			model.addAttribute("error", "参数错误！");
@@ -85,7 +85,7 @@ public class UserController {
         final User authUserInfo = userService.selectByUsername(user.getUsername());
         Session session = currentUser.getSession(true);
         session.setAttribute("userInfo", authUserInfo);
-        return "redirect:/";
+        return "redirect:/rest/index";
     }
 
     /**
@@ -125,7 +125,7 @@ public class UserController {
     	List<User> users = userService.selectByExample(example,page);  
     	LOGGER.debug("userService.selectList() size:"+users);
     	model.addAttribute("users",users);
-    	return "/user/user-list";
+    	return "user/user-list";
     }
 
     /**

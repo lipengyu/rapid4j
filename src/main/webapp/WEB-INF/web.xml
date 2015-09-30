@@ -78,11 +78,11 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <!-- 拦截所有/rest/* 的请求,交给DispatcherServlet处理,性能最好 -->
+        <!-- 让SpringMVC只拦截所有/rest/* 的请求 -->
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
     
- <!-- druid stat -->
+ <!-- druid start -->
     <servlet>     
       <servlet-name>DruidStatView</servlet-name>   
       <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
@@ -95,7 +95,7 @@
    
     <!-- 首页 -->
     <welcome-file-list>
-        <welcome-file>rest/index</welcome-file>
+        <welcome-file>/rest/index</welcome-file>
     </welcome-file-list>
 
     <!-- 错误页 -->
