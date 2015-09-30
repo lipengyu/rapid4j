@@ -4,12 +4,14 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 
 import com.v5ent.rapid4j.core.generic.GenericDao;
 import com.v5ent.rapid4j.core.generic.GenericServiceImpl;
 import com.v5ent.rapid4j.web.dao.RoleMapper;
 import com.v5ent.rapid4j.web.model.Role;
+import com.v5ent.rapid4j.web.model.RoleExample;
 import com.v5ent.rapid4j.web.service.RoleService;
 
 /**
@@ -33,5 +35,10 @@ public class RoleServiceImpl extends GenericServiceImpl<Role, Long> implements R
     public List<Role> selectRolesByUserId(Long userId) {
         return roleMapper.selectRolesByUserId(userId);
     }
+
+	@Override
+	public List<Role> selectByExample(RoleExample example, RowBounds rb) {
+		 return roleMapper.selectByExampleAndPage(example,rb);
+	}
 
 }

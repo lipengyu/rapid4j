@@ -126,7 +126,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:;">
+                                    <a href="rest/role">
                                         角色管理
                                     </a>
                                 </li>

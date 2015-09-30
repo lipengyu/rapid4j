@@ -3,6 +3,7 @@ package com.v5ent.rapid4j.web.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 import com.v5ent.rapid4j.core.generic.GenericDao;
 import com.v5ent.rapid4j.web.model.Role;
@@ -44,4 +45,6 @@ public interface RoleMapper extends GenericDao<Role, Long> {
      * @return
      */
     List<Role> selectRolesByUserId(Long userId);
+
+	List<Role> selectByExampleAndPage(RoleExample example, RowBounds rb);
 }

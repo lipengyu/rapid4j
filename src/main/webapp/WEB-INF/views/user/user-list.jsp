@@ -1,6 +1,7 @@
 <%@ page language="java" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<table>
+<p>this is a bootstrap dynamic back-end data source demo</p>
+<table class="table table-bordered">
   <tr>
     <th>UserName</th>
     <th>state</th>

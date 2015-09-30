@@ -200,4 +200,20 @@
         SELECT r.* FROM tsys_role r LEFT JOIN tsys_user_role ur ON r.id = ur.role_id
         WHERE ur.user_id = #{id,jdbcType=BIGINT}
     </select>
+    
+    <!-- 分页条件查询 -->
+    <select id="selectByExampleAndPage" resultMap="BaseResultMap" parameterType="com.v5ent.rapid4j.web.model.RoleExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from tsys_role
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
 </mapper>

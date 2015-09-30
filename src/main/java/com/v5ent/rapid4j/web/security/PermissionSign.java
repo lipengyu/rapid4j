@@ -26,6 +26,16 @@ public class PermissionSign {
      * 用户删除权限 标识
      */
     public static final String USER_DELETE = "user:delete";
+    
+    /**
+     * 角色新增权限 标识
+     */
+    public static final String ROLE_CREATE = "role:create";
+
+    /**
+     * 角色删除权限 标识
+     */
+    public static final String ROLE_DELETE = "role:delete";
 
     /**
      * 添加更多...

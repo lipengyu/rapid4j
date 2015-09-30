@@ -2,8 +2,11 @@ package com.v5ent.rapid4j.web.service;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
+
 import com.v5ent.rapid4j.core.generic.GenericService;
 import com.v5ent.rapid4j.web.model.Role;
+import com.v5ent.rapid4j.web.model.RoleExample;
 
 /**
  * 角色 业务接口
@@ -19,4 +22,6 @@ public interface RoleService extends GenericService<Role, Long> {
      * @return
      */
     List<Role> selectRolesByUserId(Long userId);
+
+	List<Role> selectByExample(RoleExample example, RowBounds page);
 }
