@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.v5ent.rapid4j.core.feature.orm.mybatis.Page;
+import com.v5ent.rapid4j.web.model.Customer;
+import com.v5ent.rapid4j.web.model.CustomerExample;
 import com.v5ent.rapid4j.web.model.Role;
 import com.v5ent.rapid4j.web.model.RoleExample;
 import com.v5ent.rapid4j.web.security.PermissionSign;
@@ -49,6 +51,20 @@ public class RoleController {
     	model.addAttribute("roles",roles);
     	return "role/role-list";
     }
+    
+    /**
+     * 翻页的例子<br>
+     * 针对前端组件获取后端的情形
+     * @return
+     */
+    @RequestMapping(value="/list",   method=RequestMethod.GET)  
+    @ResponseBody
+    public Page<Role> getRoles() {  
+    	RoleExample example = new RoleExample();
+    	Page<Role> page = new Page<Role>(1,10);
+    	roleService.selectByExample(example,page);  
+        return page;
+    }  
 
     /**
      * 基于权限标识的权限控制
