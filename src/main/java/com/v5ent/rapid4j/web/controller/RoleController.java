@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.v5ent.rapid4j.core.feature.orm.mybatis.Page;
-import com.v5ent.rapid4j.web.model.Customer;
-import com.v5ent.rapid4j.web.model.CustomerExample;
 import com.v5ent.rapid4j.web.model.Role;
 import com.v5ent.rapid4j.web.model.RoleExample;
 import com.v5ent.rapid4j.web.security.PermissionSign;
@@ -43,7 +41,7 @@ public class RoleController {
      */
     @RequestMapping(value="",   method=RequestMethod.GET)  
     @RequiresRoles(value = RoleSign.ADMIN)
-    public String users(Model model) {
+    public String roles(Model model) {
     	RoleExample example = new RoleExample();
     	Page<Role> page = new Page<Role>(1,10);
     	List<Role> roles = roleService.selectByExample(example,page);  

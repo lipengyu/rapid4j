@@ -131,7 +131,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:;">
+                                    <a href="rest/permission/list">
                                         权限管理
                                     </a>
                                 </li>

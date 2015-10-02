@@ -4,12 +4,15 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 
+import com.v5ent.rapid4j.core.feature.orm.mybatis.Page;
 import com.v5ent.rapid4j.core.generic.GenericDao;
 import com.v5ent.rapid4j.core.generic.GenericServiceImpl;
 import com.v5ent.rapid4j.web.dao.PermissionMapper;
 import com.v5ent.rapid4j.web.model.Permission;
+import com.v5ent.rapid4j.web.model.PermissionExample;
 import com.v5ent.rapid4j.web.service.PermissionService;
 
 /**
@@ -34,4 +37,9 @@ public class PermissionServiceImpl extends GenericServiceImpl<Permission, Long> 
     public List<Permission> selectPermissionsByRoleId(Long roleId) {
         return permissionMapper.selectPermissionsByRoleId(roleId);
     }
+
+	@Override
+	public List<Permission> selectByExample(PermissionExample example,RowBounds rb) {
+		return permissionMapper.selectByExampleAndPage(example,rb);
+	}
 }

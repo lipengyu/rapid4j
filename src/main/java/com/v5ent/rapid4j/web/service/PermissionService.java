@@ -2,8 +2,12 @@ package com.v5ent.rapid4j.web.service;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
+
+import com.v5ent.rapid4j.core.feature.orm.mybatis.Page;
 import com.v5ent.rapid4j.core.generic.GenericService;
 import com.v5ent.rapid4j.web.model.Permission;
+import com.v5ent.rapid4j.web.model.PermissionExample;
 
 /**
  * 权限 业务接口
@@ -20,5 +24,7 @@ public interface PermissionService extends GenericService<Permission, Long> {
      * @return
      */
     List<Permission> selectPermissionsByRoleId(Long roleId);
+
+	List<Permission> selectByExample(PermissionExample example, RowBounds rb);
 
 }
