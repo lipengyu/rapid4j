@@ -1,5 +1,4 @@
 <%@ page language="java" pageEncoding="utf-8"%>
-<script type="text/javascript" src="assets/plugins/angular/angular.min.js"  ></script>
 <script type="text/javascript">
 var appModule = angular.module('app', []);
 appModule.controller('HelloController',function($scope,dateFilter){
