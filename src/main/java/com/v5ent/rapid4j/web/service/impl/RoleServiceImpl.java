@@ -5,13 +5,20 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.apache.ibatis.session.RowBounds;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
+import com.v5ent.rapid4j.core.datatable.DataTable;
+import com.v5ent.rapid4j.core.datatable.DataTableReturn;
+import com.v5ent.rapid4j.core.datatable.SortInfo;
 import com.v5ent.rapid4j.core.generic.GenericDao;
 import com.v5ent.rapid4j.core.generic.GenericServiceImpl;
 import com.v5ent.rapid4j.web.dao.RoleMapper;
 import com.v5ent.rapid4j.web.model.Role;
 import com.v5ent.rapid4j.web.model.RoleExample;
+import com.v5ent.rapid4j.web.model.RoleExample.Criteria;
 import com.v5ent.rapid4j.web.service.RoleService;
 
 /**
@@ -23,6 +30,7 @@ import com.v5ent.rapid4j.web.service.RoleService;
 @Service
 public class RoleServiceImpl extends GenericServiceImpl<Role, Long> implements RoleService {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(RoleServiceImpl.class);
     @Resource
     private RoleMapper roleMapper;
 
@@ -39,6 +47,42 @@ public class RoleServiceImpl extends GenericServiceImpl<Role, Long> implements R
 	@Override
 	public List<Role> selectByExample(RoleExample example, RowBounds rb) {
 		 return roleMapper.selectByExampleAndPage(example,rb);
+	}
+
+	@Override
+	public DataTableReturn selectByDatatables(DataTable dataTable) {
+		RoleExample e = new RoleExample();
+		Criteria criteria = e.createCriteria();
+		DataTableReturn tableReturn = new DataTableReturn();
+		tableReturn.setsEcho(dataTable.getEcho());
+
+		criteria.setMysqlLength(dataTable.getDisplayLength());
+		criteria.setMysqlOffset(dataTable.getDisplayStart());
+
+		// 排序
+		if (null != dataTable.getSortInfo()) {
+			StringBuffer order = new StringBuffer();
+			List<SortInfo> list = dataTable.getSortInfo();
+			for (int i = 0; i < list.size(); i++) {
+				SortInfo si = list.get(i);
+				order.append(si.getColumnId()).append(' ').append(si.getSortOrder()).append(',');
+			}
+			LOGGER.debug("order:{}", order.toString());
+			e.setOrderByClause(order.substring(0, order.length() - 1));
+		}
+		// 模糊查询
+		if (!StringUtils.isEmpty(dataTable.getSearch())) {
+			criteria.put("search", dataTable.getSearch());
+		}
+
+		List<Role> list = this.roleMapper.selectByExample(e);
+		tableReturn.setAaData(list);
+
+		Integer count = this.roleMapper.countByExample(e);
+		tableReturn.setiTotalDisplayRecords(count);
+		tableReturn.setiTotalRecords(count);
+
+		return tableReturn;
 	}
 
 }

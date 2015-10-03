@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
 
+import com.v5ent.rapid4j.core.datatable.DataTable;
+import com.v5ent.rapid4j.core.datatable.DataTableReturn;
 import com.v5ent.rapid4j.core.generic.GenericService;
 import com.v5ent.rapid4j.web.model.Role;
 import com.v5ent.rapid4j.web.model.RoleExample;
@@ -24,4 +26,11 @@ public interface RoleService extends GenericService<Role, Long> {
     List<Role> selectRolesByUserId(Long userId);
 
 	List<Role> selectByExample(RoleExample example, RowBounds page);
+
+	/**
+	 * 查询角色列表,为data tables封装
+	 * @param dataTable
+	 * @return
+	 */
+	DataTableReturn selectByDatatables(DataTable dataTable);
 }
