@@ -14,7 +14,9 @@
 	  <tr >  
 	  	<td>${item.id}</td>  
 	    <td class="center"><span class="center">${item.username}</span></td>  
-	    <td><dfn>￥</dfn>${item.state}</td>  
+	    <td><dfn>￥</dfn>
+	    		<c:choose><c:when test="${item.state=='Y'}">有效</c:when><c:otherwise>无效</c:otherwise></c:choose>
+	    </td>  
 	    <td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>  
 	    <td><button  class="btn btn-primary" type="button">edit</button></td>  
 	  </tr>  
