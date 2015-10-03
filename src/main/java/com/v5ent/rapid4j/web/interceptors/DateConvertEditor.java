@@ -5,7 +5,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import org.springframework.util.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 public class DateConvertEditor extends PropertyEditorSupport {
 	private DateFormat format;
@@ -29,7 +29,7 @@ public class DateConvertEditor extends PropertyEditorSupport {
 	/** String -> Date */
 	@Override
 	public void setAsText(String text) throws IllegalArgumentException {
-		if (StringUtils.isEmpty(text)) {
+		if (StringUtils.isBlank(text)) {
 			setValue(null);
 		} else {
 			try {

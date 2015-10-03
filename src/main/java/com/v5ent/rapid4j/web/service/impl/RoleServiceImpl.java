@@ -4,11 +4,11 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import com.v5ent.rapid4j.core.datatable.DataTable;
 import com.v5ent.rapid4j.core.datatable.DataTableReturn;
@@ -71,7 +71,7 @@ public class RoleServiceImpl extends GenericServiceImpl<Role, Long> implements R
 			e.setOrderByClause(order.substring(0, order.length() - 1));
 		}
 		// 模糊查询
-		if (!StringUtils.isEmpty(dataTable.getSearch())) {
+		if (!StringUtils.isBlank(dataTable.getSearch())) {
 			criteria.put("search", dataTable.getSearch());
 		}
 

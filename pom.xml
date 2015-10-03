@@ -204,6 +204,15 @@
             <artifactId>jstl</artifactId>
             <version>${jstl.version}</version>
         </dependency>
+        
+        <!--  通用工具包,比如StringUtils.isNotBlank-->
+        <dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
 
         <!-- start apache -->
         <dependency>
