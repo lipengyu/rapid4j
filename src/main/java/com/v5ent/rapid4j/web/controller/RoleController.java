@@ -1,20 +1,33 @@
 package com.v5ent.rapid4j.web.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.v5ent.rapid4j.core.datatable.DataTable;
+import com.v5ent.rapid4j.core.datatable.DataTableReturn;
+import com.v5ent.rapid4j.core.entity.JQReturn;
 import com.v5ent.rapid4j.core.feature.orm.mybatis.Page;
+import com.v5ent.rapid4j.core.util.JsonUtils;
+import com.v5ent.rapid4j.web.interceptors.DateConvertEditor;
 import com.v5ent.rapid4j.web.model.Role;
 import com.v5ent.rapid4j.web.model.RoleExample;
 import com.v5ent.rapid4j.web.security.PermissionSign;
@@ -36,6 +49,19 @@ public class RoleController {
     @Resource
     private RoleService roleService;
 
+	private DataTable dataTable;
+	
+	/**
+	 * 日期转换
+	 * 
+	 * @param binder
+	 */
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(Date.class, new DateConvertEditor());
+		binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+	}
+
     /**
      * 基于角色 比如拥有admin角色，才可以查看用户列表
      */
@@ -55,14 +81,14 @@ public class RoleController {
      * 针对前端组件获取后端的情形
      * @return
      */
-    @RequestMapping(value="/list",   method=RequestMethod.GET)  
+    @RequestMapping(value="/list", method = RequestMethod.POST)  
     @ResponseBody
-    public Page<Role> getRoles() {  
-    	RoleExample example = new RoleExample();
-    	Page<Role> page = new Page<Role>(1,10);
-    	roleService.selectByExample(example,page);  
-        return page;
-    }  
+    public Object getRoles(@RequestBody  DataTable dtjson) {
+		LOGGER.debug("String dtjson=" + dtjson);
+//		this.dataTable = JsonUtils.fromJsonToObject(dtjson, DataTable.class);
+		DataTableReturn tableReturn = roleService.selectByDatatables(dtjson);
+		return tableReturn;
+	}
 
     /**
      * 基于权限标识的权限控制
@@ -73,4 +99,37 @@ public class RoleController {
     public String create() {
         return "拥有role:create权限,能访问";
     }
+    
+    @RequestMapping("/save")
+	@ResponseBody
+	public Object saveOrUpdate(Role ajax) {
+		if (StringUtils.isBlank(ajax.getRoleName())) {
+			return new JQReturn(false, "角色名称不能为空!");
+		}
+		try {
+			return this.roleService.update(ajax);
+		} catch (Exception e) {
+			LOGGER.error("Exception: ", e);
+			return new JQReturn(false, "系统繁忙，请稍候再试!");
+		}
+	}
+
+	@RequestMapping("/del/{id}")
+	@ResponseBody
+	public Object delete(@PathVariable Long id) {
+		if (id == null) {
+			return new JQReturn(false, "主键不能为空!");
+		}
+		try {
+			if (this.roleService.delete(id) == 1) {
+				return new JQReturn(true, "删除成功!");
+			} else {
+				return new JQReturn(false, "删除失败!");
+			}
+		} catch (Exception e) {
+			LOGGER.error("Exception: ", e);
+			return new JQReturn(false, "系统繁忙，请稍候再试!");
+		}
+	}
+    
 }

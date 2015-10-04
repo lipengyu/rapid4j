@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,13 +11,12 @@ import org.springframework.stereotype.Service;
 
 import com.v5ent.rapid4j.core.datatable.DataTable;
 import com.v5ent.rapid4j.core.datatable.DataTableReturn;
-import com.v5ent.rapid4j.core.datatable.SortInfo;
+import com.v5ent.rapid4j.core.feature.orm.mybatis.Page;
 import com.v5ent.rapid4j.core.generic.GenericDao;
 import com.v5ent.rapid4j.core.generic.GenericServiceImpl;
 import com.v5ent.rapid4j.web.dao.RoleMapper;
 import com.v5ent.rapid4j.web.model.Role;
 import com.v5ent.rapid4j.web.model.RoleExample;
-import com.v5ent.rapid4j.web.model.RoleExample.Criteria;
 import com.v5ent.rapid4j.web.service.RoleService;
 
 /**
@@ -31,6 +29,7 @@ import com.v5ent.rapid4j.web.service.RoleService;
 public class RoleServiceImpl extends GenericServiceImpl<Role, Long> implements RoleService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(RoleServiceImpl.class);
+	
     @Resource
     private RoleMapper roleMapper;
 
@@ -52,15 +51,17 @@ public class RoleServiceImpl extends GenericServiceImpl<Role, Long> implements R
 	@Override
 	public DataTableReturn selectByDatatables(DataTable dataTable) {
 		RoleExample e = new RoleExample();
-		Criteria criteria = e.createCriteria();
+		RoleExample.Criteria criteria = e.createCriteria();
 		DataTableReturn tableReturn = new DataTableReturn();
 		tableReturn.setsEcho(dataTable.getEcho());
+		LOGGER.debug(" 排序和模糊查询 ");
 
-		criteria.setMysqlLength(dataTable.getDisplayLength());
-		criteria.setMysqlOffset(dataTable.getDisplayStart());
-
+//		criteria.setMysqlLength(dataTable.getDisplayLength());
+//		criteria.setMysqlOffset(dataTable.getDisplayStart());
+		Page<Role> page = new Page<Role>(dataTable.getDisplayStart(),dataTable.getDisplayLength());
+		LOGGER.debug("%s,%s",dataTable.getDisplayStart(),dataTable.getDisplayLength());
 		// 排序
-		if (null != dataTable.getSortInfo()) {
+		/*if (null != dataTable.getSortInfo()) {
 			StringBuffer order = new StringBuffer();
 			List<SortInfo> list = dataTable.getSortInfo();
 			for (int i = 0; i < list.size(); i++) {
@@ -68,19 +69,18 @@ public class RoleServiceImpl extends GenericServiceImpl<Role, Long> implements R
 				order.append(si.getColumnId()).append(' ').append(si.getSortOrder()).append(',');
 			}
 			LOGGER.debug("order:{}", order.toString());
-			e.setOrderByClause(order.substring(0, order.length() - 1));
-		}
+			criteria.setOrderByClause(order.substring(0, order.length() - 1));
+		}*/
 		// 模糊查询
-		if (!StringUtils.isBlank(dataTable.getSearch())) {
+		/*if (StringUtils.isNotBlank(dataTable.getSearch())) {
 			criteria.put("search", dataTable.getSearch());
-		}
-
-		List<Role> list = this.roleMapper.selectByExample(e);
+		}*/
+		page = new Page<Role>(1,10);
+		List<Role> list = this.roleMapper.selectByExampleAndPage(e,page);
 		tableReturn.setAaData(list);
 
-		Integer count = this.roleMapper.countByExample(e);
-		tableReturn.setiTotalDisplayRecords(count);
-		tableReturn.setiTotalRecords(count);
+		tableReturn.setiTotalDisplayRecords(list.size());
+		tableReturn.setiTotalRecords(list.size());
 
 		return tableReturn;
 	}
