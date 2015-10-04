@@ -58,7 +58,6 @@ public class RoleServiceImpl extends GenericServiceImpl<Role, Long> implements R
 
 //		criteria.setMysqlLength(dataTable.getDisplayLength());
 //		criteria.setMysqlOffset(dataTable.getDisplayStart());
-		Page<Role> page = new Page<Role>(dataTable.getDisplayStart(),dataTable.getDisplayLength());
 		LOGGER.debug("%s,%s",dataTable.getDisplayStart(),dataTable.getDisplayLength());
 		// 排序
 		/*if (null != dataTable.getSortInfo()) {
@@ -75,7 +74,7 @@ public class RoleServiceImpl extends GenericServiceImpl<Role, Long> implements R
 		/*if (StringUtils.isNotBlank(dataTable.getSearch())) {
 			criteria.put("search", dataTable.getSearch());
 		}*/
-		page = new Page<Role>(1,10);
+		Page<Role> page  = new Page<Role>(1,10);
 		List<Role> list = this.roleMapper.selectByExampleAndPage(e,page);
 		tableReturn.setAaData(list);
 
