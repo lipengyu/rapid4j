@@ -126,7 +126,7 @@ $(document).ready(function() {
 		"aoColumns" : [ {
 			// "bSearchable" : false,//是否查找
 			// "bVisible" : false,// 是否显示
-			"mDataProp" : "Id",
+			"mDataProp" : "id",
 			"sTitle" : "ID",
 			"asSorting" : [ "desc", "asc", "asc" ],// 只能为这3个情况中的来回切换
 			"sWidth" : "30px"
@@ -372,7 +372,8 @@ $(document).ready(function() {
 //			onError : "你输入的日期时间格式不正确！"
 		});
 	}
-	Calendar.setup({
+	//这个需要jscal2.js
+	/*Calendar.setup({
 		// 触发的组件ID
 		trigger : "time",
 		// 设置值的组件ID
@@ -382,5 +383,5 @@ $(document).ready(function() {
 		onSelect : function() {
 			this.hide();
 		}
-	});
+	});*/
 });

@@ -53,7 +53,7 @@ public class RoleServiceImpl extends GenericServiceImpl<Role, Long> implements R
 		RoleExample e = new RoleExample();
 		RoleExample.Criteria criteria = e.createCriteria();
 		DataTableReturn tableReturn = new DataTableReturn();
-		tableReturn.setsEcho(dataTable.getEcho());
+		tableReturn.setsEcho(1);
 		LOGGER.debug(" 排序和模糊查询 ");
 
 //		criteria.setMysqlLength(dataTable.getDisplayLength());
