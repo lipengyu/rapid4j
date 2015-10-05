@@ -6,6 +6,7 @@ import org.apache.ibatis.session.RowBounds;
 
 import com.v5ent.rapid4j.core.feature.orm.mybatis.Page;
 import com.v5ent.rapid4j.core.generic.GenericService;
+import com.v5ent.rapid4j.core.sigmagrid.SigmaGrid;
 import com.v5ent.rapid4j.web.model.Permission;
 import com.v5ent.rapid4j.web.model.PermissionExample;
 
@@ -26,5 +27,18 @@ public interface PermissionService extends GenericService<Permission, Long> {
     List<Permission> selectPermissionsByRoleId(Long roleId);
 
 	List<Permission> selectByExample(PermissionExample example, RowBounds rb);
+
+	/**
+	 * TODO:>Common
+	 * @param sigma
+	 * @return
+	 */
+	SigmaGrid<Permission> selectBySigmaGrid(SigmaGrid<Permission> sigma);
+	
+	/**
+	 * save and update and delete
+	 * @param sigma
+	 */
+	void updateBySigmaGrid(SigmaGrid<Permission> sigma) ;
 
 }

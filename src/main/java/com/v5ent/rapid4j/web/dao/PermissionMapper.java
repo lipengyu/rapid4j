@@ -8,6 +8,7 @@ import org.apache.ibatis.session.RowBounds;
 import com.v5ent.rapid4j.core.generic.GenericDao;
 import com.v5ent.rapid4j.web.model.Permission;
 import com.v5ent.rapid4j.web.model.PermissionExample;
+import com.v5ent.rapid4j.web.model.RoleExample;
 
 /**
  * 权限 Dao 接口
@@ -46,5 +47,6 @@ public interface PermissionMapper extends GenericDao<Permission, Long> {
      */
     List<Permission> selectPermissionsByRoleId(Long roleId);
 
-	List<Permission> selectByExampleAndPage(PermissionExample example,RowBounds rb);
+	List<Permission> selectByExampleAndPage(PermissionExample example,	RowBounds rb);
+
 }
