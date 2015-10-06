@@ -7,7 +7,7 @@
 <script type="text/javascript" src="assets/plugins/sigma/gt_msg_cn.js"></script>
 <script type="text/javascript" src="assets/plugins/sigma/gt_grid_all.js"></script>
 <script type="text/javascript" src="assets/plugins/sigma/gt_patch_ie9.js"></script>
-<script type="text/javascript" src="assets/js/permission-list.js"></script>
+<script type="text/javascript" src="app/sys/permission/permission-list.js"></script>
 
 <div id="bottomcontenttop"></div>
 

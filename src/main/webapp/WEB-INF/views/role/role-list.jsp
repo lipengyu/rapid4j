@@ -4,96 +4,74 @@
 <script type="text/javascript" src="assets/plugins/data-tables/js/dataTables.bootstrap.min.js"  ></script>
 <!-- <script type="text/javascript" src="assets/plugins/jquery.json/jquery.json-2.2-min.js" ></script> -->
  <link href="assets/plugins/data-tables/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="assets/js/role-list.js"></script>
+<script type="text/javascript" src="app/sys/role/role-list.js"></script>
 <table id="example" class="display" >
         <thead>
             <tr>
-                <th>Id</th>
-                <th>roleName</th>
-                <th>roleSign</th>
-                <th>description</th>
+                <th>角色编号</th>
+                <th>角色名称</th>
+                <th>角色标识</th>
+                <th>描述</th>
             </tr>
         </thead>
  
         <tfoot>
             <tr>
-             	 <th>Id</th>
-                <th>roleName</th>
-                <th>roleSign</th>
-                <th>description</th>
+             	 <th>角色编号</th>
+                <th>角色名称</th>
+                <th>角色标识</th>
+                <th>描述</th>
             </tr>
         </tfoot>
     </table>
     
-    <form id="form" style="display: none;">
-		<table border="0px" style="font-size: 12px" width="630px">
-			<input type="hidden" id="id" name="id" />
-			<tr>
-				<!-- 控制宽度 -->
-				<td align="right" style="width: 80px;"><span style="color: red;">*</span> 内核引擎：</td>
-				<td style="width: 200px;"><input type="text" id="engine" name="engine" /></td>
-				<td><div id="engineTip"></div></td>
-			</tr>
-			<tr>
-				<td align="right">&nbsp;</td>
-				<td colspan="2" valign="top"><div id="engineFixTip"></div></td>
-			</tr>
+   <!--------------------------添加/修改信息的弹出层---------------------------->
+<div id="add" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">
+                    <i class="icon-pencil"></i>
+                    <span id="lblAddTitle" style="font-weight:bold">添加信息</span>
+                </h4>
+            </div>
+            <form class="form-horizontal form-bordered form-row-strippe" id="ffAdd" action="" data-toggle="validator" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-2">父ID</label>
+                                <div class="col-md-10">
+                                    <select id="PID" name="PID" type="text" class="form-control select2" placeholder="父ID..." ></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-2">名称</label>
+                                <div class="col-md-10">
+                                    <input id="Name" name="Name" type="text" class="form-control" placeholder="名称..." />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-2">备注</label>
+                                <div class="col-md-10">
+                                    <textarea id="Note" name="Note" class="form-control" placeholder="备注..."></textarea>
+                                </div>
+                            </div>
+                        </div>
 
-			<tr>
-				<td align="right"><span style="color: red;">*</span> 浏览器：</td>
-				<td><input type="text" id="browser" name="browser" /></td>
-				<td><div id="browserTip"></div></td>
-			</tr>
-			<tr>
-				<td align="right">&nbsp;</td>
-				<td colspan="2" valign="top"><div id="browserFixTip"></div></td>
-			</tr>
-
-			<tr>
-				<td align="right"><span style="color: red;">*</span> 平台：</td>
-				<td><input type="text" id="platform" name="platform" /></td>
-				<td><div id="platformTip"></div></td>
-			</tr>
-			<tr>
-				<td align="right">&nbsp;</td>
-				<td colspan="2" valign="top"><div id="platformFixTip"></div></td>
-			</tr>
-
-			<tr>
-				<td align="right"><span style="color: red;">*</span> 版本：</td>
-				<td><input type="text" id="version" name="version" /></td>
-				<td><div id="versionTip"></div></td>
-			</tr>
-			<tr>
-				<td align="right">&nbsp;</td>
-				<td colspan="2" valign="top"><div id="versionFixTip"></div></td>
-			</tr>
-
-			<tr>
-				<td align="right">CSS评级：</td>
-				<td><input type="text" id="grade" name="grade" /></td>
-				<td><div id="gradeTip"></div></td>
-			</tr>
-			<tr>
-				<td align="right">&nbsp;</td>
-				<td colspan="2" valign="top"><div id="gradeFixTip"></div></td>
-			</tr>
-
-			<tr>
-				<td align="right">时间：</td>
-				<td><input type="text" id="datetime" name="datetime" value="" /><b id="time" class="date"></b>
-				</td>
-				<td><div id="datetimeTip"></div></td>
-			</tr>
-			<tr>
-				<td align="right" valign="top">&nbsp;</td>
-				<td colspan="2" valign="top"><div id="datetimeFixTip"></div></td>
-			</tr>
-
-			<tr>
-				<td align="right" valign="top">&nbsp;</td>
-				<td colspan="2"><input id="submit" type="submit" class="ui-button ui-state-default ui-corner-all " value="保存" />&nbsp;&nbsp;&nbsp;&nbsp;<input
-					class="ui-button ui-state-default ui-corner-all " type="reset" value="重置" />
-			</tr>
-		</table>
-	</form>
+                    </div>
+                </div>
+                <div class="modal-footer bg-info">
+                    <input type="hidden" id="ID" name="ID" />
+                    <button type="submit" class="btn blue">确定</button>
+                    <button type="button" class="btn green" data-dismiss="modal">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
