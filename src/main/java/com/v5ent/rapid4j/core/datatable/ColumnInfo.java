@@ -9,80 +9,66 @@ package com.v5ent.rapid4j.core.datatable;
 public class ColumnInfo {
 
 	/**
-	 * 列名
+	 * 列名Column's name
 	 */
 	private String name;
+	
+	/**
+	 * Column's data source
+	 */
+	private String data;
 	/**
 	 * 是否正则
 	 */
-	private Boolean regex;
+	private boolean orderable;
 	/**
 	 * 查找
 	 */
-	private Boolean searchable;
+	private boolean searchable;
+	
+	private SearchInfo search;
 	/**
 	 * 排序
 	 */
 	private Boolean sortable;
-
-	/**
-	 * @return 列名
-	 */
+	
 	public String getName() {
 		return name;
 	}
-
-	/**
-	 * @param name
-	 *            列名
-	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	/**
-	 * @return 是否正则
-	 */
-	public Boolean getRegex() {
-		return regex;
+	public String getData() {
+		return data;
 	}
-
-	/**
-	 * @param regex
-	 *            是否正则
-	 */
-	public void setRegex(Boolean regex) {
-		this.regex = regex;
+	public void setData(String data) {
+		this.data = data;
 	}
-
-	/**
-	 * @return 查找
-	 */
-	public Boolean getSearchable() {
+	public boolean isOrderable() {
+		return orderable;
+	}
+	public void setOrderable(boolean orderable) {
+		this.orderable = orderable;
+	}
+	public boolean isSearchable() {
 		return searchable;
 	}
-
-	/**
-	 * @param searchable
-	 *            查找
-	 */
-	public void setSearchable(Boolean searchable) {
+	public void setSearchable(boolean searchable) {
 		this.searchable = searchable;
 	}
-
-	/**
-	 * @return 排序
-	 */
+	public SearchInfo getSearch() {
+		return search;
+	}
+	public void setSearch(SearchInfo search) {
+		this.search = search;
+	}
 	public Boolean getSortable() {
 		return sortable;
 	}
-
-	/**
-	 * @param sortable
-	 *            排序
-	 */
 	public void setSortable(Boolean sortable) {
 		this.sortable = sortable;
 	}
+
+	
 
 }

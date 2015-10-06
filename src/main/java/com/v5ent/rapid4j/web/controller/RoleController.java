@@ -16,14 +16,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.v5ent.rapid4j.core.datatable.ColumnInfo;
 import com.v5ent.rapid4j.core.datatable.DataTable;
 import com.v5ent.rapid4j.core.datatable.DataTableReturn;
+import com.v5ent.rapid4j.core.datatable.OrderInfo;
+import com.v5ent.rapid4j.core.datatable.SearchInfo;
 import com.v5ent.rapid4j.core.entity.JQReturn;
 import com.v5ent.rapid4j.core.feature.orm.mybatis.Page;
 import com.v5ent.rapid4j.core.util.JsonUtils;
@@ -81,12 +83,27 @@ public class RoleController {
      * 针对前端组件获取后端的情形
      * @return
      */
+ /*   @RequestMapping(value="/list", method = RequestMethod.POST)  
+    @ResponseBody
+	public DataTableReturn getRoles(@RequestParam int draw, @RequestParam int start, @RequestParam int length,
+			@RequestParam List<OrderInfo> order, @RequestParam SearchInfo search, @RequestParam List<ColumnInfo> columns) {
+		LOGGER.debug("role list draw=" + draw);
+		DataTable dataTable = new DataTable();
+		dataTable.setDraw(draw);
+		dataTable.setStart(start);
+		dataTable.setLength(length);
+		dataTable.setColumns(columns);
+		dataTable.setOrder(order);
+		dataTable.setSearch(search);
+		DataTableReturn tableReturn = roleService.selectByDatatables(dataTable);
+		return tableReturn;
+	}*/
     @RequestMapping(value="/list", method = RequestMethod.POST)  
     @ResponseBody
-    public Object getRoles(@RequestBody  DataTable dtjson) {
-		LOGGER.debug("String dtjson=" + dtjson);
-//		this.dataTable = JsonUtils.fromJsonToObject(dtjson, DataTable.class);
-		DataTableReturn tableReturn = roleService.selectByDatatables(dtjson);
+	public DataTableReturn getRoles(@RequestParam String  _dt_json) {
+//		LOGGER.debug("role list draw=" + draw);
+		DataTable dataTable = JsonUtils.fromJsonToObject(_dt_json, DataTable.class);
+		DataTableReturn tableReturn = roleService.selectByDatatables(dataTable);
 		return tableReturn;
 	}
 

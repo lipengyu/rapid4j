@@ -3,9 +3,9 @@ $(document).ready(function() {
 		        fields: [{
 		            name: 'id'
 		        }, {
-		            name: 'permission_name'
+		            name: 'permissionName'
 		        }, {
-		        	name: 'permission_sign'
+		        	name: 'permissionSign'
 		        }, {
 		        	name: 'description'
 		        }],
@@ -26,8 +26,8 @@ $(document).ready(function() {
 		        editable: false,
 		        width: 250
 		    }, {
-		        id: 'permission_name',
-		        header: "内核引擎",
+		        id: 'permissionName',
+		        header: "权限名称",
 		        headAlign: 'center',
 		        align: 'center',
 		        width: 180,
@@ -36,8 +36,8 @@ $(document).ready(function() {
 		            validRule: ["R"]
 		        }
 		    }, {
-		    	id: 'permission_sign',
-		    	header: "浏览器",
+		    	id: 'permissionSign',
+		    	header: "权限标识",
 		    	headAlign: 'center',
 		    	align: 'center',
 		    	width: 180,
@@ -47,7 +47,7 @@ $(document).ready(function() {
 		        }
 		    }, {
 		    	id: 'description',
-		    	header: "平台",
+		    	header: "描述",
 		    	headAlign: 'center',
 		    	align: 'center',
 		    	width: 180,
@@ -55,7 +55,7 @@ $(document).ready(function() {
 		            type: "text",
 		            validRule: ["R"]
 		        }
-		    }, {
+		    }/*, {
 		        id: 'datetime',
 		        header: "时间",
 		        headAlign: 'center',
@@ -67,7 +67,7 @@ $(document).ready(function() {
 		            format:"yyyy-MM-dd HH:mm:ss",
 		            validRule: ["R"]
 		        }
-		    }];
+		    }*/];
 
 		    var gridOption = {
 		        id: "grid",
@@ -112,9 +112,9 @@ $(document).ready(function() {
 		        },
 		        defaultRecord: {
 		        	id: '',
-		        	permission_name: "engine",
-		        	permission_sign: "browser",
-		        	description: "platform"
+		        	permissionName: "名称",
+		        	permissionSign: "标识讲结合shiro使用",
+		        	description: "这里是描述"
 		        },
 		        onComplete: function (grid) {
 //		        	console.log("onComplete");

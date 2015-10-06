@@ -1,8 +1,9 @@
 <%@ page language="java" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<script type="text/javascript" src="assets/plugins/data-tables/jquery.dataTables.js"  ></script>
-<script type="text/javascript" src="assets/plugins/data-tables/DT_bootstrap.js"  ></script>
- <link href="assets/plugins/data-tables/DT_bootstrap.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="assets/plugins/data-tables/js/jquery.dataTables.min.js"  ></script>
+<script type="text/javascript" src="assets/plugins/data-tables/js/dataTables.bootstrap.min.js"  ></script>
+<!-- <script type="text/javascript" src="assets/plugins/jquery.json/jquery.json-2.2-min.js" ></script> -->
+ <link href="assets/plugins/data-tables/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="assets/js/role-list.js"></script>
 <table id="example" class="display" >
         <thead>

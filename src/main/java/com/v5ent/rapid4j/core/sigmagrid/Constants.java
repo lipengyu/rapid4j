@@ -8,7 +8,7 @@ package com.v5ent.rapid4j.core.sigmagrid;
  */
 public interface Constants {
 //	/** 查询的表达式 */
-//	public static final String CONDITION = "condition";
+	public static final String CONDITION = "condition";
 //	/** 查询的值 */
 //	public static final String VALUE = "value";
 //	/** 等于 */

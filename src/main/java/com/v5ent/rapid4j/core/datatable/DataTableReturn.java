@@ -10,81 +10,69 @@ import java.util.List;
  */
 public class DataTableReturn {
 	/**
-	 * 过滤前总记录数
+	 * 总记录数
 	 */
-	private Integer iTotalRecords;
+	private Integer recordsTotal;
 	/**
 	 * 过滤后总记录数
 	 */
-	private Integer iTotalDisplayRecords;
+	private Integer recordsFiltered;
+	
 	/**
-	 * 页面发来的参数，原样返回
+	 * The draw counter that this object is a response to - from the draw parameter sent as part of the data request. <br>
+	 * Note that it is <b>strongly recommended for security reasons that you cast this parameter to an integer</b>, <br>
+	 * rather than simply echoing back to the client what it sent in the draw parameter, in order to prevent Cross Site Scripting (XSS) attacks.
 	 */
-	private Integer sEcho;
+	private Integer draw;
 
 	/**
 	 * 返回的具体数据
 	 */
-	private List<?> aaData;
-
+	private List<?> data;
+	
 	/**
-	 * @return 过滤前总记录数
+	 * Optional: If an error occurs 
 	 */
-	public Integer getiTotalRecords() {
-		return iTotalRecords;
+	private String error;
+
+	public Integer getRecordsTotal() {
+		return recordsTotal;
 	}
 
-	/**
-	 * @param iTotalRecords
-	 *            过滤前总记录数
-	 */
-	public void setiTotalRecords(Integer iTotalRecords) {
-		this.iTotalRecords = iTotalRecords;
+	public void setRecordsTotal(Integer recordsTotal) {
+		this.recordsTotal = recordsTotal;
 	}
 
-	/**
-	 * @return 过滤后总记录数
-	 */
-	public Integer getiTotalDisplayRecords() {
-		return iTotalDisplayRecords;
+	public Integer getRecordsFiltered() {
+		return recordsFiltered;
 	}
 
-	/**
-	 * @param iTotalDisplayRecords
-	 *            过滤后总记录数
-	 */
-	public void setiTotalDisplayRecords(Integer iTotalDisplayRecords) {
-		this.iTotalDisplayRecords = iTotalDisplayRecords;
+	public void setRecordsFiltered(Integer recordsFiltered) {
+		this.recordsFiltered = recordsFiltered;
 	}
 
-	/**
-	 * @return 页面发来的参数，原样返回
-	 */
-	public Integer getsEcho() {
-		return sEcho;
+	public Integer getDraw() {
+		return draw;
 	}
 
-	/**
-	 * @param sEcho
-	 *            页面发来的参数，原样返回
-	 */
-	public void setsEcho(Integer sEcho) {
-		this.sEcho = sEcho;
+	public void setDraw(Integer draw) {
+		this.draw = draw;
 	}
 
-	/**
-	 * @return 返回的具体数据
-	 */
-	public List<?> getAaData() {
-		return aaData;
+	public List<?> getData() {
+		return data;
 	}
 
-	/**
-	 * @param aaData
-	 *            返回的具体数据
-	 */
-	public void setAaData(List<?> aaData) {
-		this.aaData = aaData;
+	public void setData(List<?> data) {
+		this.data = data;
+	}
+
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
 	}
 
 }

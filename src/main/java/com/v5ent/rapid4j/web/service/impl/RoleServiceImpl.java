@@ -53,12 +53,11 @@ public class RoleServiceImpl extends GenericServiceImpl<Role, Long> implements R
 		RoleExample e = new RoleExample();
 		RoleExample.Criteria criteria = e.createCriteria();
 		DataTableReturn tableReturn = new DataTableReturn();
-		tableReturn.setsEcho(1);
+		tableReturn.setDraw(dataTable.getDraw());
 		LOGGER.debug(" 排序和模糊查询 ");
 
 //		criteria.setMysqlLength(dataTable.getDisplayLength());
 //		criteria.setMysqlOffset(dataTable.getDisplayStart());
-		LOGGER.debug("%s,%s",dataTable.getDisplayStart(),dataTable.getDisplayLength());
 		// 排序
 		/*if (null != dataTable.getSortInfo()) {
 			StringBuffer order = new StringBuffer();
@@ -76,10 +75,10 @@ public class RoleServiceImpl extends GenericServiceImpl<Role, Long> implements R
 		}*/
 		Page<Role> page  = new Page<Role>(1,10);
 		List<Role> list = this.roleMapper.selectByExampleAndPage(e,page);
-		tableReturn.setAaData(list);
+		tableReturn.setData(list);
 
-		tableReturn.setiTotalDisplayRecords(list.size());
-		tableReturn.setiTotalRecords(list.size());
+		tableReturn.setRecordsFiltered(list.size());
+		tableReturn.setRecordsTotal(list.size());
 
 		return tableReturn;
 	}
