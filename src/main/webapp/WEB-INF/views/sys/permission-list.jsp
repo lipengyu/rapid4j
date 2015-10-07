@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- <script type="text/javascript" src="app/sys/permission-list.js"></script> -->
 <table class="table table-condensed">
   <tr>
@@ -14,7 +15,10 @@
 	    <td class="center"><span class="center">${item.permissionName}</span></td>  
 	    <td class="center"><span class="center">${item.permissionSign}</span></td>  
 	    <td class="center"><span class="center">${item.description}</span></td>  
-	    <td><button  class="btn btn-primary" type="button">edit</button><button  class="btn btn-primary" type="button">delete</button></td>  
+	    <td>
+		    <button  class="btn btn-primary" type="button">edit</button>
+		    <button  class="btn btn-primary" type="button">delete</button>
+	    </td>  
 	  </tr>  
 	</c:forEach>  
 </table>

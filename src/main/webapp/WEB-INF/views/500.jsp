@@ -77,12 +77,12 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <script src="assets/plugins/jquery.cokie.min.js" type="text/javascript"></script>
 <script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
-<script src="assets/scripts/app.js"></script>
+<!-- <script src="assets/scripts/app.js"></script>
 <script>
 jQuery(document).ready(function() {    
    App.init();
 });
-</script>
+</script> -->
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
