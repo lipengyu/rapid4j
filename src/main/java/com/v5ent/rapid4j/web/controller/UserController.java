@@ -125,7 +125,7 @@ public class UserController {
     	List<User> users = userService.selectByExample(example,page);  
     	LOGGER.debug("userService.selectList() size:"+users);
     	model.addAttribute("users",users);
-    	return "user/user-list";
+    	return "sys/user-list";
     }
 
     /**

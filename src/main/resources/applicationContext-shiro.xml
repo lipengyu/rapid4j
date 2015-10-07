@@ -17,7 +17,6 @@
                 <!-- 静态资源允许访问 -->
                 /app/** = anon
                 /assets/** = anon
-                /media/** = anon
                 <!-- 登录页允许访问 -->
                 /rest/user/login = anon
                 <!-- 测试 http basic访问 -->

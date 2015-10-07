@@ -75,7 +75,7 @@ public class RoleController {
     	List<Role> roles = roleService.selectByExample(example,page);  
     	LOGGER.debug("roleService.selectList() size:"+roles);
     	model.addAttribute("roles",roles);
-    	return "role/role-list";
+    	return "sys/role-list";
     }
     
     /**

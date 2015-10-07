@@ -114,7 +114,7 @@ public class PermissionController {
     @RequestMapping(value="/list",   method=RequestMethod.GET)  
     @RequiresRoles(value = RoleSign.ADMIN)
     public String permissions() {
-    	return "permission/permission-list";
+    	return "sys/permission-list";
     }
 
 }
