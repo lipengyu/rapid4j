@@ -1,26 +1,20 @@
 <%@ page language="java" pageEncoding="utf-8"%>
-<link rel="stylesheet" type="text/css" href="assets/plugins/sigma/gt_grid.css" />
-<link rel="stylesheet" type="text/css" href="assets/plugins/sigma/skin/mac/skinstyle.css" />
-<link rel="stylesheet" type="text/css" href="assets/plugins/sigma/skin/pink/skinstyle.css" />
-<link rel="stylesheet" type="text/css" href="assets/plugins/sigma/skin/vista/skinstyle.css" />
-<%-- <link rel="stylesheet" type="text/css" href="assets/plugins/sigma/skin/jqueryui/skinstyle.css" /> --%>
-<script type="text/javascript" src="assets/plugins/sigma/gt_msg_cn.js"></script>
-<script type="text/javascript" src="assets/plugins/sigma/gt_grid_all.js"></script>
-<script type="text/javascript" src="assets/plugins/sigma/gt_patch_ie9.js"></script>
-<script type="text/javascript" src="app/sys/permission-list.js"></script>
-
-<div id="bottomcontenttop"></div>
-
-		<div id="bottomcontent" style="height: 500px">
-			<div >
-				<table align="center" class="table">
-					<tr>
-						<td>
-							<div id="grid_container"></div>
-						</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-
-		<div id="bottomcontentbtm"></div>
+<!-- <script type="text/javascript" src="app/sys/permission-list.js"></script> -->
+<table class="table table-condensed">
+  <tr>
+    <th>权限ID</th>
+    <th>权限名称</th>
+    <th>权限标识</th>
+    <th>描述</th>
+    <th>操作</th>
+  </tr>
+	<c:forEach items="${permissions}" var="item" varStatus="status">  
+	  <tr >  
+	  	<td>${item.id}</td>  
+	    <td class="center"><span class="center">${item.permissionName}</span></td>  
+	    <td class="center"><span class="center">${item.permissionSign}</span></td>  
+	    <td class="center"><span class="center">${item.description}</span></td>  
+	    <td><button  class="btn btn-primary" type="button">edit</button><button  class="btn btn-primary" type="button">delete</button></td>  
+	  </tr>  
+	</c:forEach>  
+</table>
