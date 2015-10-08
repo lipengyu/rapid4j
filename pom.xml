@@ -30,10 +30,10 @@
         <mybatis.version>3.2.2</mybatis.version>
         <mybatis.spring.version>1.2.2</mybatis.spring.version>
         <!-- <mysql.connector.version>5.1.29</mysql.connector.version> -->
-        <!-- For java 6 use:  -->
+        <!-- For java 6 user:  -->
 		<!-- postgresql-9.2-1004-jdbc4.jar  -->
 		<!-- postgresql-9.3-1100-jdbc4.jar  -->
-		<!-- For java 7 use: -->
+		<!-- For java 7 user: -->
 		<!-- postgresql-9.2-1004-jdbc41.jar  -->
 		<!-- postgresql-9.3-1100-jdbc41.jar  -->
         <postgresql.version>9.4-1201-jdbc4</postgresql.version>
@@ -44,7 +44,7 @@
         <jackson.databind.version>2.5.3</jackson.databind.version>
         <c3p0.version>0.9.1.2</c3p0.version>
         <druid.version>1.0.5</druid.version>
-        <dubbo.version>2.5.4-SNAPSHOT</dubbo.version>
+        <dubbo.version>2.5.3</dubbo.version>
         <zkclient.version>0.3</zkclient.version>
         <tomcat.jdbc.version>7.0.53</tomcat.jdbc.version>
         <jstl.version>1.2</jstl.version>
