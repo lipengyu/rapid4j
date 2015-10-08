@@ -2,7 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <p>this is a bootstrap dynamic back-end data source demo</p>
-<table class="table table-condensed">
+<div class="table-responsive">
+<table class="table">
+<thead>
   <tr>
     <th>用户ID</th>
     <th>用户名</th>
@@ -10,6 +12,8 @@
     <th>创建时间</th>
     <th>操作</th>
   </tr>
+  </thead>
+  <tbody>
 	<c:forEach items="${users}" var="item" varStatus="status">  
 	  <tr >  
 	  	<td>${item.id}</td>  
@@ -21,4 +25,6 @@
 	    <td><button  class="btn btn-primary" type="button">edit</button></td>  
 	  </tr>  
 	</c:forEach>  
+	</tbody>
 </table>
+</div>

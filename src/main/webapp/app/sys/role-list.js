@@ -5,7 +5,7 @@ $(document).ready(function() {
         "ajax": {
             "url": "/rest/role/list",
             "type": "POST",
-            "data":function(d){return {'_dt_json':JSON.stringify(d)}}//传递对象太多，所以封装一下
+            "data":function(d){return {'_dt_json':JSON.stringify(d)}}//传递对象太多，封装一下
         },
         "columns": [
             { "data": "id" },
