@@ -41,9 +41,11 @@
         <log4j.version>1.2.12</log4j.version>
         <httpclient.version>4.1.2</httpclient.version>
         <jackson.version>1.9.13</jackson.version>
+        <jackson.databind.version>2.5.3</jackson.databind.version>
         <c3p0.version>0.9.1.2</c3p0.version>
         <druid.version>1.0.5</druid.version>
-        <dubbo.version>2.5.3</dubbo.version>
+        <dubbo.version>2.5.4-SNAPSHOT</dubbo.version>
+        <zkclient.version>0.3</zkclient.version>
         <tomcat.jdbc.version>7.0.53</tomcat.jdbc.version>
         <jstl.version>1.2</jstl.version>
         <google.collections.version>1.0</google.collections.version>
@@ -153,12 +155,20 @@
             <artifactId>druid</artifactId>
             <version>${druid.version}</version>
         </dependency>
-
-	<!-- 	<dependency>
+		
+		<!--  alibaba dubbo-->
+		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>dubbo</artifactId>
 			<version>${dubbo.version}</version>
-		</dependency> -->
+		</dependency>
+		
+		<!-- zookeeper client -->
+		<dependency>
+		  <groupId>com.101tec</groupId>
+		  <artifactId>zkclient</artifactId>
+		  <version>${zkclient.version}</version>
+		</dependency>
 
         <!-- jackson -->
         <dependency>
@@ -169,7 +179,7 @@
         <dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.5.3</version>
+			<version>${jackson.databind.version}</version>
 		</dependency>
 
         <!-- log start -->
