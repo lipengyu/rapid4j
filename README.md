@@ -1,10 +1,19 @@
-# rapid4j
+# Rapid4J
 
 ------
 
-**rapid4j** is a Rapid Seed Project for building Java-backend Modern Application
+**Rapid4J** is a `Rapid ` Seed Project for building a ` Java` Modern Application
 
 ------
+
+## It Contains
+>* Mybatis for ORMapping
+>* Spring MVC for Controller and Restful API
+>* Apache Shiro for RABC
+>* Alibaba Dubbo for RPC Service BUS
+>* Alibaba Druid for DataSource
+>* Metronic template for Responsive view
+>* Simple,Rapid,Effective
 
 ## Quick Start
 > * 1 git clone https://github.com/Mignet/rapid4j
@@ -18,10 +27,10 @@
 > * 9 Congratulations
 
 ## For IDE
-> #### 1 、IntelliJ IDEA
+> #### 1 IntelliJ IDEA
 * File -> Import Project -> select assm folder -> create project form existing sources -> ...
 
-> #### 2、 Eclipse
+> #### 2 Eclipse
 * File -> Import -> Existing Maven Projects -> ...
 
 ## If you have a better suggestion,Please feel free to contract me Or open a issue.
