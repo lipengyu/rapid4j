@@ -1,7 +1,8 @@
 <%@ page language="java" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- <script type="text/javascript" src="app/sys/permission-list.js"></script> -->
-<table class="table table-condensed">
+<div class="table-responsive">
+<table class="table">
   <tr>
     <th>权限ID</th>
     <th>权限名称</th>
@@ -22,3 +23,4 @@
 	  </tr>  
 	</c:forEach>  
 </table>
+</div>
