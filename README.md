@@ -22,8 +22,8 @@
 > * 4 cd rapid4j
 > * 5 mvn clean package -Dmaven.test.skip=true
 > * 6 deploy rapid4j/target/rapid4j.war to your webserver, e.g.Tomcat7
-> * 7 browse http://localhost:8080/rapid4j to login
-> * 8 browse http://localhost:8080/rapid4j/rest/customers/admin you'll get 401 error
+> * 7 browse http://localhost:8080/ to login
+> * 8 run Provider.java as java application and then run Consumer.java,you can see a red `Hello World` in Console.it means Dubbo is all right.
 > * 9 Congratulations
 
 ## For IDE
@@ -34,5 +34,5 @@
 * File -> Import -> Existing Maven Projects -> ...
 
 ## If you have a better suggestion,Please feel free to contract me Or open a issue.
-> Author ：CaiWee  
+> Author ：Charley  
 > Email  ：mignetwee@gmail.com  
