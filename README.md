@@ -26,11 +26,17 @@
 > * 8 run Provider.java as java application and then run Consumer.java,you can see a red `Hello World` in Console.it means Dubbo is all right.
 > * 9 Congratulations
 
+## TODO
+>* data table's CRUD,Master-Detail
+>* jsp bootstrap CRUD
+>* profile form validation
+>* tree and more widgets
+
 ## For IDE
-> #### 1 IntelliJ IDEA
+> ### 1 IntelliJ IDEA
 * File -> Import Project -> select assm folder -> create project form existing sources -> ...
 
-> #### 2 Eclipse
+> ### 2 Eclipse
 * File -> Import -> Existing Maven Projects -> ...
 
 ## If you have a better suggestion,Please feel free to contract me Or open a issue.
