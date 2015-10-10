@@ -7,7 +7,8 @@
 ------
 
 ## It Contains
->* Mybatis for ORMapping
+>* PostgreSQL,Redis
+>* Mybatis for ORMapping and Physical pagination
 >* Spring MVC for Controller and Restful API
 >* Apache Shiro for RABC
 >* Alibaba Dubbo for RPC Service BUS
