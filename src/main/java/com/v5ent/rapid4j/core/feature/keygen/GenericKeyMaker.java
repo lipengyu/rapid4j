@@ -6,7 +6,6 @@ import java.util.zip.CRC32;
 
 /**
  * GenericKeyMaker : JetBrains 系列产品 KegGen<br>
- * <section>(^o^)</section>
  *
  * @author Mignet
  * @since 2015-04-04 13:56

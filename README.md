@@ -28,6 +28,7 @@
 > * 9 Congratulations
 
 ## RoadMap
+>* image cloud=>upload,storage,read,rotate,scale
 >* data table's CRUD,Master-Detail
 >* jsp bootstrap CRUD
 >* profile form validation
