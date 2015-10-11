@@ -1,10 +1,10 @@
 package com.v5ent.rapid4j.web.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -24,10 +24,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.v5ent.rapid4j.core.entity.Result;
 import com.v5ent.rapid4j.core.feature.orm.mybatis.Page;
 import com.v5ent.rapid4j.web.model.User;
 import com.v5ent.rapid4j.web.model.UserExample;
@@ -129,12 +131,53 @@ public class UserController {
     }
 
     /**
-     * 基于权限标识的权限控制案例
+     * 基于权限标识的权限控制案例<br>
+     * 这里使用PUT请求并且路径是/{id}才是Restful的
      */
-    @RequestMapping(value = "/create")
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
     @RequiresPermissions(value = PermissionSign.USER_CREATE)
-    public String create() {
-        return "拥有user:create权限,能访问";
+    public Result create(User item) {
+    	item.setCreateTime(new Date());
+    	int i = userService.insert(item);
+    	if(i==1){
+    		return new Result(true,"新增用户成功!");
+    	}else{
+    		return new Result(false,500,"新增失败");
+    	}
+    }
+    
+    /**
+     * 这里使用POST或者PATCH请求并且路径是/{id}才是Restful的
+     * @param item
+     * @return
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    @RequiresPermissions(value = PermissionSign.USER_CREATE)
+    public Result update(User item) {
+    	int i = userService.update(item);
+    	if(i==1){
+    		return new Result(true,"更新用户成功!");
+    	}else{
+    		return new Result(false,500,"更新失败");
+    	}
+    }
+    
+    /**
+     *  这里使用DELETE请求并且路径是/{id}才是Restful的
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    @RequiresPermissions(value = PermissionSign.USER_CREATE)
+    public Result delete(@PathVariable("id") String id) {
+    	int i = userService.delete(Long.valueOf(id));
+    	if(i==1){
+    		return new Result(true,"删除用户成功!");
+    	}else{
+    		return new Result(false,500,"删除失败");
+    	}
     }
 }

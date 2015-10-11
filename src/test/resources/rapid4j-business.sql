@@ -1,4 +1,4 @@
-/*测试postgres新的语法*/
+/* 业务数据 */
 DROP TABLE IF exists barcode;
 DROP TABLE IF exists orderline;
 DROP TABLE IF exists stock;

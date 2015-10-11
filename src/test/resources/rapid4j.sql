@@ -149,3 +149,7 @@ ALTER SEQUENCE seq_role_permission_id OWNED BY tsys_role_permission.id;
 /*Data for the table role */
 INSERT INTO tsys_role_permission (role_id,permission_id)VALUES (1,1);
 
+--add a column//
+ALTER TABLE tsys_user ADD COLUMN description character varying(256);
+COMMENT ON COLUMN tsys_user.description IS '用户描述,UI界面显示使用';
+

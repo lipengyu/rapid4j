@@ -50,8 +50,18 @@ public class Result implements Serializable {
     public void setStatusCode(int statusCode) {
         this.statusCode = statusCode;
     }
-
+    
     public Result() {
+    }
 
+    public Result(boolean success,String message) {
+    	this.success = success;
+    	this.message = message;
+    }
+    
+    public Result(boolean success,int statusCode,String message) {
+    	this.success = success;
+    	this.statusCode = statusCode;
+    	this.message = message;
     }
 }

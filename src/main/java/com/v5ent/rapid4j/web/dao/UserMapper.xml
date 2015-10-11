@@ -7,6 +7,7 @@
         <result column="firstname" property="firstname" jdbcType="VARCHAR" />
         <result column="lastname" property="lastname" jdbcType="VARCHAR" />
         <result column="emailaddress" property="emailaddress" jdbcType="VARCHAR" />
+         <result column="description" property="description" jdbcType="VARCHAR" />
         <result column="password" property="password" jdbcType="CHAR" />
         <result column="state" property="state" jdbcType="VARCHAR" />
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
@@ -70,7 +71,7 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-        id, username, password, state, create_time
+        id, username, password, state, create_time,description
     </sql>
     <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.v5ent.rapid4j.web.model.UserExample">
         select
@@ -103,9 +104,10 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.v5ent.rapid4j.web.model.User">
-        insert into tsys_user (id, username, password,
+        insert into tsys_user (id, username, password,description,
         state, create_time)
         values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=CHAR},
+        #{description,jdbcType=VARCHAR},
         #{state,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
     </insert>
     <insert id="insertSelective" parameterType="com.v5ent.rapid4j.web.model.User">

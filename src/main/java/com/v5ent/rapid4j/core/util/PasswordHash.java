@@ -39,7 +39,8 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
 /**
- * 密码盐渍算法工具类,生成70个字符的密码hash,可以调整SALT_BYTE_SIZE,HASH_BYTE_SIZE来改变
+ * 密码腌渍算法工具类,生成70个字符的密码hash<br>
+ * 可以调整SALT_BYTE_SIZE,HASH_BYTE_SIZE来改变
  * 
  * <br>
  * how to use:

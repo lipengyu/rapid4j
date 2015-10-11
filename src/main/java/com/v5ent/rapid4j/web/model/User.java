@@ -19,6 +19,8 @@ public class User {
 
     private Date createTime;
     
+    private String description;
+    
     private String firstname;
     private String lastname;
     private String emailaddress;
@@ -119,5 +121,13 @@ public class User {
     public String toString() {
         return "User [id=" + id + ", username=" + username + ", password=" + password + ", state=" + state + ", createTime=" + createTime + "]";
     }
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 }
