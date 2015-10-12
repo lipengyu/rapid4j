@@ -4,6 +4,7 @@ function del(id) {
 		type : 'DELETE',
 		success : function(result) {
 			// Do something with the result
+			alert("删除成功!");
 		}
 	});
 }
