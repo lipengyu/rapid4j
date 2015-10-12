@@ -278,9 +278,11 @@ var Login = function() {
         // main function to initiate the module
         init : function() {
         	//让登录界面成为顶层界面
-        	if(window.location.href.indexOf('/page/login')==-1){
+        	if(window.location.href.indexOf('/page/login')==-1
+        			&&window.location.href.indexOf('/user/login')==-1
+        			&&window.location.href.indexOf('/user/logout')==-1){
 				alert('你需要重新登录！');
-				window.location.reload();
+				window.location.pathname='/rest/page/login';
 			}
             handleLogin();
             handleForgetPassword();
