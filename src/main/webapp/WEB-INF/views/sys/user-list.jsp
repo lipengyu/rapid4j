@@ -1,6 +1,7 @@
 <%@ page language="java" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+ <script type="text/javascript" src="app/sys/user-list.js"></script>
 <p>Example of CRUD with Twitter Bootstrap</p>
 <div class="table-responsive">
 <table class="table">
@@ -25,8 +26,8 @@
 	    <td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>  
 	    <td class="center"><span class="center">${item.description}</span></td>  
 	    <td>
-	    		<button  class="btn btn-primary" type="button">编辑</button>
-	    		<button  class="btn btn-primary" type="button">删除</button>
+	    		<button  class="btn btn-primary" type="button" >编辑</button>
+	    		<button  class="btn btn-primary" type="button" onclick="del(${item.id})">删除</button>
 	    </td>  
 	  </tr>  
 	</c:forEach>  
@@ -55,7 +56,7 @@
                 <i class="icon-pencil"></i><span id="lblAddTitle" style="font-weight:bold">添加信息</span>
             </h4>
          </div>
-            <form class="form-horizontal form-bordered form-row-strippe" id="ffAdd" action="rest/user/create" method="post" data-toggle="validator" >
+            <form class="form-horizontal form-bordered form-row-strippe" id="ffAdd" action="/rest/user/create" method="post" data-toggle="validator" >
                 <div class="modal-body">
                     <div class="row">
                     	 <div class="col-md-12">
@@ -83,7 +84,7 @@
 	                  <input type="hidden" id="id" name="id" />
 	                   <input type="hidden" id="password" name="password"  value="8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92"/>
 	                    <input type="hidden" id="state" name="state"  value="Y"/>
-	                    <button type="submit" class="btn blue">确定</button>
+	                    <button type="submit" class="btn blue" >确定</button>
 	                    <button type="button" class="btn green" data-dismiss="modal">取消</button>
 	         </div>
          </form>

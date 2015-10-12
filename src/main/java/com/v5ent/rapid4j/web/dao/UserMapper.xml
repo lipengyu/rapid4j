@@ -119,6 +119,9 @@
             <if test="username != null">
                 username,
             </if>
+              <if test="description != null">
+                description,
+            </if>
             <if test="password != null">
                 password,
             </if>
@@ -135,6 +138,9 @@
             </if>
             <if test="username != null">
                 #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
             </if>
             <if test="password != null">
                 #{password,jdbcType=CHAR},
@@ -162,6 +168,9 @@
             <if test="record.username != null">
                 username = #{record.username,jdbcType=VARCHAR},
             </if>
+            <if test="record.description != null">
+                description = #{record.description,jdbcType=VARCHAR},
+            </if>
             <if test="record.password != null">
                 password = #{record.password,jdbcType=CHAR},
             </if>
@@ -180,6 +189,7 @@
         update tsys_user
         set id = #{record.id,jdbcType=BIGINT},
         username = #{record.username,jdbcType=VARCHAR},
+        description = #{record.description,jdbcType=VARCHAR},
         password = #{record.password,jdbcType=CHAR},
         state = #{record.state,jdbcType=VARCHAR},
         create_time = #{record.createTime,jdbcType=TIMESTAMP}
@@ -192,6 +202,9 @@
         <set>
             <if test="username != null">
                 username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
             </if>
             <if test="password != null">
                 password = #{password,jdbcType=CHAR},
@@ -208,6 +221,7 @@
     <update id="updateByPrimaryKey" parameterType="com.v5ent.rapid4j.web.model.User">
         update tsys_user
         set username = #{username,jdbcType=VARCHAR},
+        description = #{description,jdbcType=VARCHAR},
         password = #{password,jdbcType=CHAR},
         state = #{state,jdbcType=VARCHAR},
         create_time =
