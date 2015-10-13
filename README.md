@@ -18,11 +18,11 @@
 
 ## Quick Start
 > * 1 git clone https://github.com/Mignet/rapid4j
-> * 2 execute src/test/resources/rapid4j.sql in your postgres database OR src/test/resources/rapid4j-mysql.sql for mysql
+> * 2 execute src/test/resources/rapid4j.sql in your postgres database
 > * 3 update src/main/resources/application.properties to your own db link
 > * 4 cd rapid4j
 > * 5 mvn clean package -Dmaven.test.skip=true
-> * 6 deploy rapid4j/target/rapid4j.war to your webserver, e.g.Tomcat7
+> * 6 deploy rapid4j/target/rapid4j.war to your webserver, e.g.Tomcat
 > * 7 browse http://localhost:8080/ to login
 > * 8 run Provider.java as java application and then run Consumer.java,you can see a red `Hello World` in Console.it means Dubbo is all right.
 > * 9 Congratulations
