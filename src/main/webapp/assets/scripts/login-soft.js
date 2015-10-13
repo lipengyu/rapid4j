@@ -281,7 +281,7 @@ var Login = function() {
         	if(window.location.href.indexOf('/page/login')==-1
         			&&window.location.href.indexOf('/user/login')==-1
         			&&window.location.href.indexOf('/user/logout')==-1){
-				alert('你需要重新登录！');
+				alert('会话已过期，您需要重新登录！');
 				window.location.pathname='/rest/page/login';
 			}
             handleLogin();
