@@ -152,7 +152,7 @@ public class UserController {
      * @param item
      * @return
      */
-    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
     @RequiresPermissions(value = PermissionSign.USER_CREATE)
     public Result update(User item) {
