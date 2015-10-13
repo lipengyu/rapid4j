@@ -5,7 +5,14 @@ function del(id) {
 		success : function(result) {
 			// Do something with the result
 			alert("删除成功!");
-		}
+		},
+	 //async :false,
+	  error:function(XmlHttpRequest,textStatus, errorThrown)
+	  {
+		  console.log(XmlHttpRequest.status);
+		  console.log(textStatus);
+          alert(XmlHttpRequest.responseText);
+	  }
 	});
 }
 //绑定相关事件
