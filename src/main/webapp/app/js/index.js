@@ -30,9 +30,20 @@ $(function() {
                 	//设置引导显示menu>menu2
                 	console.log('url:'+url);
                 	changeMenu(this.text);
-                    $.get(url, function(data) {
-                        $('#main-content').html(data);
-                    });
+                	$.ajax({
+                		  type :"GET",
+                		  url :url,
+                		  success :function(data){
+                			  $('#main-content').html(data);
+                		  },
+                		  //async :false,
+                		  error:function(XmlHttpRequest,textStatus, errorThrown)
+                		  {
+                			  console.log(XmlHttpRequest.status);
+                			  console.log(textStatus);
+                              $('#main-content').html(XmlHttpRequest.responseText);
+                		  }
+                		});
                 }
             });
         };
