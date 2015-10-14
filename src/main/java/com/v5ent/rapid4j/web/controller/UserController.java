@@ -122,12 +122,22 @@ public class UserController {
     @RequestMapping(value="",   method=RequestMethod.GET)  
     @RequiresRoles(value = RoleSign.ADMIN)
     public String users(Model model) {
+    	/*UserExample example = new UserExample();
+    	Page<User> page = new Page<User>(1,10);
+    	List<User> users = userService.selectByExample(example,page);  
+    	LOGGER.debug("userService.selectList() size:"+users);
+    	model.addAttribute("users",users);*/
+    	return "sys/user-list";
+    }
+    
+    @RequestMapping(value="/list",   method=RequestMethod.GET)  
+    @ResponseBody
+    public Page<User> userLists() {
     	UserExample example = new UserExample();
     	Page<User> page = new Page<User>(1,10);
     	List<User> users = userService.selectByExample(example,page);  
     	LOGGER.debug("userService.selectList() size:"+users);
-    	model.addAttribute("users",users);
-    	return "sys/user-list";
+    	return page;
     }
 
     /**

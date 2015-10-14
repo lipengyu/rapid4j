@@ -1,12 +1,22 @@
 <%@ page language="java" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+ <!--表单验证必须库--> 
+ <script type="text/javascript" src="assets/plugins/formvalidator/formValidator-4.1.1.min.js"></script>
+ <!--表单验证扩展库--> 
+ <script type="text/javascript" src="assets/plugins/formvalidator/formValidatorRegex.js"></script>
+ <!--表单验证样式表--> 
+<!--  <link href="formValidator1/style/validator.css" rel="stylesheet" type="text/css" /> -->
+<!--  提示 -->
+ <script type="text/javascript" src="assets/plugins/bootstrap-toastr/toastr.min.js"></script>
+ <link href="assets/plugins/bootstrap-toastr/toastr.css" rel="stylesheet" type="text/css" />
  <script type="text/javascript" src="app/sys/user-list.js"></script>
 <p>Example of CRUD with Twitter Bootstrap</p>
 <div class="table-responsive">
 <table class="table">
 <thead>
   <tr>
+  	<th class="table-checkbox" style="width:40px"><input class="group-checkable" type="checkbox" onclick="selectAll(this)"></th>
     <th>用户ID</th>
     <th>用户名</th>
     <th>状态</th>
@@ -15,8 +25,8 @@
     <th>操作</th>
   </tr>
   </thead>
-  <tbody>
-	<c:forEach items="${users}" var="item" varStatus="status">  
+  <tbody id="grid_body">
+<%-- 	<c:forEach items="${users}" var="item" varStatus="status">  
 	  <tr >  
 	  	<td>${item.id}</td>  
 	    <td class="center"><span class="center">${item.username}</span></td>  
@@ -30,9 +40,12 @@
 	    		<button  class="btn btn-primary" type="button" onclick="del(${item.id})">删除</button>
 	    </td>  
 	  </tr>  
-	</c:forEach>  
+	</c:forEach>   --%>
 	</tbody>
 </table>
+<div class="paging-toolbar">
+     <ul id='grid_paging'></ul>
+</div>
 </div>
     <!--  -->
 <!-- Button trigger modal -->
@@ -56,7 +69,7 @@
                 <i class="icon-pencil"></i><span id="lblAddTitle" style="font-weight:bold">添加信息</span>
             </h4>
          </div>
-            <form class="form-horizontal form-bordered form-row-strippe" id="ffAdd" action="/rest/user/create" method="post" data-toggle="validator" >
+            <form class="form-horizontal form-bordered form-row-strippe" id="ffAdd" action="" method="post" data-toggle="validator" >
                 <div class="modal-body">
                     <div class="row">
                     	 <div class="col-md-12">
