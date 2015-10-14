@@ -61,9 +61,9 @@ public class PaginationStatementHandlerInterceptor implements Interceptor {
         int total = getTotal(parameterHandler, connection, countSql);
         page.setTotalCount(total);
 
-        // 设置物理分页语句
+        // 屏蔽mybatis原有分页,设置物理分页语句
         metaStatementHandler.setValue("delegate.boundSql.sql", dialect.getLimitString(originalSql, page.getOffset(), page.getLimit()));
-        // 屏蔽mybatis原有分页
+        // set offset and limit
         metaStatementHandler.setValue("delegate.rowBounds.offset", RowBounds.NO_ROW_OFFSET);
         metaStatementHandler.setValue("delegate.rowBounds.limit", RowBounds.NO_ROW_LIMIT);
         if (logger.isDebugEnabled()) {
