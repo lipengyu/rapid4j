@@ -27,6 +27,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.v5ent.rapid4j.core.entity.Result;
@@ -132,9 +133,9 @@ public class UserController {
     
     @RequestMapping(value="/list",   method=RequestMethod.GET)  
     @ResponseBody
-    public Page<User> userLists() {
+    public Page<User> userLists(@RequestParam("pageNo") int pageNo,@RequestParam("pageSize") int pageSize) {
     	UserExample example = new UserExample();
-    	Page<User> page = new Page<User>(1,10);
+    	Page<User> page = new Page<User>(pageNo,pageSize);
     	List<User> users = userService.selectByExample(example,page);  
     	LOGGER.debug("userService.selectList() size:"+users);
     	return page;
