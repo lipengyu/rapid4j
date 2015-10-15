@@ -8,8 +8,8 @@ function showError(tips, TimeShown, autoHide) {
         "debug": false, //是否使用debug模式
         "positionClass": "toast-top-full-width",//弹出窗的位置
         "showDuration": "300",//显示的动画时间
-        "hideDuration": "1000",//消失的动画时间
-        "timeOut": "5000", //展现时间
+        "hideDuration": "300",//消失的动画时间
+        "timeOut": "2000", //展现时间
         "extendedTimeOut": "1000",//加长展示时间
         "showEasing": "swing",//显示时的动画缓冲方式
         "hideEasing": "linear",//消失时的动画缓冲方式
@@ -58,6 +58,33 @@ Date.prototype.Format = function (fmt) {
 }
 //var time1 = new Date().Format("yyyy-MM-dd");
 //var time2 = new Date().Format("yyyy-MM-dd hh:mm:ss");
+function addInit(){
+	$("#id").val(0);
+	$("#username").val();
+	$("#password").val('8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92');
+	$("#state").val('Y');
+	$("#description").val('不同于注册界面,管理界面自动为用户设置初始密码');
+}
+function updateInit(id){
+	$.ajax({
+		url : '/rest/user/' + id,
+		type : 'GET',
+		success : function(result) {
+			$("#id").val(result.id);
+			$("#username").val(result.username);
+			$("#password").val(result.password);
+			$("#state").val(result.state);
+			$("#description").val(result.description);
+		},
+	 //async :false,
+	  error:function(XmlHttpRequest,textStatus, errorThrown)
+	  {
+		  console.log(XmlHttpRequest.status);
+		  console.log(textStatus);
+		  showError(XmlHttpRequest.responseText);
+	  }
+	});
+}
 //删除
 function del(id) {
 	$.ajax({
@@ -137,7 +164,7 @@ function searchByCondition(page,rows,condition){
 //操作按钮
 function getActionHtml(id){
 	var td = "<td>"
-	td += "<button  class=\"btn btn-primary\" type=\"button\"  data-toggle=\"modal\"  data-target=\"#myAddModal\" >编辑</button>";
+	td += "<button  class=\"btn btn-primary\" type=\"button\"  data-toggle=\"modal\"  data-target=\"#myAddModal\" onclick=\"updateInit("+id+")\">编辑</button>";
 	td += "&nbsp;"
 	td += "<button  class=\"btn btn-primary\" type=\"button\" onclick=\"del("+id+")\">删除</button>";
 	td += "</td>";
@@ -155,7 +182,7 @@ function BindEvent() {
         	username:{
             	required: true,
             	minlength: 2,
-            	maxlength: 5
+            	maxlength: 10
         	}
         },
         highlight: function (element) {

@@ -36,7 +36,7 @@
     <!--  -->
 <!-- Button trigger modal -->
 <button class="btn btn-primary" data-toggle="modal" 
-   data-target="#myAddModal">
+   data-target="#myAddModal" onclick="addInit()">
    新增
 </button>
 
@@ -66,6 +66,17 @@
                                 </div>
                             </div>
                         </div>
+                    	 <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-2">状态</label>
+                                <div class="col-md-10">
+                                    <select id="state" name="state" class="select2 form-control">
+                                		<option value="Y">有效</option>
+                                		<option value="N">无效</option>
+                                	</select>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="control-label col-md-2">备注</label>
@@ -74,15 +85,11 @@
                                 </div>
                             </div>
                         </div>
-						<div class="col-md-12">
-						<p>不同于注册界面,管理界面自动为用户设置初始密码,状态初始为有效</p>
-						</div>
                     </div>
                 </div>
 	         <div class="modal-footer">
 	                  <input type="hidden" id="id" name="id" />
-	                   <input type="hidden" id="password" name="password"  value="8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92"/>
-	                    <input type="hidden" id="state" name="state"  value="Y"/>
+	                   <input type="hidden" id="password" name="password"  value=""/>
 	                    <button type="submit" class="btn blue" >确定</button>
 	                    <button type="button" class="btn green" data-dismiss="modal">取消</button>
 	         </div>

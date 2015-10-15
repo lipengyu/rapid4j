@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.dubbo.common.utils.StringUtils;
 import com.v5ent.rapid4j.core.entity.Result;
 import com.v5ent.rapid4j.core.feature.orm.mybatis.Page;
 import com.v5ent.rapid4j.web.model.User;
@@ -149,12 +150,21 @@ public class UserController {
     @ResponseBody
     @RequiresPermissions(value = PermissionSign.USER_CREATE)
     public Result create(User item) {
-    	item.setCreateTime(new Date());
-    	int i = userService.insert(item);
-    	if(i==1){
-    		return new Result(true,"新增用户成功!");
+    	if(item.getId()==0){
+	    	item.setCreateTime(new Date());
+	    	int i = userService.insert(item);
+	    	if(i==1){
+	    		return new Result(true,"新增用户成功!");
+	    	}else{
+	    		return new Result(false,500,"新增失败");
+	    	}
     	}else{
-    		return new Result(false,500,"新增失败");
+    		int i = userService.update(item);
+	    	if(i==1){
+	    		return new Result(true,"更新用户成功!");
+	    	}else{
+	    		return new Result(false,500,"更新失败");
+	    	}
     	}
     }
     
@@ -190,5 +200,15 @@ public class UserController {
     	}else{
     		return new Result(false,500,"删除失败");
     	}
+    }
+    /**
+     *  这里使用GET请求并且路径是/{id}才是Restful的
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public User get(@PathVariable("id") Long id) {
+    	return userService.selectById(id);
     }
 }
