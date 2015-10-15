@@ -41,6 +41,8 @@ function showTips(tips, TimeShown, autoHide) {
 // 对Date的扩展，将 Date 转化为指定格式的String
 // 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，
 // 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)
+//var time1 = new Date().Format("yyyy-MM-dd");
+//var time2 = new Date().Format("yyyy-MM-dd hh:mm:ss");
 Date.prototype.Format = function (fmt) {
     var o = {
         "M+": this.getMonth() + 1, //月份
@@ -56,11 +58,11 @@ Date.prototype.Format = function (fmt) {
     if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
 }
-//var time1 = new Date().Format("yyyy-MM-dd");
-//var time2 = new Date().Format("yyyy-MM-dd hh:mm:ss");
+//--------------------------本页面业务--------------------------
 function addInit(){
 	$("#id").val(0);
-	$("#username").val();
+	$("#username").val("");
+	$("#username").removeAttr("readonly");
 	$("#password").val('8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92');
 	$("#state").val('Y');
 	$("#description").val('不同于注册界面,管理界面自动为用户设置初始密码');
@@ -72,6 +74,7 @@ function updateInit(id){
 		success : function(result) {
 			$("#id").val(result.id);
 			$("#username").val(result.username);
+			$("#username").attr("readonly","readonly");
 			$("#password").val(result.password);
 			$("#state").val(result.state);
 			$("#description").val(result.description);
@@ -90,10 +93,15 @@ function del(id) {
 	$.ajax({
 		url : '/rest/user/' + id,
 		type : 'DELETE',
-		success : function(result) {
-			// Do something with the result
-			showTips("删除成功!");
-			refreshGrid();
+		success : function(data) {
+			 if (data.success) {
+                 //保存成功  1.关闭弹出层，2.刷新表格数据
+                 showTips(data.message);
+                 refreshGrid();
+             }
+             else {
+                 showError(data.message);
+             }
 		},
 	 //async :false,
 	  error:function(XmlHttpRequest,textStatus, errorThrown)
@@ -206,7 +214,7 @@ function BindEvent() {
                     refreshGrid();
                 }
                 else {
-                    showError("保存失败:" + data.message);
+                    showError(data.message);
                 }
             }).error(function(XmlHttpRequest,textStatus, errorThrown) {
   			  	console.log(XmlHttpRequest.status);

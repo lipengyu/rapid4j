@@ -194,6 +194,11 @@ public class UserController {
     @ResponseBody
     @RequiresPermissions(value = PermissionSign.USER_CREATE)
     public Result delete(@PathVariable("id") String id) {
+    	User u  =userService.selectById(Long.valueOf(id));
+    	Subject currentUser = SecurityUtils.getSubject();
+    	if(currentUser.getPrincipal().equals(u.getUsername())){
+    		return new Result(false,401,"不允许删除自己的用户!");
+    	}
     	int i = userService.delete(Long.valueOf(id));
     	if(i==1){
     		return new Result(true,"删除用户成功!");
@@ -208,7 +213,7 @@ public class UserController {
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public User get(@PathVariable("id") Long id) {
-    	return userService.selectById(id);
+    public User get(@PathVariable("id") String id) {
+    	return userService.selectById(Long.valueOf(id));
     }
 }
