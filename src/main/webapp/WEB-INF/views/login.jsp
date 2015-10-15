@@ -59,7 +59,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <div class="content">
 	<p class="text-error">${error }</p>
 	<!-- BEGIN LOGIN FORM -->
-	<form class="login-form" action="rest/user/login" method="post">
+	<form class="login-form" action="rest/auth/login" method="post">
 		<h3 class="form-title">用户登录</h3>
 		<div class="alert alert-danger display-hide">
 			<button class="close" data-close="alert"></button>

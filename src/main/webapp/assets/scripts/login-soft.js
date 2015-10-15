@@ -277,10 +277,10 @@ var Login = function() {
     return {
         // main function to initiate the module
         init : function() {
-        	//让登录界面成为顶层界面
+        	//让登录界面成为顶层界面,self==top在手机浏览器不起作用
         	if(window.location.href.indexOf('/page/login')==-1
-        			&&window.location.href.indexOf('/user/login')==-1
-        			&&window.location.href.indexOf('/user/logout')==-1){
+        			&&window.location.href.indexOf('/auth/login')==-1
+        			&&window.location.href.indexOf('/auth/logout')==-1){
 				alert('会话已过期，您需要重新登录！');
 				window.location.pathname='/rest/page/login';
 			}

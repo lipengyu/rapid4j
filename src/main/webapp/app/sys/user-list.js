@@ -1,5 +1,28 @@
 //定义
 //----------------common-------------------------
+$.format = function (source, params) {
+    if (arguments.length == 1)
+        return function () {
+            var args = $.makeArray(arguments);
+            args.unshift(source);
+            return $.format.apply(this, args);
+        };
+    if (arguments.length > 2 && params.constructor != Array) {
+        params = $.makeArray(arguments).slice(1);
+    }
+    if (params.constructor != Array) {
+        params = [params];
+    }
+    $.each(params, function (i, n) {
+        source = source.replace(new RegExp("\\{" + i + "\\}", "g"), n);
+    });
+    return source;
+};
+/*调用方法 
+var text = "a{0}b{0}c{1}d\nqq{0}"; 
+var text2 = $.format(text, 1, 2); 
+alert(text2); 
+*/
 //显示错误或提示信息（需要引用toastr相关文件）
 function showError(tips, TimeShown, autoHide) {
 	  //参数设置，若用默认值可以省略
@@ -60,14 +83,33 @@ Date.prototype.Format = function (fmt) {
 }
 //--------------------------本页面业务--------------------------
 function addInit(){
+	//clear error msg
+	validator.resetForm();
+	$('.form-group').removeClass('has-error');
 	$("#id").val(0);
 	$("#username").val("");
 	$("#username").removeAttr("readonly");
+	$("#username").rules('add',{
+            	required: true,
+            	rangelength:[6,20],
+            	remote:{                                          //验证用户名是否存在
+                    type:"GET",
+                    url:"/rest/user/check",             
+                    data:{
+                      name:function(){return $("#username").val();}
+                    } 
+                   }, 
+        messages:{required:"用户名不能为空！",rangelength:$.format("用户名位数必须在{0}到{1}字符之间！"),remote:"用户名已经被注册"}                    
+	})
 	$("#password").val('8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92');
 	$("#state").val('Y');
 	$("#description").val('不同于注册界面,管理界面自动为用户设置初始密码');
 }
+var validator =null;
 function updateInit(id){
+	//clear error msg
+	validator.resetForm();
+	$('.form-group').removeClass('has-error');
 	$.ajax({
 		url : '/rest/user/' + id,
 		type : 'GET',
@@ -75,6 +117,7 @@ function updateInit(id){
 			$("#id").val(result.id);
 			$("#username").val(result.username);
 			$("#username").attr("readonly","readonly");
+			$("#username").rules("remove"); //修改是不需要验证
 			$("#password").val(result.password);
 			$("#state").val(result.state);
 			$("#description").val(result.description);
@@ -181,18 +224,11 @@ function getActionHtml(id){
 //绑定相关事件
 function BindEvent() {
 	//判断表单的信息是否通过验证
-    $("#ffAdd").validate({
+	validator = $("#ffAdd").validate({
         meta: "validate",
         errorElement: 'span',
         errorClass: 'help-block help-block-error',
         focusInvalid: false,
-        rules:{
-        	username:{
-            	required: true,
-            	minlength: 2,
-            	maxlength: 10
-        	}
-        },
         highlight: function (element) {
             $(element).closest('.form-group').addClass('has-error');
         },
@@ -229,6 +265,6 @@ function BindEvent() {
 $(function() {
 //	initJsTree(); // 初始化树
 	BindEvent(); // 绑定事件处理
-	search(1,10);// 初始化第一页数据
+	search(1,5);// 初始化第一页数据
 //	InitDictItem(); // 初始化字典信息
 });

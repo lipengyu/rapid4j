@@ -30,7 +30,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.dubbo.common.utils.StringUtils;
 import com.v5ent.rapid4j.core.entity.Result;
 import com.v5ent.rapid4j.core.feature.orm.mybatis.Page;
 import com.v5ent.rapid4j.web.model.User;
@@ -55,60 +54,6 @@ public class UserController {
     private UserService userService;
 
     /**
-     * 用户登录
-     * 
-     * @param user
-     * @param result
-     * @return
-     */
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@Validated User user, BindingResult result, Model model, HttpServletRequest request) {
-    	AuthenticationToken token =new UsernamePasswordToken(user.getUsername(), user.getPassword());
-    	Subject currentUser = SecurityUtils.getSubject();
-		// 已登陆 则跳到首页
-		if (currentUser.isAuthenticated()) {
-			return "redirect:/";
-		}
-		if (result.hasErrors()) {
-			model.addAttribute("error", "参数错误！");
-			return "login";
-		}
-        try {
-            // 身份验证
-            currentUser.login(token);
-        }  catch ( UnknownAccountException uae ) {
-        } catch ( IncorrectCredentialsException ice ) { 
-        } catch ( LockedAccountException lae ) { 
-        } catch ( ExcessiveAttemptsException eae ) { 
-        }catch (AuthenticationException e) {
-            // 身份验证失败
-            model.addAttribute("error", "用户名或密码错误 ！");
-            return "login";
-        }
-        // 验证成功在Session中保存用户信息
-        final User authUserInfo = userService.selectByUsername(user.getUsername());
-        Session session = currentUser.getSession(true);
-        session.setAttribute("userInfo", authUserInfo);
-        return "redirect:/";
-    }
-
-    /**
-     * 用户登出
-     * 
-     * @param session
-     * @return
-     */
-    @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logout() {
-    	Subject currentUser = SecurityUtils.getSubject();
-    	Session session = currentUser.getSession();
-        session.removeAttribute("userInfo");
-        // 登出操作
-        currentUser.logout();
-        return "login";
-    }
-
-    /**
      * 基于角色 标识的权限控制案例
      */
     @RequestMapping(value = "/admin")
@@ -124,11 +69,6 @@ public class UserController {
     @RequestMapping(value="",   method=RequestMethod.GET)  
     @RequiresRoles(value = RoleSign.ADMIN)
     public String users(Model model) {
-    	/*UserExample example = new UserExample();
-    	Page<User> page = new Page<User>(1,10);
-    	List<User> users = userService.selectByExample(example,page);  
-    	LOGGER.debug("userService.selectList() size:"+users);
-    	model.addAttribute("users",users);*/
     	return "sys/user-list";
     }
     
@@ -151,6 +91,7 @@ public class UserController {
     @RequiresPermissions(value = PermissionSign.USER_CREATE)
     public Result create(User item) {
     	if(item.getId()==0){
+    		item.setId(null);
 	    	item.setCreateTime(new Date());
 	    	int i = userService.insert(item);
 	    	if(i==1){
@@ -216,4 +157,16 @@ public class UserController {
     public User get(@PathVariable("id") String id) {
     	return userService.selectById(Long.valueOf(id));
     }
+    
+    @RequestMapping(value = "/check", method = RequestMethod.GET)
+    @ResponseBody
+    public boolean canUsed(@RequestParam("username") String username) {
+    	User u =  userService.selectByUsername(username);
+    	if(u!=null){
+    		return false;
+    	}else{
+    		return true;
+    	}
+    }
+    
 }

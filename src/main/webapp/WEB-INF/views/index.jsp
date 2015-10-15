@@ -80,7 +80,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                 </a>
                             </li>
                             <li>
-                                <a href="rest/user/logout">
+                                <a href="rest/auth/logout">
                                     <i class="fa fa-key"></i> 退出
                                 </a>
                             </li>

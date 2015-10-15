@@ -17,8 +17,8 @@
                 <!-- 静态资源允许访问 -->
                 /app/** = anon
                 /assets/** = anon
-                <!-- 登录页允许访问 -->
-                /rest/user/login = anon
+                <!-- 登录允许访问 -->
+                /rest/auth/login = anon
                 <!-- 测试 http basic访问 -->
                 /rest/customers/** = authcBasic
                 <!-- 其他资源需要认证 -->
