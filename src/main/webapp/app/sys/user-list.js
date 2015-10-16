@@ -114,6 +114,7 @@ function updateInit(id){
 		url : '/rest/user/' + id,
 		type : 'GET',
 		success : function(result) {
+			console.log(result);
 			$("#id").val(result.id);
 			$("#username").val(result.username);
 			$("#username").attr("readonly","readonly");
