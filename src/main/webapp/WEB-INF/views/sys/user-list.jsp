@@ -1,5 +1,4 @@
 <%@ page language="java" pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
  <!--表单验证必须库--> 
  <script type="text/javascript" src="assets/plugins/formvalidator/formValidator-4.1.1.min.js"></script>
  <!--表单验证扩展库--> 
@@ -28,9 +27,9 @@
   </thead>
   <tbody id="grid_body"></tbody>
 </table>
+</div>
 <div class="paging-toolbar">
      <ul id='grid_paging'></ul>
-</div>
 </div>
     <!--  -->
 <!-- Button trigger modal -->
