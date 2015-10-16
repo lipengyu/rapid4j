@@ -30,7 +30,7 @@
 ## RoadMap
 >* image cloud=>upload,storage,read,rotate,scale
 >* data table's CRUD,Master-Detail
->* jsp bootstrap CRUD
+>* pure bootstrap CRUD => completed,more info on users
 >* profile form validation
 >* tree,tabs,window and more widgets
 

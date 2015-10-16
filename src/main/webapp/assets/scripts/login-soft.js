@@ -282,7 +282,7 @@ var Login = function() {
         			&&window.location.href.indexOf('/auth/login')==-1
         			&&window.location.href.indexOf('/auth/logout')==-1){
 				alert('会话已过期，您需要重新登录！');
-				window.location.pathname='/rest/page/login';
+				location.href = '/rest/page/login';
 			}
             handleLogin();
             handleForgetPassword();
