@@ -5,7 +5,7 @@ import java.util.UUID;
 import org.apache.commons.codec.digest.DigestUtils;
 
 /**
- * ApplicationUtils : 程序工具类，提供大量的便捷方法
+ * ApplicationUtils : 工具类，提供大量的便捷方法
  *
  * @author Mignet
  * @since 2014-09-28 22:31
