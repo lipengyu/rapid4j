@@ -82,6 +82,7 @@ Date.prototype.Format = function (fmt) {
     return fmt;
 }
 //--------------------------本页面业务--------------------------
+var validator =null;
 function addInit(){
 	//clear error msg
 	validator.resetForm();
@@ -101,11 +102,9 @@ function addInit(){
                    }, 
         messages:{required:"用户名不能为空！",rangelength:$.format("用户名位数必须在{0}到{1}字符之间！"),remote:"用户名已经被注册"}                    
 	})
-	$("#password").val('8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92');
 	$("#state").val('Y');
 	$("#description").val('不同于注册界面,管理界面自动为用户设置初始密码');
 }
-var validator =null;
 function updateInit(id){
 	//clear error msg
 	validator.resetForm();

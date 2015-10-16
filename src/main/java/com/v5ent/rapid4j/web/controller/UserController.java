@@ -93,6 +93,8 @@ public class UserController {
     	if(item.getId()==0){
     		item.setId(null);
 	    	item.setCreateTime(new Date());
+	    	//加入我们使用时间变量CreateTime作为salt
+	    	item.setPassword("8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92");
 	    	int i = userService.insert(item);
 	    	if(i==1){
 	    		return new Result(true,"新增用户成功!");
