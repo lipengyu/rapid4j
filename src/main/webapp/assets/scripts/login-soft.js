@@ -281,8 +281,9 @@ var Login = function() {
         	if(window.location.href.indexOf('/page/login')==-1
         			&&window.location.href.indexOf('/auth/login')==-1
         			&&window.location.href.indexOf('/auth/logout')==-1){
-				alert('会话已过期，您需要重新登录！');
-				location.href = '/rest/page/login';
+        		bootbox.alert('会话已过期，您需要重新登录！',function(){
+        			location.href = '/rest/page/login';
+        		});
 			}
             handleLogin();
             handleForgetPassword();

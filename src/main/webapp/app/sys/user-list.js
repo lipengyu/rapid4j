@@ -1,92 +1,6 @@
 //定义
-//----------------common-------------------------
-$.format = function (source, params) {
-    if (arguments.length == 1)
-        return function () {
-            var args = $.makeArray(arguments);
-            args.unshift(source);
-            return $.format.apply(this, args);
-        };
-    if (arguments.length > 2 && params.constructor != Array) {
-        params = $.makeArray(arguments).slice(1);
-    }
-    if (params.constructor != Array) {
-        params = [params];
-    }
-    $.each(params, function (i, n) {
-        source = source.replace(new RegExp("\\{" + i + "\\}", "g"), n);
-    });
-    return source;
-};
-/*调用方法 
-var text = "a{0}b{0}c{1}d\nqq{0}"; 
-var text2 = $.format(text, 1, 2); 
-alert(text2); 
-*/
-//显示错误或提示信息（需要引用toastr相关文件）
-function showError(tips, TimeShown, autoHide) {
-	  //参数设置，若用默认值可以省略
-    toastr.options = {
-        "closeButton": false, //是否显示关闭按钮
-        "debug": false, //是否使用debug模式
-        "positionClass": "toast-top-full-width",//弹出窗的位置
-        "showDuration": "300",//显示的动画时间
-        "hideDuration": "300",//消失的动画时间
-        "timeOut": "2000", //展现时间
-        "extendedTimeOut": "1000",//加长展示时间
-        "showEasing": "swing",//显示时的动画缓冲方式
-        "hideEasing": "linear",//消失时的动画缓冲方式
-        "showMethod": "fadeIn",//显示时的动画方式
-        "hideMethod": "fadeOut" //消失时的动画方式
-        };
-	toastr.error(tips);
-}
-
-//显示提示信息
-function showTips(tips, TimeShown, autoHide) {
-	  //参数设置，若用默认值可以省略
-    toastr.options = {
-        "closeButton": false, //是否显示关闭按钮
-        "debug": false, //是否使用debug模式
-        "positionClass": "toast-top-full-width",//弹出窗的位置
-        "showDuration": "300",//显示的动画时间
-        "hideDuration": "1000",//消失的动画时间
-        "timeOut": "5000", //展现时间
-        "extendedTimeOut": "1000",//加长展示时间
-        "showEasing": "swing",//显示时的动画缓冲方式
-        "hideEasing": "linear",//消失时的动画缓冲方式
-        "showMethod": "fadeIn",//显示时的动画方式
-        "hideMethod": "fadeOut" //消失时的动画方式
-        };
-	toastr.success(tips);
-}
-//
-// 对Date的扩展，将 Date 转化为指定格式的String
-// 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，
-// 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)
-//var time1 = new Date().Format("yyyy-MM-dd");
-//var time2 = new Date().Format("yyyy-MM-dd hh:mm:ss");
-Date.prototype.Format = function (fmt) {
-    var o = {
-        "M+": this.getMonth() + 1, //月份
-        "d+": this.getDate(), //日
-        "h+": this.getHours(), //小时
-        "m+": this.getMinutes(), //分
-        "s+": this.getSeconds(), //秒
-        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
-        "S": this.getMilliseconds() //毫秒
-    };
-    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-    for (var k in o)
-    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-    return fmt;
-}
 //--------------------------本页面业务--------------------------
-var validator =null;
 function addInit(){
-	//clear error msg
-	validator.resetForm();
-	$('.form-group').removeClass('has-error');
 	$("#id").val(0);
 	$("#username").val("");
 	$("#username").removeAttr("readonly");
@@ -106,9 +20,6 @@ function addInit(){
 	$("#description").val('不同于注册界面,管理界面自动为用户设置初始密码');
 }
 function updateInit(id){
-	//clear error msg
-	validator.resetForm();
-	$('.form-group').removeClass('has-error');
 	$.ajax({
 		url : '/rest/user/' + id,
 		type : 'GET',
@@ -116,12 +27,10 @@ function updateInit(id){
 			$("#id").val(result.id);
 			$("#username").val(result.username);
 			$("#username").attr("readonly","readonly");
-			$("#username").rules("remove"); //修改是不需要验证
-			$("#password").val(result.password);
+			$("#username").rules("remove"); //修改时不需要验证
 			$("#state").val(result.state);
 			$("#description").val(result.description);
 		},
-	 //async :false,
 	  error:function(XmlHttpRequest,textStatus, errorThrown)
 	  {
 		  console.log(XmlHttpRequest.status);
@@ -222,6 +131,13 @@ function getActionHtml(id){
 }
 //绑定相关事件
 function BindEvent() {
+	
+	$("#reset").click(function(){
+			validator.resetForm();
+			//clear error msg
+			$('.form-group').removeClass('has-error');
+	  });
+
 	//判断表单的信息是否通过验证
 	validator = $("#ffAdd").validate({
         meta: "validate",
@@ -240,22 +156,26 @@ function BindEvent() {
         },
         submitHandler: function (form) {
             $("#myAddModal").modal("hide");
-            //构造参数发送给后台
-            var postData = $("#ffAdd").serializeArray();
-            $.post("/rest/user/create", postData, function (data) {
-                if (data.success) {
-                    //保存成功  1.关闭弹出层，2.刷新表格数据
-                    showTips(data.message);
-                    refreshGrid();
-                }
-                else {
-                    showError(data.message);
-                }
-            }).error(function(XmlHttpRequest,textStatus, errorThrown) {
-  			  	console.log(XmlHttpRequest.status);
-  			  	console.log(textStatus);
-  			  	showError(XmlHttpRequest.responseText);
-  		  });
+            $(form).ajaxSubmit({
+                type:"post",
+                url:"/rest/user/create",
+                //beforeSubmit: showRequest,for example:are you sure to submit?
+                success: function (data) {
+                    if (data.success) {
+                        //保存成功  1.关闭弹出层，2.刷新表格数据
+                        showTips(data.message);
+                        refreshGrid();
+                    }
+                    else {
+                        showError(data.message);
+                    }
+                },
+                error:function(XmlHttpRequest,textStatus, errorThrown) {
+      			  	console.log(XmlHttpRequest.status);
+      			  	console.log(textStatus);
+      			  	showError(XmlHttpRequest.responseText);
+      		  	}
+              });
         }
     });
 }

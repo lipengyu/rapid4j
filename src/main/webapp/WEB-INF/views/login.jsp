@@ -468,10 +468,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <script type="text/javascript" src="assets/plugins/select2/select2.min.js"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="app/lib/security/sha256.js" type="text/javascript"></script>
 <script src="assets/scripts/app.js" type="text/javascript"></script>
 <script src="assets/scripts/login-soft.js" type="text/javascript"></script>
-
-<script src="app/lib/security/sha256.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
 		jQuery(document).ready(function() {

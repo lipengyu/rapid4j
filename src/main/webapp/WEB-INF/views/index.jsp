@@ -38,7 +38,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <link href="assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color" />
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
         <!-- END THEME STYLES -->
-
+        <!-- BEGIN PLUGIN STYLES -->
+		<link href="assets/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+        <!-- END PLUGIN STYLES -->
         <link rel="shortcut icon" href="app/img/favicon.ico" />
     </head>
     <!-- END HEAD -->
@@ -333,13 +335,22 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <script src="assets/plugins/jquery.cokie.min.js" type="text/javascript"></script>
         <script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
 
-        <!-- 表单验证 -->
-        <script src="assets/plugins/formvalidator/formValidator-4.1.1.min.js"  type="text/javascript"  ></script>
+		<!--  提示 -->
+		 <script type="text/javascript" src="assets/plugins/bootstrap-toastr/toastr.min.js"></script>
+		<!--  阻塞性提示 -->
+		 <script type="text/javascript" src="assets/plugins/bootbox/bootbox.min.js"></script>
+		 <!-- 翻页 -->
+		 <script type="text/javascript" src="assets/plugins/bootstrap-paginator/build/bootstrap-paginator.min.js"></script>
+		
+         <!--表单验证库,这里必须引入form,否则提交会被认为是普通表单提交--> 
+        <script src="assets/plugins/jquery-validation/lib/jquery.form.js" type="text/javascript"></script>
         <script src="assets/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+         <!--表单验证库--> 
         <script type="text/javascript" src="assets/plugins/select2/select2.min.js"></script>
 
-        <script src="assets/scripts/app.js" type="text/javascript"></script>
+        <script type="text/javascript" src="assets/scripts/app.js" ></script>
         <script type="text/javascript" src="app/js/index.js"></script>
+        <script type="text/javascript" src="app/common/utils.js"></script>
 
         <!-- <script data-main="app/js/main" src="app/lib/requirejs/require.js"></script> -->
     </body>

@@ -234,7 +234,9 @@
         select
         <include refid="Base_Column_List" />
         from tsys_user
-        where username = #{record.username,jdbcType=VARCHAR} and password = #{record.password,jdbcType=CHAR}
+        where username = #{record.username,jdbcType=VARCHAR}
+         and
+         password = #{record.password,jdbcType=CHAR}
     </select>
 
     <!-- 分页条件查询 -->

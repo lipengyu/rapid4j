@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 
-import com.v5ent.rapid4j.core.feature.orm.mybatis.Page;
 import com.v5ent.rapid4j.core.generic.GenericDao;
 import com.v5ent.rapid4j.core.generic.GenericServiceImpl;
 import com.v5ent.rapid4j.web.dao.UserMapper;

@@ -1,15 +1,10 @@
 <%@ page language="java" pageEncoding="utf-8"%>
  <!--表单验证必须库--> 
- <script type="text/javascript" src="assets/plugins/formvalidator/formValidator-4.1.1.min.js"></script>
+<!--  <script type="text/javascript" src="assets/plugins/formvalidator/formValidator-4.1.1.min.js"></script> -->
  <!--表单验证扩展库--> 
- <script type="text/javascript" src="assets/plugins/formvalidator/formValidatorRegex.js"></script>
+<!--  <script type="text/javascript" src="assets/plugins/formvalidator/formValidatorRegex.js"></script> -->
  <!--表单验证样式表--> 
 <!--  <link href="formValidator1/style/validator.css" rel="stylesheet" type="text/css" /> -->
-<!--  提示 -->
- <script type="text/javascript" src="assets/plugins/bootstrap-toastr/toastr.min.js"></script>
- <!-- 翻页 -->
- <script type="text/javascript" src="assets/plugins/bootstrap-paginator/build/bootstrap-paginator.min.js"></script>
- <link href="assets/plugins/bootstrap-toastr/toastr.css" rel="stylesheet" type="text/css" />
  <script type="text/javascript" src="app/sys/user-list.js"></script>
 <p>Example of CRUD with Twitter Bootstrap</p>
 <div class="table-responsive">
@@ -53,7 +48,7 @@
                 <i class="icon-pencil"></i><span id="lblAddTitle" style="font-weight:bold">添加/修改信息</span>
             </h4>
          </div>
-            <form class="form-horizontal form-bordered form-row-strippe" id="ffAdd" action="" method="post" data-toggle="validator" >
+            <form class="form-horizontal form-bordered form-row-strippe" id="ffAdd" >
                 <div class="modal-body">
                     <div class="row">
                     	 <div class="col-md-12">
@@ -85,11 +80,12 @@
                         </div>
                     </div>
                 </div>
+                <!-- HIDDEN FILEDS -->
+	             <input type="hidden" id="id" name="id" />
+                <!-- HIDDEN FILEDS END -->
 	         <div class="modal-footer">
-	                  <input type="hidden" id="id" name="id" />
-	                   <input type="hidden" id="password" name="password"  value=""/>
 	                    <button type="submit" class="btn blue" >确定</button>
-	                    <button type="button" class="btn green" data-dismiss="modal">取消</button>
+	                    <button id="reset" type="reset" class="btn green" data-dismiss="modal">取消</button>
 	         </div>
          </form>
       </div><!-- /.modal-content -->
