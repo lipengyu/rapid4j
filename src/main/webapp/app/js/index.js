@@ -1,3 +1,24 @@
+//重写ajax处理方式
+jQuery(function($){
+    // 备份jquery的ajax方法  
+    var _ajax=$.ajax;
+    // 重写ajax方法，解决ajax授权丢失的问题 
+    $.ajax=function(opt){
+    	var _success = opt && opt.success || function(a, b){};
+        var _opt = $.extend(opt, {
+        	success:function(data, textStatus){
+        		// 如果后台将请求重定向到了登录页，则data里面就包含登陆表单的action路径"rest/auth/login"
+        		if(typeof data == 'string' && data.indexOf('rest/auth/login') != -1) {
+        			alert('会话已过期，您需要重新登录！');
+    				location.href = '/rest/page/login';
+        			return;
+        		}
+        		_success(data, textStatus);  
+            }  
+        });
+        _ajax(_opt);
+    };
+});
 //禁止提交按钮多次提交
 $(function() {
 	$('form').on('submit', function() {
@@ -28,7 +49,7 @@ function hideLoading() {
 	$("#loading_div", document.body).remove();
 	$("#loading_pic", document.body).remove();
 }
-
+// index操作
 $(function() {
     App.init();
 

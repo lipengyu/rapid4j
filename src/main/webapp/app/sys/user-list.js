@@ -113,10 +113,6 @@ function updateInit(id){
 		url : '/rest/user/' + id,
 		type : 'GET',
 		success : function(result) {
-			if(!result.id){
-				alert('会话已过期，您需要重新登录！');
-				location.href = '/rest/page/login';
-			}
 			$("#id").val(result.id);
 			$("#username").val(result.username);
 			$("#username").attr("readonly","readonly");
