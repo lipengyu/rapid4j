@@ -133,7 +133,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="rest/permission/list">
+                                    <a href="rest/permission">
                                         权限管理
                                     </a>
                                 </li>

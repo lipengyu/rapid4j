@@ -26,4 +26,6 @@ public interface PermissionService extends GenericService<Permission, Long> {
 
 	List<Permission> selectByExample(PermissionExample example, RowBounds rb);
 
+	List<Permission> selectByExample(PermissionExample example);
+
 }

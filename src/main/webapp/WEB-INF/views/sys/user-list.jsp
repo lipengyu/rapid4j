@@ -2,6 +2,10 @@
  <script type="text/javascript" src="app/sys/user-list.js"></script>
 <p>Example of CRUD with Twitter Bootstrap</p>
 <div class="table-responsive">
+<!-- <form class="form-search" id="ffSearch">
+  <label>用户名:</label><input name="username" type="text" class="input-medium search-query">
+  <button type="submit" class="btn btn-primary" onclick="search(1,5)">查询</button>
+</form> -->
 <table class="table">
 <thead>
   <tr>

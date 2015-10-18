@@ -45,5 +45,11 @@ public class PermissionServiceImpl extends GenericServiceImpl<Permission, Long> 
 	public List<Permission> selectByExample(PermissionExample example,RowBounds rb) {
 		return permissionMapper.selectByExampleAndPage(example,rb);
 	}
+
+	@Override
+	public List<Permission> selectByExample(PermissionExample example) {
+		LOGGER.debug("param:"+example);
+		return permissionMapper.selectByExample(example);
+	}
 	
 }
