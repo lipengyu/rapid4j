@@ -1,10 +1,4 @@
 <%@ page language="java" pageEncoding="utf-8"%>
- <!--表单验证必须库--> 
-<!--  <script type="text/javascript" src="assets/plugins/formvalidator/formValidator-4.1.1.min.js"></script> -->
- <!--表单验证扩展库--> 
-<!--  <script type="text/javascript" src="assets/plugins/formvalidator/formValidatorRegex.js"></script> -->
- <!--表单验证样式表--> 
-<!--  <link href="formValidator1/style/validator.css" rel="stylesheet" type="text/css" /> -->
  <script type="text/javascript" src="app/sys/user-list.js"></script>
 <p>Example of CRUD with Twitter Bootstrap</p>
 <div class="table-responsive">

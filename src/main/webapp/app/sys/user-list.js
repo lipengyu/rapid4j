@@ -49,16 +49,13 @@ function del(id) {
                  //保存成功  1.关闭弹出层，2.刷新表格数据
                  showTips(data.message);
                  refreshGrid();
-             }
-             else {
+             }else {
                  showError(data.message);
              }
 		},
 	 //async :false,
 	  error:function(XmlHttpRequest,textStatus, errorThrown)
 	  {
-		  console.log(XmlHttpRequest.status);
-		  console.log(textStatus);
 		  showError(XmlHttpRequest.responseText);
 	  }
 	});
@@ -131,7 +128,7 @@ function getActionHtml(id){
 }
 //绑定相关事件
 function BindEvent() {
-	
+	//重置
 	$("#reset").click(function(){
 			validator.resetForm();
 			//clear error msg
