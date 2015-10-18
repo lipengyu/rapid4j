@@ -47,6 +47,7 @@
         <dubbo.version>2.5.3</dubbo.version>
         <zkclient.version>0.3</zkclient.version>
         <tomcat.jdbc.version>7.0.53</tomcat.jdbc.version>
+        <servlet.version>3.0.1</servlet.version>
         <jstl.version>1.2</jstl.version>
         <google.collections.version>1.0</google.collections.version>
         <cglib.version>3.1</cglib.version>
@@ -210,7 +211,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
+            <version>${servlet.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -221,7 +222,7 @@
             <version>${jstl.version}</version>
         </dependency>
         
-        <!--  通用工具包,比如StringUtils.isNotBlank-->
+        <!--  通用工具包,比如常用的StringUtils.isNotBlank-->
         <dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>

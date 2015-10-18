@@ -122,7 +122,7 @@ public class JsonUtils {
 		FilterProvider filters = new SimpleFilterProvider().addFilter(filterName,
 				SimpleBeanPropertyFilter.serializeAllExcept(properties));
 		try {
-			return mapper.filteredWriter(filters).writeValueAsString(object);
+			return mapper.writer(filters).writeValueAsString(object);
 		} catch (JsonGenerationException e) {
 			logger.error("JsonGenerationException: ", e);
 		} catch (JsonMappingException e) {
@@ -149,7 +149,7 @@ public class JsonUtils {
 		FilterProvider filters = new SimpleFilterProvider().addFilter(filterName,
 				SimpleBeanPropertyFilter.serializeAllExcept(property));
 		try {
-			return mapper.filteredWriter(filters).writeValueAsString(object);
+			return mapper.writer(filters).writeValueAsString(object);
 		} catch (JsonGenerationException e) {
 			logger.error("JsonGenerationException: ", e);
 		} catch (JsonMappingException e) {

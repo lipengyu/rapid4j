@@ -38,7 +38,7 @@ import com.v5ent.rapid4j.web.service.RoleService;
 
 /**
  * 角色控制器
- * 
+ *
  * @author Mignet
  * @since 2014年5月28日 下午3:54:00
  **/
@@ -47,15 +47,13 @@ import com.v5ent.rapid4j.web.service.RoleService;
 public class RoleController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(RoleController.class);
-	
+
     @Resource
     private RoleService roleService;
 
-	private DataTable dataTable;
-	
 	/**
 	 * 日期转换
-	 * 
+	 *
 	 * @param binder
 	 */
 	@InitBinder
@@ -67,41 +65,26 @@ public class RoleController {
     /**
      * 基于角色 比如拥有admin角色，才可以查看用户列表
      */
-    @RequestMapping(value="",   method=RequestMethod.GET)  
+    @RequestMapping(value="",   method=RequestMethod.GET)
     @RequiresRoles(value = RoleSign.ADMIN)
     public String roles(Model model) {
     	RoleExample example = new RoleExample();
     	Page<Role> page = new Page<Role>(1,10);
-    	List<Role> roles = roleService.selectByExample(example,page);  
+    	List<Role> roles = roleService.selectByExample(example,page);
     	LOGGER.debug("roleService.selectList() size:"+roles);
     	model.addAttribute("roles",roles);
     	return "sys/role-list";
     }
-    
+
     /**
      * 翻页的例子<br>
      * 针对前端组件获取后端的情形
      * @return
      */
- /*   @RequestMapping(value="/list", method = RequestMethod.POST)  
-    @ResponseBody
-	public DataTableReturn getRoles(@RequestParam int draw, @RequestParam int start, @RequestParam int length,
-			@RequestParam List<OrderInfo> order, @RequestParam SearchInfo search, @RequestParam List<ColumnInfo> columns) {
-		LOGGER.debug("role list draw=" + draw);
-		DataTable dataTable = new DataTable();
-		dataTable.setDraw(draw);
-		dataTable.setStart(start);
-		dataTable.setLength(length);
-		dataTable.setColumns(columns);
-		dataTable.setOrder(order);
-		dataTable.setSearch(search);
-		DataTableReturn tableReturn = roleService.selectByDatatables(dataTable);
-		return tableReturn;
-	}*/
-    @RequestMapping(value="/list", method = RequestMethod.POST)  
+    @RequestMapping(value="/list", method = RequestMethod.POST)
     @ResponseBody
 	public DataTableReturn getRoles(@RequestParam String  _dt_json) {
-//		LOGGER.debug("role list draw=" + draw);
+		LOGGER.debug("role list _dt_json=" + _dt_json);
 		DataTable dataTable = JsonUtils.fromJsonToObject(_dt_json, DataTable.class);
 		DataTableReturn tableReturn = roleService.selectByDatatables(dataTable);
 		return tableReturn;
@@ -116,15 +99,15 @@ public class RoleController {
     public String create() {
         return "拥有role:create权限,能访问";
     }
-    
+
     @RequestMapping("/save")
 	@ResponseBody
-	public Object saveOrUpdate(Role ajax) {
-		if (StringUtils.isBlank(ajax.getRoleName())) {
+	public Object saveOrUpdate(Role role) {
+		if (StringUtils.isBlank(role.getRoleName())) {
 			return new JQReturn(false, "角色名称不能为空!");
 		}
 		try {
-			return this.roleService.update(ajax);
+			return this.roleService.update(role);
 		} catch (Exception e) {
 			LOGGER.error("Exception: ", e);
 			return new JQReturn(false, "系统繁忙，请稍候再试!");
@@ -148,5 +131,5 @@ public class RoleController {
 			return new JQReturn(false, "系统繁忙，请稍候再试!");
 		}
 	}
-    
+
 }

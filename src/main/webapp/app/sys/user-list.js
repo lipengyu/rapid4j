@@ -165,8 +165,7 @@ function BindEvent() {
                         //保存成功  1.关闭弹出层，2.刷新表格数据
                         showTips(data.message);
                         refreshGrid();
-                    }
-                    else {
+                    } else {
                         showError(data.message);
                     }
                 },
