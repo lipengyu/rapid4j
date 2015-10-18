@@ -8,12 +8,13 @@
 
 ## It Contains
 >* PostgreSQL,Redis
->* Mybatis for ORMapping and Physical pagination
+>* Mybatis for ORMapping and Physical Pagination
 >* Spring MVC for Controller and Restful API
->* Apache Shiro for RABC
+>* Apache Shiro for RBAC(Role-Based Access Control)
 >* Alibaba Dubbo for RPC Service BUS
 >* Alibaba Druid for DataSource
->* Metronic template for Responsive view
+>* Metronic  for Admin template
+>* Bootstarp for Responsive view
 >* Simple,Rapid,Effective
 
 ## Quick Start
