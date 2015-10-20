@@ -137,11 +137,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                         权限管理
                                     </a>
                                 </li>
-                                 <li>
-                                    <a href="rest/page/404">
-                                        404
-                                    </a>
-                                </li>
                             </ul>
                         </li>
 

@@ -29,11 +29,14 @@
 > * 9 Congratulations
 
 ## RoadMap
->* image cloud=>image upload,storage,read,rotate,scale
->* data table's CRUD,Master-Detail
->* pure bootstrap CRUD => completed,more info on users
->* profile form validation => 
->* tree,tabs,window and more widgets
+>* Pure bootstrap CRUD => completed,more info to see users
+>* Form validation => completed
+>* Ajax loading,Bootbox and Tips => completed
+>* Restful API => completed,more info to see permissions
+>* Code Generator => 
+>* Data Table's CRUD,Master-Detail=>
+>* Tree,Tabs,window and more widgets=>
+>* Image Cloud=>image upload,storage,read,rotate,scale
 
 ## For IDE
 > ### 1 IntelliJ IDEA
