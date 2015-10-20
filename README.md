@@ -13,7 +13,7 @@
 >* Apache Shiro for RBAC(Role-Based Access Control)
 >* Alibaba Dubbo for RPC Service BUS
 >* Alibaba Druid for DataSource
->* Metronic  for Admin template
+>* Admin template
 >* Bootstarp for Responsive view
 >* Simple,Rapid,Effective
 
