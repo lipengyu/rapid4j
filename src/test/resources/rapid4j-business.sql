@@ -1,10 +1,10 @@
 /* 业务数据 */
-DROP TABLE IF exists barcode;
-DROP TABLE IF exists orderline;
-DROP TABLE IF exists stock;
-DROP TABLE IF exists orderinfo;
-DROP TABLE IF exists item;
-DROP TABLE IF exists customer;
+DROP TABLE IF exists barcode;--实物条形码
+DROP TABLE IF exists orderline;--订单明细
+DROP TABLE IF exists stock;--库存
+DROP TABLE IF exists orderinfo;--order是关键字，所以取名orderinfo，表示订单
+DROP TABLE IF exists item;--商品
+DROP TABLE IF exists customer;--客户
 
 CREATE TABLE customer
 (
