@@ -23,13 +23,13 @@ import com.v5ent.rapid4j.web.security.RoleSign;
 import com.v5ent.rapid4j.web.service.PermissionService;
 
 /**
- * 权限控制器
- * 
+ * 权限控制器<br>
+ * 完全的Restful API
  * @author Mignet
  * @since 2014年5月28日 下午3:54:00
  **/
 @Controller
-@RequestMapping(value = "/permission")
+@RequestMapping(value = "/permissions")
 public class PermissionController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(PermissionController.class);
@@ -39,9 +39,10 @@ public class PermissionController {
 
     /**
      * select all <br>
+     * Restful
      * @return
      */
-    @RequestMapping(value="/list",   method=RequestMethod.GET)  
+    @RequestMapping(value="",   method=RequestMethod.GET)  
     @ResponseBody
     public Page<Permission> getPermissions(@RequestParam("pageNo") int pageNo,@RequestParam("pageSize") int pageSize) {
     	PermissionExample example = new PermissionExample();
@@ -54,35 +55,40 @@ public class PermissionController {
     
     /**
      * 基于权限标识的权限控制案例<br>
-     * 这里使用PUT请求并且路径是/{id}才是Restful的
+     * POST Restful
      */
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     @ResponseBody
     @RequiresRoles(value = RoleSign.ADMIN)
     public Result create(Permission item) {
-    	if(item.getId()==0){
     		item.setId(null);
 	    	//加入我们使用时间变量CreateTime作为salt
 	    	int i = permissionService.insert(item);
 	    	if(i==1){
-	    		return new Result(true,"新增成功!");
+	    		return new Result(true,201,"新增成功!");
 	    	}else{
 	    		return new Result(false,500,"新增失败");
 	    	}
-    	}else{
-    		int i = permissionService.update(item);
-	    	if(i==1){
-	    		return new Result(true,"更新成功!");
-	    	}else{
-	    		return new Result(false,500,"更新失败");
-	    	}
-    	}
     }
     
     /**
-     *  这里使用DELETE请求并且路径是/{id}才是Restful的
-     * @param id
-     * @return
+     * 基于权限标识的权限控制案例<br>
+     * PUT Restful
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @ResponseBody
+    @RequiresRoles(value = RoleSign.ADMIN)
+    public Result update(Permission item) {
+    		int i = permissionService.update(item);
+    		if(i==1){
+    			return new Result(true,200,"更新成功!");
+    		}else{
+    			return new Result(false,500,"更新失败");
+    		}
+    }
+    
+    /**
+     *  DELETE Restful
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ResponseBody
@@ -96,7 +102,7 @@ public class PermissionController {
     	}
     }
     /**
-     *  这里使用GET请求并且路径是/{id}才是Restful的
+     *  GET Restful
      * @param id
      * @return
      */
@@ -120,7 +126,11 @@ public class PermissionController {
     	}
     }
     
-    @RequestMapping(value="",   method=RequestMethod.GET)  
+    /**
+     * dispatcher view
+     * @return
+     */
+    @RequestMapping(value="/list",   method=RequestMethod.GET)  
     @RequiresRoles(value = RoleSign.ADMIN)
     public String permissions() {
     	return "sys/permission-list";

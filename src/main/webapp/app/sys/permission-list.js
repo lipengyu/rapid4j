@@ -18,7 +18,7 @@ function search(page,rows){
 //条件搜索
 function searchByCondition(page,rows,condition){
   var gCondition = condition;
-  url = "/rest/permission/list?pageNo="+page+"&pageSize="+rows;
+  url = "/rest/permissions?pageNo="+page+"&pageSize="+rows;
   if(condition){
 	  url += "&"+condition;
   }
@@ -61,7 +61,7 @@ function searchByCondition(page,rows,condition){
 //操作按钮
 function getActionHtml(id){
 	var td = "<td>"
-	td += "<button  class=\"btn btn-primary\" type=\"button\"  data-toggle=\"modal\"  data-target=\"#myAddModal\" onclick=\"updateInit("+id+")\">编辑</button>";
+	td += "<button  class=\"btn btn-primary\" type=\"button\"  data-toggle=\"modal\"  data-target=\"#myModal\" onclick=\"updateInit("+id+")\">编辑</button>";
 	td += "&nbsp;"
 	td += "<button  class=\"btn btn-primary\" type=\"button\" onclick=\"del("+id+")\">删除</button>";
 	td += "</td>";
@@ -93,10 +93,18 @@ function BindEvent() {
             element.parent('div').append(error);
         },
         submitHandler: function (form) {
-            $("#myAddModal").modal("hide");
+            $("#myModal").modal("hide");
+            //id==-1 means new
+            if($("#id").val()==-1){
+            	method = "post";
+            	_url_ = "/rest/permissions";
+            }else{
+            	method = "put";
+            	_url_ = "/rest/permissions/"+$("#id").val();
+            }
             $(form).ajaxSubmit({
-                type:"post",
-                url:"/rest/permission/create",
+                type:method,
+                url:_url_,
                 //beforeSubmit: showRequest,for example:are you sure to submit?
                 success: function (data) {
                     if (data.success) {
@@ -118,7 +126,8 @@ function BindEvent() {
 }
 //--------------------------本页面业务--------------------------
 function addInit(){
-	$("#id").val(0);
+	$("#myTitle").html("新增信息");
+	$("#id").val(-1);
 	$("#permissionSign").val("");
 	$("#permissionName").val("");
 	$("#permissionName").removeAttr("readonly");
@@ -127,20 +136,21 @@ function addInit(){
             	rangelength:[2,20],
             	remote:{                                          //验证用户名是否存在
                     type:"GET",
-                    url:"/rest/permission/check",             
+                    url:"/rest/permissions/check",             
                     data:{
                       name:function(){return $("#permissionName").val();}
                     } 
                    }, 
         messages:{required:"不能为空！",rangelength:$.format("位数必须在{0}到{1}字符之间！"),remote:"已经存在!"}                    
 	})
-	$("#description").val('管理界面');
+	$("#description").val('权限标识规则=资源:操作');
 }
 function updateInit(id){
 	$.ajax({
-		url : '/rest/permission/' + id,
+		url : '/rest/permissions/' + id,
 		type : 'GET',
 		success : function(result) {
+			$("#myTitle").html("修改信息");
 			$("#id").val(result.id);
 			$("#permissionName").val(result.permissionName);
 			$("#permissionSign").val(result.permissionSign);
@@ -159,7 +169,7 @@ function updateInit(id){
 //删除
 function del(id) {
 	$.ajax({
-		url : '/rest/permission/' + id,
+		url : '/rest/permissions/' + id,
 		type : 'DELETE',
 		success : function(data) {
 			 if (data.success) {

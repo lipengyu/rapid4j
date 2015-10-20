@@ -21,13 +21,13 @@
 
 <!-- Button trigger modal -->
 <button class="btn btn-primary" data-toggle="modal" 
-   data-target="#myAddModal" onclick="addInit()">
+   data-target="#myModal" onclick="addInit()">
    新增
 </button>
 
 <!-- Modal -->
 <!--------------------------添加/修改信息的弹出层---------------------------->
-<div class="modal fade" id="myAddModal" tabindex="-1" role="dialog" 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
    aria-labelledby="myModalLabel" aria-hidden="true">
    <div class="modal-dialog">
       <div class="modal-content">
@@ -37,7 +37,7 @@
                   &times;
             </button>
             <h4 class="modal-title" id="myModalLabel">
-                <i class="icon-pencil"></i><span id="lblAddTitle" style="font-weight:bold">添加/修改信息</span>
+                <i class="icon-pencil"></i><span id="myTitle" style="font-weight:bold">添加/修改信息</span>
             </h4>
          </div>
             <form class="form-horizontal form-bordered form-row-strippe" id="ffAdd" >
