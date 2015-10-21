@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
@@ -63,9 +64,13 @@ public class UserController {
     
     @RequestMapping(value="/list",   method=RequestMethod.GET)  
     @ResponseBody
-    public Page<User> userLists(@RequestParam("pageNo") int pageNo,@RequestParam("pageSize") int pageSize) {
+    public Page<User> userLists(@RequestParam("pageNo") int pageNo,@RequestParam("pageSize") int pageSize,
+    		@RequestParam("username") String username) {
     	UserExample example = new UserExample();
     	Page<User> page = new Page<User>(pageNo,pageSize);
+    	if(StringUtils.isNotBlank(username)){
+    		example.createCriteria().andUsernameLike("%" + username + "%");
+    	}
     	example.setOrderByClause("id");
     	List<User> users = userService.selectByExample(example,page);  
     	LOGGER.debug("userService.selectList() size:"+users);

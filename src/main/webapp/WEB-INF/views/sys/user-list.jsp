@@ -2,10 +2,30 @@
  <script type="text/javascript" src="app/sys/user-list.js"></script>
 <p>Example of CRUD with Twitter Bootstrap</p>
 <div class="table-responsive">
-<!-- <form class="form-search" id="ffSearch">
-  <label>用户名:</label><input name="username" type="text" class="input-medium search-query">
-  <button type="submit" class="btn btn-primary" onclick="search(1,5)">查询</button>
-</form> -->
+<form class="form-horizontal" id="ffSearch">
+<div class="container">
+   <div class="row" >
+		<div class="col-md-3 col-sm-3 col-xs-6">
+				<div class="form-group">
+				<!-- Button trigger modal -->
+				<button class="btn btn-primary" data-toggle="modal" 
+				   data-target="#myAddModal" onclick="addInit()"> 新增
+				</button>
+				</div>
+		</div>
+		<div class="col-md-3 col-sm-3 col-xs-6">
+			<div class="form-group">
+				<label class="control-label col-md-4">用户名</label>
+				<div class="col-md-8">
+					<input name="username" type="text" class="form-control">
+				</div>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary" onclick="search(1,5);return false;">查询</button>
+         <button type="reset" class="btn btn-primary" >重置</button>
+         </div>
+         </div>
+</form>
 <table class="table">
 <thead>
   <tr>
@@ -24,12 +44,6 @@
 <div class="paging-toolbar">
      <ul id='grid_paging'></ul>
 </div>
-    <!--  -->
-<!-- Button trigger modal -->
-<button class="btn btn-primary" data-toggle="modal" 
-   data-target="#myAddModal" onclick="addInit()">
-   新增
-</button>
 
 <!-- Modal -->
 <!--------------------------添加/修改信息的弹出层---------------------------->
