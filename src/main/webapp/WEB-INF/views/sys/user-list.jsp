@@ -1,7 +1,6 @@
 <%@ page language="java" pageEncoding="utf-8"%>
  <script type="text/javascript" src="app/sys/user-list.js"></script>
 <p>Example of CRUD with Twitter Bootstrap</p>
-<div class="table-responsive">
 <form class="form-horizontal" id="ffSearch">
 <div class="container">
    <div class="row" >
@@ -24,8 +23,9 @@
 		<button type="submit" class="btn btn-primary" onclick="search(1,5);return false;">查询</button>
          <button type="reset" class="btn btn-primary" >重置</button>
          </div>
-         </div>
+</div>
 </form>
+<div class="table-responsive">
 <table class="table">
 <thead>
   <tr>
