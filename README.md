@@ -29,13 +29,13 @@
 > * 9 Congratulations
 
 ## RoadMap
->* Pure bootstrap CRUD => completed,more info to see users
->* Form validation => completed
->* Ajax loading,Bootbox and Tips => completed
->* Restful API => completed,more info to see permissions
+>* Example of CRUD with Twitter Bootstrap => completed,more info to see users
+>* Example of Form validation => completed
+>* Example of Ajax common handler,Bootbox and Tips => completed
+>* Example of Restful API => completed,more info to see permissions
+>* Example of Data Table's CRUD,Master-Detail=>
+>* Example of Tree,Tabs,window and more widgets=>
 >* Code Generator => 
->* Data Table's CRUD,Master-Detail=>
->* Tree,Tabs,window and more widgets=>
 >* Image Cloud=>image upload,storage,read,rotate,scale
 
 ## For IDE

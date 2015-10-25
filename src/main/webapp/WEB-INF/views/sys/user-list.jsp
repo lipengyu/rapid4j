@@ -4,7 +4,7 @@
 <form class="form-horizontal" id="ffSearch">
 <div class="container">
    <div class="row" >
-		<div class="col-md-3 col-sm-3 col-xs-6">
+		<div class="col-md-4 col-sm-4 col-xs-4">
 				<div class="form-group">
 				<!-- Button trigger modal -->
 				<button class="btn btn-primary" data-toggle="modal" 
@@ -12,16 +12,18 @@
 				</button>
 				</div>
 		</div>
-		<div class="col-md-3 col-sm-3 col-xs-6">
+		<div class="col-md-5 col-sm-5 col-xs-5">
 			<div class="form-group">
-				<label class="control-label col-md-4">用户名</label>
-				<div class="col-md-8">
+				<label class="control-label col-md-6">用户名</label>
+				<div class="col-md-6">
 					<input name="username" type="text" class="form-control">
 				</div>
 			</div>
 		</div>
+		<div class="col-md-3 col-sm-3 col-xs-3">
 		<button type="submit" class="btn btn-primary" onclick="search(1,5);return false;">查询</button>
          <button type="reset" class="btn btn-primary" >重置</button>
+         </div>
          </div>
 </div>
 </form>
