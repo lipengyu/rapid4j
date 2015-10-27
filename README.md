@@ -2,7 +2,7 @@
 
 ------
 
-**Rapid4J** is a `Rapid ` Seed Project for building a ` Java` Modern Application
+**Rapid4J** is a `Rapid` Seed Project for building a `Java` Modern Application
 
 ------
 
@@ -35,7 +35,7 @@
 >* Example of Restful API => completed,more info to see permissions
 >* Example of Data Table's CRUD,Master-Detail=>
 >* Example of Tree,Tabs,window and more widgets=>
->* Code Generator => 
+>* Code Generator =>
 >* Image Cloud=>image upload,storage,read,rotate,scale
 
 ## For IDE
@@ -46,5 +46,5 @@
 * File -> Import -> Existing Maven Projects  -> select rapid4j folder -> ...
 
 ## If you have a better suggestion,Please feel free to contract me Or open a issue.
-> Author ：Charley  
-> Email  ：mignetwee@gmail.com  
+> Author ：Charley
+> Email  ：mignetwee@gmail.com

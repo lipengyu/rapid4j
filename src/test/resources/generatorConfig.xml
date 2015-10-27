@@ -40,7 +40,7 @@
         </javaClientGenerator>
 
         <!--对应数据库表名 -->
-          <table tableName="t_Menu" domainObjectName="Menu" >
+        <table tableName="t_Menu" domainObjectName="Menu" >
             <columnOverride column="MenuId" javaType="java.lang.String"/>
         </table>
         <table tableName="t_Customer" domainObjectName="Customer" >
