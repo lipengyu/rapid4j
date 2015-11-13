@@ -1,12 +1,3 @@
-# Project ignore files
-/.settings
-/.classpath
-/.project
-/.tomcatplugin
-/target
-/work
-/.tomcatplugin
-/src/main/webapp/.#webclasspath
 *.class
 
 # Mobile Tools for Java (J2ME)
