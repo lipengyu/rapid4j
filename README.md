@@ -2,7 +2,7 @@
 
 ------
 
-**Rapid4J** is a `Rapid ` Seed Project for building a ` Java` Modern Application
+**Rapid4J** is a `Rapid` Seed Project for building a `Java` Modern Application
 
 ------
 
@@ -29,13 +29,13 @@
 > * 9 Congratulations
 
 ## RoadMap
->* Pure bootstrap CRUD => completed,more info to see users
->* Form validation => completed
->* Ajax loading,Bootbox and Tips => completed
->* Restful API => completed,more info to see permissions
->* Code Generator => 
->* Data Table's CRUD,Master-Detail=>
->* Tree,Tabs,window and more widgets=>
+>* Example of CRUD with Twitter Bootstrap => completed,more info to see users
+>* Example of Form validation => completed
+>* Example of Ajax common handler,Bootbox and Tips => completed
+>* Example of Restful API => completed,more info to see permissions
+>* Example of Data Table's CRUD,Master-Detail=>
+>* Example of Tree,Tabs,window and more widgets=>
+>* Code Generator =>
 >* Image Cloud=>image upload,storage,read,rotate,scale
 
 ## For IDE
@@ -46,5 +46,5 @@
 * File -> Import -> Existing Maven Projects  -> select rapid4j folder -> ...
 
 ## If you have a better suggestion,Please feel free to contract me Or open a issue.
-> Author ：Charley  
-> Email  ：mignetwee@gmail.com  
+> Author ：Charley
+> Email  ：mignetwee@gmail.com

@@ -1,10 +1,9 @@
 <%@ page language="java" pageEncoding="utf-8"%>
  <script type="text/javascript" src="app/sys/user-list.js"></script>
 <p>Example of CRUD with Twitter Bootstrap</p>
-<form class="form-horizontal" id="ffSearch">
-<div class="container">
+<form id="ffSearch">
    <div class="row" >
-		<div class="col-md-3 col-sm-3 col-xs-6">
+		<div class="col-md-6 col-sm-6 col-xs-6">
 				<div class="form-group">
 				<!-- Button trigger modal -->
 				<button class="btn btn-primary" data-toggle="modal" 
@@ -12,17 +11,18 @@
 				</button>
 				</div>
 		</div>
-		<div class="col-md-3 col-sm-3 col-xs-6">
+		<div class="col-md-6 col-sm-6 col-xs-6">
 			<div class="form-group">
-				<label class="control-label col-md-4">用户名</label>
-				<div class="col-md-8">
+				<label class="control-label col-md-2">用户名</label>
+				<div class="col-md-4">
 					<input name="username" type="text" class="form-control">
+				</div>
+				<div class="col-md-6">
+					<button type="submit" class="btn btn-primary" onclick="search(1,5);return false;">查询</button>
+			         <button type="reset" class="btn btn-primary" >重置</button>
 				</div>
 			</div>
 		</div>
-		<button type="submit" class="btn btn-primary" onclick="search(1,5);return false;">查询</button>
-         <button type="reset" class="btn btn-primary" >重置</button>
-         </div>
 </div>
 </form>
 <div class="table-responsive">
