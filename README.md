@@ -34,7 +34,7 @@
 >* Example of Ajax common handler,Bootbox and Tips => completed
 >* Example of Restful API => completed,more info to see permissions
 >* Example of Data Table's CRUD,Master-Detail=>
->* Example of Tree,Tabs,window and more widgets=>
+>* Example of Tree,Tabs,Window and more Widgets=>
 >* Code Generator =>
 >* Image Cloud=>image upload,storage,read,rotate,scale
 
