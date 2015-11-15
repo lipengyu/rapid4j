@@ -33,10 +33,10 @@
 >* Example of Form validation => completed
 >* Example of Ajax common handler,Bootbox and Tips => completed
 >* Example of Restful API => completed,more info to see permissions
->* Example of Data Table's CRUD,Master-Detail=>
+>* Example of Data Table's CRUD,Master-Detail=>Give up,because of Data Table's searching feature
 >* Example of Tree,Tabs,Window and more Widgets=>
->* Code Generator =>
->* Image Cloud=>image upload,storage,read,rotate,scale
+>* Code Generator[new project] => https://github.com/Mignet/rapid4j-generator
+>* Image Cloud[new project]=>image upload,storage,read,rotate,scale=>https://github.com/Mignet/rapid4j-images
 
 ## For IDE
 > ### 1 IntelliJ IDEA
