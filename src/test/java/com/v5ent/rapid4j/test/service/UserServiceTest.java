@@ -8,8 +8,8 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 
-import com.v5ent.rapid4j.core.feature.test.TestSupport;
 import com.v5ent.rapid4j.core.util.PasswordHash;
+import com.v5ent.rapid4j.test.TestSupport;
 import com.v5ent.rapid4j.web.model.User;
 import com.v5ent.rapid4j.web.service.UserService;
 

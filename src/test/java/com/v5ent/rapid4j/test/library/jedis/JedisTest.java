@@ -1,7 +1,7 @@
 package com.v5ent.rapid4j.test.library.jedis;
 
 import com.v5ent.rapid4j.core.feature.cache.redis.RedisCache;
-import com.v5ent.rapid4j.core.feature.test.TestSupport;
+import com.v5ent.rapid4j.test.TestSupport;
 
 import org.junit.Test;
 

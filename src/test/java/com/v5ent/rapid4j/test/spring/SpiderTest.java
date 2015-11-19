@@ -1,10 +1,10 @@
 package com.v5ent.rapid4j.test.spring;
 
-import com.v5ent.rapid4j.core.feature.test.TestSupport;
+import javax.annotation.Resource;
 
 import org.junit.Test;
 
-import javax.annotation.Resource;
+import com.v5ent.rapid4j.test.TestSupport;
 
 /**
  * SpiderTest : 爬虫测试类

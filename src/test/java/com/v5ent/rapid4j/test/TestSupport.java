@@ -1,4 +1,4 @@
-package com.v5ent.rapid4j.core.feature.test;
+package com.v5ent.rapid4j.test;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
@@ -39,7 +39,7 @@ public class TestSupport extends AbstractJUnit4SpringContextTests {
      * 输出记录
      */
     protected void log() {
-        String text = "\nStartTime: " + this.startTime + "\nEndTime : " + this.endTime + "\nExecTime : " + (this.endTime - this.startTime);
+        String text = "\nStartTime: " + this.startTime + "\nEndTime : " + this.endTime + "\nExecTime : " + (this.endTime - this.startTime)+"ms";
         logger.info(text);
     }
 }
