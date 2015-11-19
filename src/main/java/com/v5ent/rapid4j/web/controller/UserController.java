@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.v5ent.rapid4j.core.feature.orm.mybatis.Page;
+import com.v5ent.rapid4j.core.orm.mybatis.Page;
 import com.v5ent.rapid4j.core.result.Result;
 import com.v5ent.rapid4j.web.model.User;
 import com.v5ent.rapid4j.web.model.UserExample;

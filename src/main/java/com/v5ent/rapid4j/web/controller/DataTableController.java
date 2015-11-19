@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.v5ent.rapid4j.core.datatable.DataTable;
-import com.v5ent.rapid4j.core.datatable.DataTableReturn;
 import com.v5ent.rapid4j.core.result.JQReturn;
 import com.v5ent.rapid4j.core.util.JsonUtils;
+import com.v5ent.rapid4j.web.datatable.DataTable;
+import com.v5ent.rapid4j.web.datatable.DataTableReturn;
 import com.v5ent.rapid4j.web.interceptors.DateConvertEditor;
 import com.v5ent.rapid4j.web.model.Role;
 import com.v5ent.rapid4j.web.service.RoleService;

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.v5ent.rapid4j.core.feature.orm.mybatis.Page;
+import com.v5ent.rapid4j.core.orm.mybatis.Page;
 import com.v5ent.rapid4j.web.model.Customer;
 import com.v5ent.rapid4j.web.model.CustomerExample;
 import com.v5ent.rapid4j.web.model.CustomerExample.Criteria;
