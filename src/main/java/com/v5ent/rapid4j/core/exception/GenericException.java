@@ -1,12 +1,12 @@
-package com.v5ent.rapid4j.core.entity;
+package com.v5ent.rapid4j.core.exception;
 
 /**
- * UserException : 用户自定义异常
+ * GenericException : 异常基类
  *
  * @author Mignet
  * @since 2014-09-27 18:12
  */
-public class UserException extends RuntimeException {
+public class GenericException extends RuntimeException {
 
     /**
 	 * serialVersionUID

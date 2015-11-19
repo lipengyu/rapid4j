@@ -1,4 +1,4 @@
-package com.v5ent.rapid4j.core.entity;
+package com.v5ent.rapid4j.core.result;
 
 import java.util.HashMap;
 import java.util.Map;

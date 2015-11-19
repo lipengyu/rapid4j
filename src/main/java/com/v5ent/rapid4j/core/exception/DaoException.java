@@ -1,4 +1,4 @@
-package com.v5ent.rapid4j.core.entity;
+package com.v5ent.rapid4j.core.exception;
 
 /**
  * DaoException : 封装Dao(数据库访问)层发生的异常
@@ -6,7 +6,7 @@ package com.v5ent.rapid4j.core.entity;
  * @author Mignet
  * @since 2014-09-27 18:17
  */
-public class DaoException extends UserException {
+public class DaoException extends GenericException {
 
 	private static final long serialVersionUID = -2273244076984040706L;
 

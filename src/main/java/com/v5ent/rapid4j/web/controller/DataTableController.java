@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.v5ent.rapid4j.core.datatable.DataTable;
 import com.v5ent.rapid4j.core.datatable.DataTableReturn;
-import com.v5ent.rapid4j.core.entity.JQReturn;
+import com.v5ent.rapid4j.core.result.JQReturn;
 import com.v5ent.rapid4j.core.util.JsonUtils;
 import com.v5ent.rapid4j.web.interceptors.DateConvertEditor;
 import com.v5ent.rapid4j.web.model.Role;
