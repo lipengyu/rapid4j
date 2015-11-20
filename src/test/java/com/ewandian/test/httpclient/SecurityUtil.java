@@ -5,11 +5,12 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 加密签名
+ * 加密签名,统一使用commons-codec加密解密
  * @author Mignet
  *
  */
@@ -54,8 +55,7 @@ public class SecurityUtil {
 			LOGGER.debug("编码异常：",e);
 			e.printStackTrace();
 		}
-    	MessageDigest md = MessageDigest.getInstance("md5");
-        byte b[] = md.digest("JDW-CH".getBytes());
+    	 byte b[] = DigestUtils.md5Hex("JDW-CH").getBytes();
          String security = Base64.encodeBase64(b).toString();
          System.out.println("自定义安全码:"+security);
 	}
@@ -70,9 +70,7 @@ public class SecurityUtil {
 	 */
     public static String paramEncode(String clientId,String specode,String json) throws Exception {
         String sBefore = json+specode;
-        //实现指定摘要算法的MessageDigest对象
-        MessageDigest md = MessageDigest.getInstance("md5");
-        byte b[] = md.digest(sBefore.getBytes());
+        byte b[] = DigestUtils.md5Hex(sBefore).getBytes();
         String sAfter = Base64.encodeBase64(b).toString();
         System.out.println(sBefore+"经过MD5加密后的字符串："+sAfter);
         System.out.println("经过URL编码之后的字符串："+URLEncoder.encode(sAfter,CHARSET));
@@ -93,9 +91,7 @@ public class SecurityUtil {
      */
     public static String postEncode(String clientId,String specode,String json) throws Exception {
     	String sBefore = json+specode;
-    	//实现指定摘要算法的MessageDigest对象
-    	MessageDigest md = MessageDigest.getInstance("md5");
-    	byte b[] = md.digest(sBefore.getBytes());
+    	byte b[] = DigestUtils.md5Hex(sBefore).getBytes();
     	String sAfter = Base64.encodeBase64(b).toString();
     	System.out.println("签名之前字符串"+sBefore);
     	System.out.println("签名之后字符串："+sAfter);
