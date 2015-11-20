@@ -3,7 +3,7 @@ package com.v5ent.rapid4j.core.security;
 import java.math.BigInteger;
 
 /**
- * RSAEncoder :
+ * RSAEncoder :RSA公钥私钥加密
  *
  * @author Mignet
  * @since 2015-04-04 13:54

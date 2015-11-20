@@ -1,4 +1,4 @@
-package com.v5ent.rapid4j.test.jedis;
+package com.v5ent.rapid4j.plugin.jedis;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

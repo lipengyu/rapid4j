@@ -1,4 +1,4 @@
-package com.v5ent.rapid4j.core.cache.redis;
+package com.v5ent.rapid4j.plugin.cache.redis;
 
 import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;

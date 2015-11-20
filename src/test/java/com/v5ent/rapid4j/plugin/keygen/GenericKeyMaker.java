@@ -1,4 +1,4 @@
-package com.v5ent.rapid4j.test.keygen;
+package com.v5ent.rapid4j.plugin.keygen;
 
 import java.math.BigInteger;
 import java.util.Random;

@@ -1,4 +1,4 @@
-package com.v5ent.rapid4j.test.spring;
+package com.v5ent.rapid4j.plugin.spring;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;

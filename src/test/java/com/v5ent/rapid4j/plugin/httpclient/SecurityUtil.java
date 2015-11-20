@@ -1,4 +1,4 @@
-package com.v5ent.rapid4j.test.httpclient;
+package com.v5ent.rapid4j.plugin.httpclient;
 
 import java.net.URLEncoder;
 import java.security.MessageDigest;

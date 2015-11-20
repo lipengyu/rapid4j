@@ -1,4 +1,4 @@
-package com.v5ent.rapid4j.core.dubbo;
+package com.v5ent.rapid4j.plugin.dubbo;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

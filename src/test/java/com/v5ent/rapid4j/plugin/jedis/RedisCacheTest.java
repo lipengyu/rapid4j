@@ -1,6 +1,6 @@
-package com.v5ent.rapid4j.test.jedis;
+package com.v5ent.rapid4j.plugin.jedis;
 
-import com.v5ent.rapid4j.core.cache.redis.RedisCache;
+import com.v5ent.rapid4j.plugin.cache.redis.RedisCache;
 import com.v5ent.rapid4j.test.TestSupport;
 
 import org.junit.Test;

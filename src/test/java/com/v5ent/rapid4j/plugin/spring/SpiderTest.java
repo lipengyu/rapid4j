@@ -1,4 +1,4 @@
-package com.v5ent.rapid4j.test.spring;
+package com.v5ent.rapid4j.plugin.spring;
 
 import javax.annotation.Resource;
 
