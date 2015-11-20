@@ -1,4 +1,4 @@
-package com.v5ent.rapid4j.test.library.jedis;
+package com.v5ent.rapid4j.test.jedis;
 
 import com.v5ent.rapid4j.core.cache.redis.RedisCache;
 import com.v5ent.rapid4j.test.TestSupport;
@@ -13,7 +13,7 @@ import javax.annotation.Resource;
  * @author Mignet
  * @since 2015-03-20 10:32
  */
-public class JedisTest extends TestSupport {
+public class RedisCacheTest extends TestSupport {
 
 
     @Resource
