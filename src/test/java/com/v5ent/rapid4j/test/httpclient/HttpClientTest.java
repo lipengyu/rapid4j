@@ -1,4 +1,4 @@
-package com.ewandian.test.httpclient;
+package com.v5ent.rapid4j.test.httpclient;
 
 import java.io.File;
 import java.io.FileInputStream;
