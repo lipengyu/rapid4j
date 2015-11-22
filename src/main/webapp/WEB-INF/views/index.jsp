@@ -147,12 +147,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                             </a>
                             <ul class="sub-menu">
                                 <li>
-                                    <a href="javascript:;">
+                                    <a href="rest/page/blank">
                                         信息修改
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:;">
+                                    <a href="rest/page/blank">
                                         密码修改
                                     </a>
                                 </li>
@@ -160,25 +160,25 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                 <!-- 测试权限控制 -->
                                 <shiro:hasAnyRoles name="super_admin">
                                     <li>
-                                        <a href="javascript:;">super_admin 拥有此角色</a>
+                                        <a href="rest/page/blank">用户拥有[super_admin]角色</a>
                                     </li>
                                 </shiro:hasAnyRoles>
                                 
                                 <shiro:hasAnyRoles name="admin">
                                     <li>
-                                        <a href="javascript:;">admin 拥有此角色</a>
+                                        <a href="rest/page/blank">用户拥有[admin]角色</a>
                                     </li>
                                 </shiro:hasAnyRoles>
                                 
                                 <shiro:hasPermission name="user:create">
                                     <li>
-                                        <a href="javascript:;">user:create 拥有此权限</a>
+                                        <a href="rest/page/blank">用户拥有[user:create]权限</a>
                                     </li>
                                 </shiro:hasPermission>
                                 
                                 <shiro:hasPermission name="user:update">
                                     <li>
-                                        <a href="javascript:;">user:update 拥有此权限</a>
+                                        <a href="rest/page/blank">用户拥有[user:update]权限</a>
                                     </li>
                                 </shiro:hasPermission>
      
