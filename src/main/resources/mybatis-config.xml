@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <properties>
-        <property name="dialectClass" value="com.v5ent.rapid4j.core.feature.orm.dialect.PostgresDialect"/>
+        <property name="dialectClass" value="com.v5ent.rapid4j.core.orm.dialect.PostgresDialect"/>
     </properties>
 
     <!-- 配置mybatis的缓存，延迟加载等等一系列属性 -->
@@ -62,8 +62,8 @@
     </typeAliases>
 
     <plugins>
-        <plugin interceptor="com.v5ent.rapid4j.core.feature.orm.mybatis.PaginationResultSetHandlerInterceptor"/>
-        <plugin interceptor="com.v5ent.rapid4j.core.feature.orm.mybatis.PaginationStatementHandlerInterceptor"/>
+        <plugin interceptor="com.v5ent.rapid4j.core.orm.mybatis.PaginationResultSetHandlerInterceptor"/>
+        <plugin interceptor="com.v5ent.rapid4j.core.orm.mybatis.PaginationStatementHandlerInterceptor"/>
     </plugins>
 
 </configuration>

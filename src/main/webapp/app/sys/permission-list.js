@@ -27,7 +27,7 @@ function searchByCondition(page,rows,condition){
     $("#totalPageCount").text(data.totalPages);
 
     $("#grid_body").html("");
-    $.each(data.result,function(i,item){
+    $.each(data.datas,function(i,item){
       //遍历显示内容
       var tr = "<tr>";
       tr += "<td><input class='checkboxes' type=\"checkbox\" name=\"checkbox\" value=\"+item.id+\"></td> ";

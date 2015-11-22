@@ -37,7 +37,7 @@ public class Page<T> extends RowBounds {
     /**
      * 查询结果
      */
-    protected List<T> result = new ArrayList<T>();
+    protected List<T> datas = new ArrayList<T>();
 
     /**
      * 总条数
@@ -114,15 +114,15 @@ public class Page<T> extends RowBounds {
     /**
      * 取得页内的记录列表.
      */
-    public List<T> getResult() {
-        return result;
+    public List<T> getDatas() {
+        return datas;
     }
 
     /**
      * 设置页内的记录列表.
      */
-    public void setResult(final List<T> result) {
-        this.result = result;
+    public void setDatas(final List<T> datas) {
+        this.datas = datas;
     }
 
     /**

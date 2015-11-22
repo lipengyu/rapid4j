@@ -35,7 +35,7 @@ public class PaginationResultSetHandlerInterceptor implements Interceptor {
         Object result = invocation.proceed();
 
         if (rowBounds instanceof Page) {
-            metaStatementHandler.setValue("rowBounds.result", result);
+            metaStatementHandler.setValue("rowBounds.datas", result);
         }
         return result;
     }

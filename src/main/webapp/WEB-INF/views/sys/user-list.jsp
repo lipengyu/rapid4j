@@ -1,4 +1,6 @@
 <%@ page language="java" pageEncoding="utf-8"%>
+<!--  使用handlebars模板-->
+<script type="text/javascript" src="assets/plugins/handlebars/handlebars-4.0.5.js"></script>
  <script type="text/javascript" src="app/sys/user-list.js"></script>
 <p>Example of CRUD with Twitter Bootstrap</p>
 <form id="ffSearch">
@@ -25,6 +27,26 @@
 		</div>
 </div>
 </form>
+ <script id="table-template" type="text/x-handlebars-template">
+      {{#each datas}}
+        <tr>
+		  <td><input class='checkboxes' type="checkbox" name="checkbox" value="{{id}}"></td> 
+          <td>{{id}}</td>
+          <td>{{username}}</td>
+          {{#compare state '=='  'Y'}}
+			<td><span class='label label-success'>有效</span></td>
+			{{else}}
+			<td><span class='label label-danger'>无效</span></td>
+			{{/compare}}
+          <td>{{formatDate createTime}}</td>
+          <td>{{description}}</td>
+		<td>
+		<button  class="btn btn-primary" type="button"  data-toggle="modal"  data-target="#myAddModal" onclick="updateInit({{id}})">编辑</button>
+		<button  class="btn btn-primary" type="button" onclick="del({{id}})">删除</button>
+		</td>
+        </tr> 
+      {{/each}}
+    </script>
 <div class="table-responsive">
 <table class="table">
 <thead>
@@ -38,7 +60,9 @@
     <th>操作</th>
   </tr>
   </thead>
-  <tbody id="grid_body"></tbody>
+  <tbody id="grid_body">
+ 
+  </tbody>
 </table>
 </div>
 <div class="paging-toolbar">

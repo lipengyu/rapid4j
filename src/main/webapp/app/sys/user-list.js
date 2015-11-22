@@ -44,13 +44,13 @@ function del(id) {
 	$.ajax({
 		url : '/rest/user/' + id,
 		type : 'DELETE',
-		success : function(data) {
-			 if (data.success) {
+		success : function(result) {
+			 if (result.success) {
                  //保存成功  1.关闭弹出层，2.刷新表格数据
-                 showTips(data.message);
+                 showTips(result.message);
                  refreshGrid();
              }else {
-                 showError(data.message);
+                 showError(result.message);
              }
 		},
 	 //async :false,
@@ -76,12 +76,44 @@ function searchByCondition(page,rows,condition){
   if(condition){
 	  url += "&"+condition;
   }
-  $.getJSON(url,function(data){
-    $("#totalCount").text(data.totalCount);
-    $("#totalPageCount").text(data.totalPages);
+  $.getJSON(url,function(result){
+    $("#totalCount").text(result.totalCount);
+    $("#totalPageCount").text(result.totalPages);
 
     $("#grid_body").html("");
-    $.each(data.result,function(i,item){
+  //判断比较
+    Handlebars.registerHelper('compare', function(left, operator, right, options) {
+        if (arguments.length < 3) {
+          throw new Error('Handlerbars Helper "compare" needs 2 parameters');
+        }
+        var operators = {
+          '==':     function(l, r) {return l == r; },
+          '===':    function(l, r) {return l === r; },
+          '!=':     function(l, r) {return l != r; },
+          '!==':    function(l, r) {return l !== r; },
+          '<':      function(l, r) {return l < r; },
+          '>':      function(l, r) {return l > r; },
+          '<=':     function(l, r) {return l <= r; },
+          '>=':     function(l, r) {return l >= r; },
+          'typeof': function(l, r) {return typeof l == r; }
+        };
+
+        if (!operators[operator]) {
+          throw new Error('Handlerbars Helper "compare" doesn\'t know the operator ' + operator);
+        }
+
+        var result = operators[operator](left, right);
+
+        if (result) {
+          return options.fn(this);
+        } else {
+          return options.inverse(this);
+        }
+    });
+    Handlebars.registerHelper('formatDate', function(date) {
+    	  return new Date(date).Format('yyyy-MM-dd hh:mm:ss');
+    	});
+/*    $.each(result.result,function(i,item){
       //遍历显示内容
       var tr = "<tr>";
       tr += "<td><input class='checkboxes' type=\"checkbox\" name=\"checkbox\" value=\"+item.id+\"></td> ";
@@ -97,18 +129,23 @@ function searchByCondition(page,rows,condition){
       tr += getActionHtml(item.id);//通过脚本生成按钮
       tr += "</tr>";
       $("#grid_body").append(tr);
-    });
+    });*/
+  //注册一个Handlebars模版，通过id找到某一个模版，获取模版的html框架
+    var myTemplate = Handlebars.compile($("#table-template").html());
+    //将json对象用刚刚注册的Handlebars模版封装，得到最终的html，插入到基础table中。
+    $('#grid_body').html(myTemplate(result));
+    Handlebars.unregisterHelper('compare','formatDate');
     
   //翻页
     var element=$('#grid_paging');
-    if(data.totalCount>0){
+    if(result.totalCount>0){
         var options = {
             bootstrapMajorVersion:3,
-            currentPage:data.pageNo,
-            numberOfPages:data.totalCount,
-            totalPages:data.totalPages,
+            currentPage:result.pageNo,
+            numberOfPages:result.totalCount,
+            totalPages:result.totalPages,
             onPageChanged:function(event,oldPage,newPage){
-            	searchByCondition(newPage,data.pageSize,condition);//paging
+            	searchByCondition(newPage,result.pageSize,condition);//paging
             }
         }
         element.bootstrapPaginator(options);
@@ -157,13 +194,13 @@ function BindEvent() {
                 type:"post",
                 url:"/rest/user/create",
                 //beforeSubmit: showRequest,for example:are you sure to submit?
-                success: function (data) {
-                    if (data.success) {
+                success: function (result) {
+                    if (result.success) {
                         //保存成功  1.关闭弹出层，2.刷新表格数据
-                        showTips(data.message);
+                        showTips(result.message);
                         refreshGrid();
                     } else {
-                        showError(data.message);
+                        showError(result.message);
                     }
                 },
                 error:function(XmlHttpRequest,textStatus, errorThrown) {
