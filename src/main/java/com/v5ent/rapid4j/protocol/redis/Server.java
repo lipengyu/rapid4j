@@ -17,19 +17,19 @@ public class Server {
     public static final int SERVERPORT = 6379;
     public static void main(String[] args) {
         try {
-            // 已经连接上的客户端的序号（连接数）。
+            // 已经连接上的客户端的序号（连接数）
             int number = 1;
-            // 建立服务器端倾听套接字。
+            // 建立服务器端监听套接字
             ServerSocket s = new ServerSocket(SERVERPORT);
-            System.out.println("Started: " + s);
+            System.out.println("ServerSocket Started: " + s);
             while (true) {
-                // 等待并接收请求，建立连接套接字。
-                Socket incoming = s.accept();
+                // 建立连接套接字,等待并接收请求。
+                Socket link = s.accept();
                 System.out.println("Connection " + number + " accepted: ");
-                System.out.println(incoming);
+                System.out.println(link);
                 // 启动一个线程来进行服务器端和客户端的数据传输。
                 // 主程序继续监听是否有请求到来。
-                Thread t = new ListenerThread(incoming,number);
+                Thread t = new RedisThread(link,number);
                 t.start();
                 number++;
             }
