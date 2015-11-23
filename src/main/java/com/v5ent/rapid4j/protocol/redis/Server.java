@@ -16,11 +16,12 @@ public class Server {
 	 // 服务器端的服务端口。
     public static final int SERVERPORT = 6379;
     public static void main(String[] args) {
+    	ServerSocket s = null;
         try {
             // 已经连接上的客户端的序号（连接数）
             int number = 1;
             // 建立服务器端监听套接字
-            ServerSocket s = new ServerSocket(SERVERPORT);
+            s = new ServerSocket(SERVERPORT);
             System.out.println("ServerSocket Started: " + s);
             while (true) {
                 // 建立连接套接字,等待并接收请求。
@@ -35,6 +36,14 @@ public class Server {
             }
         } catch (IOException e) {
             System.err.println("IOException");
+        } finally {
+            if (s != null) {
+                try {
+                    s.close();
+                } catch (IOException e) {
+                    // log error just in case
+                }
+            }
         }
     }
 }
