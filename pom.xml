@@ -49,6 +49,7 @@
         <tomcat.jdbc.version>7.0.53</tomcat.jdbc.version>
         <servlet.version>3.0.1</servlet.version>
         <jstl.version>1.2</jstl.version>
+        <json.version>20150729</json.version>
         <google.collections.version>1.0</google.collections.version>
         <cglib.version>3.1</cglib.version>
         <shiro.version>1.2.3</shiro.version>
@@ -222,6 +223,29 @@
             <version>${jstl.version}</version>
         </dependency>
         
+        <!-- json -->
+        <dependency>
+          	<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+            <version>${json.version}</version>
+        </dependency>
+        <!-- restlet -->
+         <dependency>
+      <groupId>org.restlet.jse</groupId>
+      <artifactId>org.restlet</artifactId>
+      <version>2.2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.restlet.jse</groupId>
+      <artifactId>org.restlet.ext.json</artifactId>
+      <version>2.2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.restlet.jse</groupId>
+      <artifactId>org.restlet.lib.org.json</artifactId>
+      <version>2.0</version>
+    </dependency>
+        
         <!--  通用工具包,比如常用的StringUtils.isNotBlank-->
         <dependency>
 			<groupId>commons-lang</groupId>
@@ -367,6 +391,11 @@
             <id>spring-releases</id>
             <url>https://repo.spring.io/libs-release</url>
         </repository>
+        <repository>
+			<id>maven-restlet</id>
+			<name>Public online Restlet repository</name>
+			<url>http://maven.restlet.org</url>
+		</repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>

@@ -33,19 +33,20 @@ public class HttpClientTest {
 
 	@Test
 	public void jUnitTest() {
-		get();
+		String url ="http://www.baidu.com/";
+		get(url);
 	}
 
 	/**
 	 * HttpClient连接SSL
+	 * <section>"d:\\tomcat.keystore"</section>
 	 */
-	private void ssl() {
+	private void ssl(String url,String pathtoKeystore) {
 		DefaultHttpClient httpclient = new DefaultHttpClient();
 		try {
 			KeyStore trustStore = KeyStore.getInstance(KeyStore
 					.getDefaultType());
-			FileInputStream instream = new FileInputStream(new File(
-					"d:\\tomcat.keystore"));
+			FileInputStream instream = new FileInputStream(new File(pathtoKeystore));
 			try {
 				// 加载keyStore d:\\tomcat.keystore
 				trustStore.load(instream, "123456".toCharArray());
@@ -64,8 +65,7 @@ public class HttpClientTest {
 			// 注册Scheme
 			httpclient.getConnectionManager().getSchemeRegistry().register(sch);
 			// 创建http请求(get方式)
-			HttpGet httpget = new HttpGet(
-					"https://localhost:8443/myDemo/Ajax/serivceJ.action");
+			HttpGet httpget = new HttpGet("https://localhost:8443/myDemo/Ajax/serivceJ.action");
 			System.out.println("executing request" + httpget.getRequestLine());
 			HttpResponse response = httpclient.execute(httpget);
 			HttpEntity entity = response.getEntity();
@@ -137,12 +137,11 @@ public class HttpClientTest {
 	/**
 	 * 发送 post请求访问本地应用并根据传递参数不同返回不同结果
 	 */
-	private void post() {
+	private void post(String url) {
 		// 创建默认的httpClient实例.
 		HttpClient httpclient = new DefaultHttpClient();
 		// 创建httppost
-		HttpPost httppost = new HttpPost(
-				"http://localhost:8080/myDemo/Ajax/serivceJ.action");
+		HttpPost httppost = new HttpPost(url);
 		// 创建参数队列
 		List<NameValuePair> formparams = new ArrayList<NameValuePair>();
 		formparams.add(new BasicNameValuePair("type", "house"));
@@ -175,13 +174,13 @@ public class HttpClientTest {
 	/**
 	 * 发送 get请求
 	 */
-	private void get() {
+	private void get(String url) {
 
 		HttpClient httpclient = new DefaultHttpClient();
 
 		try {
 			// 创建httpget.
-			HttpGet httpget = new HttpGet("http://www.baidu.com/");
+			HttpGet httpget = new HttpGet(url);
 			System.out.println("executing request " + httpget.getURI());
 			// 执行get请求.
 			HttpResponse response = httpclient.execute(httpget);
