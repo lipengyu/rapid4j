@@ -7,17 +7,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.codec.binary.Base64;
 import org.json.JSONException;
 import org.junit.Test;
-
-import com.v5ent.rapid4j.test.TestSupport;
 
 
 /**
  * @author Mignet
  */
-public class ActivitiClientTest extends TestSupport {
+public class ActivitiClientTest{
   
   @Test
   public void testGetQueueNamesAdmin() throws IOException, JSONException {
