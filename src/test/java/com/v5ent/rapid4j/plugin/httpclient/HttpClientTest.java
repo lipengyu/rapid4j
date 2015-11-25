@@ -11,7 +11,9 @@ import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -27,7 +29,15 @@ import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONObject;
+import org.json.JSONStringer;
 import org.junit.Test;
+import org.restlet.data.ChallengeScheme;
+import org.restlet.data.MediaType;
+import org.restlet.representation.Representation;
+import org.restlet.representation.StringRepresentation;
+import org.restlet.resource.ClientResource;
+
 
 public class HttpClientTest {
 
@@ -169,6 +179,41 @@ public class HttpClientTest {
 			// 关闭连接,释放资源
 			httpclient.getConnectionManager().shutdown();
 		}
+	}
+	public static void main(String[] args) {
+		try {
+			makeRequest() ;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private static final String LDAP_USERNAME="kermit";
+	  private static final String LDAP_PASSWORD="kermit";
+	  
+	  private static ClientResource getClientResource(String uri) throws IOException{
+	    ClientResource clientResource = new ClientResource(uri);
+	    clientResource.setChallengeResponse(ChallengeScheme.HTTP_BASIC, LDAP_USERNAME, LDAP_PASSWORD);
+	    return clientResource;
+	  }
+	  
+	public static String makeRequest() throws Exception 
+	{
+	    //instantiates httpclient to make request
+	    DefaultHttpClient httpclient = new DefaultHttpClient();
+	    //url with the post data
+	    String uri ="http://192.168.1.160:8002/activiti-rest/service/runtime/process-instances/";
+	    //convert parameters into JSON object
+	    String s = "{\"processDefinitionKey\":\"ERP-Purchase-AdjustMaster\",\"variables\":[{\"name\": \"venderName\", \"value\": \"test\"},{\"name\": \"priceFileId\", \"value\":\"test\"}]}";
+	    System.out.println(s);
+	    Representation rep = new StringRepresentation(s, MediaType.APPLICATION_JSON);
+	    JSONObject jsObj = new JSONObject(getClientResource(uri).post(rep).getText());
+	    System.out.println("Returned process: " + jsObj);
+	    if (jsObj.has("id")) {
+	      return  jsObj.getString("id");
+	    } else {
+	      return null;
+	    }
 	}
 
 	/**
