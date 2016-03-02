@@ -19,7 +19,7 @@
                 /assets/** = anon
                 <!-- 登录允许访问 -->
                 /rest/auth/login = anon
-                <!-- 测试 http basic访问 -->
+                <!-- 测试 http authc basic访问 -->
                 /rest/customers/** = authcBasic
                 <!-- 其他资源需要认证 -->
                 /** = authc

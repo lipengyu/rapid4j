@@ -17,13 +17,9 @@ public class OracleDialect extends Dialect {
         }
 
         StringBuffer pagingSelect = new StringBuffer(sql.length() + 100);
-
         pagingSelect.append("select * from ( select row_.*, rownum rownum_ from ( ");
-
         pagingSelect.append(sql);
-
         pagingSelect.append(" ) row_ ) where rownum_ > " + offset + " and rownum_ <= " + (offset + limit));
-
         if (isForUpdate) {
             pagingSelect.append(" for update");
         }
