@@ -27,6 +27,7 @@ import com.v5ent.rapid4j.core.orm.dialect.Dialect;
 import com.v5ent.rapid4j.core.orm.dialect.DialectFactory;
 
 /**
+ * 分页语句处理拦截器
  * @author Mignet
  * @since 2014年5月18日 下午1:36:31
  **/

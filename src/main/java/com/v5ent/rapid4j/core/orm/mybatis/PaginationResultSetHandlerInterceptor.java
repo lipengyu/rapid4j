@@ -17,6 +17,7 @@ import org.apache.ibatis.reflection.wrapper.ObjectWrapperFactory;
 import org.apache.ibatis.session.RowBounds;
 
 /**
+ * 分页结果集处理拦截器
  * @author Mignet
  * @since 2014年5月18日 下午1:36:08
  **/
