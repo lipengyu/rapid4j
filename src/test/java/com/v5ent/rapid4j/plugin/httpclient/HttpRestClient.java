@@ -1,4 +1,4 @@
-package com.v5ent.rapid4j.plugin.jedis;
+package com.v5ent.rapid4j.plugin.httpclient;
 
 import java.io.BufferedReader;
 import java.io.IOException;

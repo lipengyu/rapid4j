@@ -1,4 +1,4 @@
-package com.v5ent.rapid4j.plugin.images;
+package com.v5ent.rapid4j.tools.image;
 
 import java.io.IOException;
 import java.util.Date;

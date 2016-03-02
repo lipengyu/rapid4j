@@ -1,14 +1,10 @@
 package com.v5ent.rapid4j.plugin.jedis;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
@@ -20,21 +16,6 @@ import java.util.concurrent.Semaphore;
 public class PressTest {
 	private static int thread_num = 1;
 	private static int client_num = 500;
-	//服务参数-关键字表
-/*	private static Map keywordMap = new HashMap();
-	
-	static {
-		try {
-			InputStreamReader isr = new InputStreamReader(new FileInputStream(new File("clicks.txt")), "GBK");
-			BufferedReader buffer = new BufferedReader(isr);
-			String line = "";
-			while ((line = buffer.readLine()) != null) {
-				keywordMap.put(line.substring(0, line.lastIndexOf(":")), "");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}*/
 
 	public static void main(String[] args) {
 //		int size = keywordMap.size();
@@ -86,14 +67,4 @@ public class PressTest {
 		// 退出线程池
 		exec.shutdown();
 	}
-
-	/*private static String getRandomSearchKey(final int no) {
-		String ret = "";
-		int size = keywordMap.size();
-		// int wanna = (int) (Math.random()) * (size - 1);
-		ret = (keywordMap.entrySet().toArray())[no].toString();
-		ret = ret.substring(0, ret.lastIndexOf("="));
-		System.out.println("\t" + ret);
-		return ret;
-	}*/
 }
