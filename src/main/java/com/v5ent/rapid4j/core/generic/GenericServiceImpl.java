@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * GenericService的实现类, 其他的自定义 ServiceImpl, 继承自它,可以获得常用的增删查改操作,
- * 未实现的方法有 子类各自实现
+ * 未实现的方法由子类各自实现
  * <p/>
  * Model : 代表数据库中的表 映射的Java对象类型
  * PK :代表对象的主键类型
