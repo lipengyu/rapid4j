@@ -8,6 +8,17 @@ package com.v5ent.rapid4j.core.exception;
  */
 public class DaoException extends GenericException {
 
-	private static final long serialVersionUID = -2273244076984040706L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7526904285432753932L;
+
+	public DaoException(String message) {
+        super(message);
+    }
+
+    public DaoException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
 }

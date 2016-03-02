@@ -1,5 +1,7 @@
 package com.v5ent.rapid4j.core.exception;
 
+import java.text.SimpleDateFormat;
+
 /**
  * GenericException : 异常基类
  *
@@ -15,9 +17,17 @@ public class GenericException extends RuntimeException {
 	/**
      * 异常发生时间
      */
-    private long date = System.currentTimeMillis();
+    private static long date = System.currentTimeMillis();
 
-    public long getDate() {
-        return date;
+    private static String getDateStr() {
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+    }
+    
+    public GenericException(String message) {
+        super("["+getDateStr()+"]"+message);
+    }
+
+    public GenericException(String message, Throwable cause) {
+        super("["+getDateStr()+"]"+message, cause);
     }
 }
