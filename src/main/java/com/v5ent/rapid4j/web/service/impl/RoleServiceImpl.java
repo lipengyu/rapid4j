@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.v5ent.rapid4j.core.generic.GenericDao;
 import com.v5ent.rapid4j.core.generic.GenericServiceImpl;
-import com.v5ent.rapid4j.core.orm.mybatis.Page;
+import com.v5ent.rapid4j.core.orm.paging.Page;
 import com.v5ent.rapid4j.web.dao.RoleMapper;
 import com.v5ent.rapid4j.web.datatable.DataTable;
 import com.v5ent.rapid4j.web.datatable.DataTableReturn;

@@ -6,7 +6,7 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 
-import com.v5ent.rapid4j.core.orm.mybatis.Page;
+import com.v5ent.rapid4j.core.orm.paging.Page;
 import com.v5ent.rapid4j.test.TestSupport;
 import com.v5ent.rapid4j.web.dao.UserMapper;
 import com.v5ent.rapid4j.web.model.User;

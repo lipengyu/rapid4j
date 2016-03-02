@@ -1,4 +1,4 @@
-package com.v5ent.rapid4j.core.orm.mybatis;
+package com.v5ent.rapid4j.core.orm.paging;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

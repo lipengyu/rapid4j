@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.v5ent.rapid4j.core.orm.mybatis.Page;
+import com.v5ent.rapid4j.core.orm.paging.Page;
 import com.v5ent.rapid4j.core.result.JQReturn;
 import com.v5ent.rapid4j.core.util.JsonUtils;
 import com.v5ent.rapid4j.web.datatable.ColumnInfo;

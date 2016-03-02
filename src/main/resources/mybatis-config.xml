@@ -62,8 +62,8 @@
     </typeAliases>
 
     <plugins>
-        <plugin interceptor="com.v5ent.rapid4j.core.orm.mybatis.PaginationResultSetHandlerInterceptor"/>
-        <plugin interceptor="com.v5ent.rapid4j.core.orm.mybatis.PaginationStatementHandlerInterceptor"/>
+        <plugin interceptor="com.v5ent.rapid4j.core.orm.paging.PaginationResultSetHandlerInterceptor"/>
+        <plugin interceptor="com.v5ent.rapid4j.core.orm.paging.PaginationStatementHandlerInterceptor"/>
     </plugins>
 
 </configuration>
