@@ -1,4 +1,4 @@
-package com.v5ent.rapid4j.core.util;
+package com.v5ent.rapid4j.core.security;
 
 /* 
  * Password Hashing With PBKDF2 (http://crackstation.net/hashing-security.htm).

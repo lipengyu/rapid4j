@@ -1,4 +1,4 @@
-package com.v5ent.rapid4j.core.util;
+package com.v5ent.rapid4j.core.security;
 
 /**
  * CRC-CCITT 算法校验类
