@@ -10,24 +10,24 @@ import java.text.SimpleDateFormat;
  */
 public class GenericException extends RuntimeException {
 
-    /**
+	/**
 	 * serialVersionUID
 	 */
-	private static final long serialVersionUID = -6338795859789028988L;
+	private static final long serialVersionUID = 3365925877852274904L;
 	/**
-     * 异常发生时间
-     */
-    private static long date = System.currentTimeMillis();
+	 * 异常发生时间
+	 */
+	private static long date = System.currentTimeMillis();
 
-    private static String getDateStr() {
-        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-    }
-    
-    public GenericException(String message) {
-        super("["+getDateStr()+"]"+message);
-    }
+	private static String getDateStr() {
+		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+	}
 
-    public GenericException(String message, Throwable cause) {
-        super("["+getDateStr()+"]"+message, cause);
-    }
+	public GenericException(String message) {
+		super(String.format("[%s]:%s", getDateStr() , message));
+	}
+
+	public GenericException(String message, Throwable cause) {
+		super(String.format("[%s]:%s", getDateStr() , message), cause);
+	}
 }
