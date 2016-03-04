@@ -8,7 +8,8 @@ import java.util.Random;
 
 /**
  * American Stock Exchange market(ASE) has a list of stocks.A stock object has two perspective information,symbol and price.<br>
- * Class <b>StockMarket</b> is a class that represents the stock market.<br>Its constructor generates a collection of stocks using random numbers to build 3-letter stock symbols and random numbers for initial stock price.<br>
+ * Class <b>StockMarket</b> is a class that represents the stock market.<br>
+ * Its constructor generates a collection of stocks using random numbers to build 3-letter stock symbols and random numbers for initial stock price.<br>
  * Implement a Java application when the stock price has been changed,all those investors who are interested in the stock market will be notified by receiving the most recent price.<br>
  * Create a driver class to test your implementation.
  * @author Mignet
@@ -25,43 +26,56 @@ public class StockTest {
 }
 
 class StockMarket{
-	private List<Stock> list;private int capacity;
+	private List<Stock> list;
+	private int capacity;
 	public StockMarket(int capacity){
 		this.capacity=capacity;
-		init();
+		init(this.capacity);
 	}
-	private  List<Stock> init(){
+	private  List<Stock> init(int n){
 		list= new ArrayList<Stock>();
-		for(int i=0;i<capacity;i++){
+		for(int i=0;i<n;i++){
 			list.add(emitStock());
 		}
 		return list;
 	}
+	/**
+	 * 股票看板
+	 */
 	public void show(){
 		System.out.println("-------------Welcome to American Stock Exchange-------------------");
 		for(Stock s:list){s.show();}
 		System.out.println("------------------------------------------------------------------------");
 	}
+	/**
+	 * 让投资人随机投资
+	 */
 	public void invest(){
-		//让投资人巴菲特随机投资
-        Investor inv = new Investor("巴菲特");
+        Investor inv1 = new Investor("巴菲特");
+        Investor inv2 = new Investor("索罗斯");
+        //让投资人随机投资
         for(Stock s:list){
-        	//比如只投资价格是偶数的股票
+        	//比如巴菲特只投资价格是偶数的股票
         	if(Math.round(s.price)%2==0){
-        		s.addObserver(inv);
-        		System.out.println(String.format("[%s]投资了[%s]:[%.2f]", inv.name,s.symbol,s.price));
+        		s.addObserver(inv1);
+        		System.out.println(String.format("[%s]投资了[%s]:[%.2f]", inv1.name,s.symbol,s.price));
+        	}
+        	//比如索罗斯只投资价格是3的倍数的股票
+        	if(Math.round(s.price)%3==0){
+        		s.addObserver(inv2);
+        		System.out.println(String.format("[%s]投资了[%s]:[%.2f]", inv2.name,s.symbol,s.price));
         	}
         }
 	}
 	//生成随机股票
-    public Stock emitStock() {  
-        String val = "";  Stock s;
+    private Stock emitStock() {  
+        StringBuilder val = new StringBuilder();  Stock s;
         Random random = new Random();  
         for(int i = 0; i < 3; i++) {  
                 int temp =  65;  //or 97
-                val += (char)(random.nextInt(26) + temp);  
+                val .append((char)(random.nextInt(26) + temp));  
         }
-        s = new Stock(val,random.nextFloat()*100);  
+        s = new Stock(val.toString(),random.nextFloat()*100);  
         
         return s;
     }  
@@ -81,7 +95,7 @@ class StockMarket{
         	System.out.println(String.format("[%s]:[%.2f]", this.symbol,this.price));
         }
     	private String symbol;
-    	private Float price;
+    	private float price;
         //价格随机波动
         public void shuffle(){
         	this.price = this.price+new Random().nextInt(10)-5;
@@ -93,11 +107,11 @@ class StockMarket{
     	public Investor(String name){
     		this.name = name;
     	}
-    	String name;
+    	private String name;
 		@Override
 		public void update(Observable o, Object arg) {
 			Stock s = (Stock)o;
-			System.out.println(String.format("[%s]获取到最新价格[%s]:[%.2f]",this.name, s.symbol,s.price));
+			System.out.println(String.format("[%s]获取到[%s]的最新价格[%.2f]",this.name, s.symbol,s.price));
 		}
     	
     }
