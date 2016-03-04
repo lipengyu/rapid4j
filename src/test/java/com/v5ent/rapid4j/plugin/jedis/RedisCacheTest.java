@@ -1,6 +1,6 @@
 package com.v5ent.rapid4j.plugin.jedis;
 
-import com.v5ent.rapid4j.plugin.cache.redis.RedisCache;
+import com.v5ent.rapid4j.plugin.redis.RedisCache;
 import com.v5ent.rapid4j.test.TestSupport;
 
 import org.junit.Test;
@@ -22,7 +22,7 @@ public class RedisCacheTest extends TestSupport {
 
     @Test
     public void testSet() {
-        redisCache.cache("anchor", "Mignet", 1 * 60 * 24);
+        redisCache.set("anchor", "Mignet", 1 * 60 * 24);
     }
 
     @Test

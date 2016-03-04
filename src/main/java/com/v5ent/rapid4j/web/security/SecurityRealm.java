@@ -48,16 +48,15 @@ public class SecurityRealm extends AuthorizingRealm {
         String username = String.valueOf(principals.getPrimaryPrincipal());
 
         final User user = userService.selectByUsername(username);
+        //查询用户拥有的角色
         final List<Role> roleInfos = roleService.selectRolesByUserId(user.getId());
         for (Role role : roleInfos) {
-            // 添加角色
-            System.err.println(role);
+            System.err.println("role:"+role);
             authorizationInfo.addRole(role.getRoleSign());
-
+            //查询角色拥有的权限
             final List<Permission> permissions = permissionService.selectPermissionsByRoleId(role.getId());
             for (Permission permission : permissions) {
-                // 添加权限
-                System.err.println(permission);
+                System.err.println("permission:"+permission);
                 authorizationInfo.addStringPermission(permission.getPermissionSign());
             }
         }
