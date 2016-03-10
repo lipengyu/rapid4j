@@ -16,7 +16,7 @@ import org.postgresql.xa.PGXADataSource;
  * @author Mignet
  *
  */
-public class Test {
+public class JTATest {
 	public static void main(String[] args) {
 		XADataSource xaDS;
 		XAConnection xaCon = null;
@@ -39,6 +39,8 @@ public class Test {
 			ret = xaRes.prepare(xid);
 			if (ret == XAResource.XA_OK) {
 				xaRes.commit(xid, false);
+			}else{
+				xaRes.rollback(xid);
 			}
 			//示例2,回滚
 			xaRes.start(xid, XAResource.TMNOFLAGS);
