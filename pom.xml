@@ -12,10 +12,9 @@
         <!-- base setting -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.locales>zh_CN</project.build.locales>
-        <!--  移除diamond 运算符之后,大家可以使用1.6版本 -->
         <project.build.jdk>1.6</project.build.jdk>
 
-        <!-- plugin setting -->
+        <!-- plugin setting mybatis代码生成器-->
         <mybatis.generator.generatorConfig.xml>${basedir}/src/test/resources/generatorConfig.xml</mybatis.generator.generatorConfig.xml>
         <mybatis.generator.generatorConfig.properties>file:///${basedir}/src/test/resources/generatorConfig.properties</mybatis.generator.generatorConfig.properties>
 
@@ -45,7 +44,6 @@
         <c3p0.version>0.9.1.2</c3p0.version>
         <druid.version>1.0.5</druid.version>
         <dubbo.version>2.5.3</dubbo.version>
-        <zkclient.version>0.3</zkclient.version>
         <curator.version>2.7.1</curator.version>
         <tomcat.jdbc.version>7.0.53</tomcat.jdbc.version>
         <servlet.version>3.0.1</servlet.version>
@@ -172,13 +170,6 @@
 	        </exclusions>
 		</dependency>
 		
-		<!-- zookeeper client -->
-		<!-- <dependency>
-		  <groupId>com.101tec</groupId>
-		  <artifactId>zkclient</artifactId>
-		  <version>${zkclient.version}</version>
-		</dependency>
- -->
 		<!-- curator -->
 		<dependency>
 			<groupId>org.apache.curator</groupId>
@@ -189,6 +180,13 @@
 			<groupId>org.apache.curator</groupId>
 			<artifactId>curator-recipes</artifactId>
 			<version>${curator.version}</version>
+		</dependency>
+		
+		<!-- ActiveMQ -->
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-core</artifactId>
+			<version>5.7.0</version>
 		</dependency>
 		
         <!-- jackson -->
