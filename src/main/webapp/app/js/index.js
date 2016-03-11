@@ -60,6 +60,6 @@ $(function() {
     })();
 
     Index.init();
-    //触发点击事件
+    //触发点击事件,点击首页
     $('#btn-dashboard').trigger("click");
 });

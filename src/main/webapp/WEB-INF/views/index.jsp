@@ -330,9 +330,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <script src="assets/plugins/jquery.cokie.min.js" type="text/javascript"></script>
         <script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
 
-		<!--  提示 -->
+		<!--  toast提示 -->
 		 <script type="text/javascript" src="assets/plugins/bootstrap-toastr/toastr.min.js"></script>
-		<!--  阻塞性提示 -->
+		<!--  阻塞性box提示 -->
 		 <script type="text/javascript" src="assets/plugins/bootbox/bootbox.min.js"></script>
 		 <!-- 翻页 -->
 		 <script type="text/javascript" src="assets/plugins/bootstrap-paginator/build/bootstrap-paginator.min.js"></script>
@@ -343,9 +343,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
          <!--表单验证库--> 
         <script type="text/javascript" src="assets/plugins/select2/select2.min.js"></script>
 
-        <script type="text/javascript" src="assets/scripts/app.js" ></script>
+        <script type="text/javascript" src="app/js/app.js" ></script>
         <script type="text/javascript" src="app/js/index.js"></script>
-        <script type="text/javascript" src="app/common/utils.js"></script>
+        <script type="text/javascript" src="app/js/utils.js"></script>
 
         <!-- <script data-main="app/js/main" src="app/lib/requirejs/require.js"></script> -->
     </body>

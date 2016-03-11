@@ -246,5 +246,3 @@ function sha256_self_test()
 	return sha256_digest("message digest") == 
 "f7846f55cf23e14eebeab5b4e1550cad5b509e3348fbc4efa3a1413d393cb650";
 }
-
-

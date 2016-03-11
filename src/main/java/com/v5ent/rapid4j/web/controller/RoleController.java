@@ -84,7 +84,7 @@ public class RoleController {
     @RequestMapping(value="/list", method = RequestMethod.POST)
     @ResponseBody
 	public DataTableReturn getRoles(@RequestParam String  _dt_json) {
-		LOGGER.debug("role list _dt_json=" + _dt_json);
+		LOGGER.debug("role list _dt_json={}", _dt_json);
 		DataTable dataTable = JsonUtils.fromJsonToObject(_dt_json, DataTable.class);
 		DataTableReturn tableReturn = roleService.selectByDatatables(dataTable);
 		return tableReturn;
