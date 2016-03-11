@@ -12,6 +12,8 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.v5ent.rapid4j.web.model.Permission;
@@ -30,6 +32,8 @@ import com.v5ent.rapid4j.web.service.UserService;
 @Component(value = "securityRealm")
 public class SecurityRealm extends AuthorizingRealm {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(SecurityRealm.class);
+	
     @Resource
     private UserService userService;
 
@@ -51,12 +55,12 @@ public class SecurityRealm extends AuthorizingRealm {
         //查询用户拥有的角色
         final List<Role> roleInfos = roleService.selectRolesByUserId(user.getId());
         for (Role role : roleInfos) {
-            System.err.println("role:"+role);
+        	LOGGER.debug("用户{}拥有的role:{}",username,role);
             authorizationInfo.addRole(role.getRoleSign());
             //查询角色拥有的权限
             final List<Permission> permissions = permissionService.selectPermissionsByRoleId(role.getId());
             for (Permission permission : permissions) {
-                System.err.println("permission:"+permission);
+            	LOGGER.debug("用户{}拥有的permission{}:",username,permission);
                 authorizationInfo.addStringPermission(permission.getPermissionSign());
             }
         }

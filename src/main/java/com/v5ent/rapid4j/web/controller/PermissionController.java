@@ -23,7 +23,7 @@ import com.v5ent.rapid4j.web.security.RoleSign;
 import com.v5ent.rapid4j.web.service.PermissionService;
 
 /**
- * 权限控制器<br>
+ * 权限管理控制器<br>
  * 完全的Restful API
  * @author Mignet
  * @since 2014年5月28日 下午3:54:00
@@ -62,7 +62,6 @@ public class PermissionController {
     @RequiresRoles(value = RoleSign.ADMIN)
     public Result create(Permission item) {
     		item.setId(null);
-	    	//加入我们使用时间变量CreateTime作为salt
 	    	int i = permissionService.insert(item);
 	    	if(i==1){
 	    		return new Result(true,201,"新增成功!");
