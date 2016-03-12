@@ -32,8 +32,8 @@ import com.v5ent.rapid4j.web.datatable.SearchInfo;
 import com.v5ent.rapid4j.web.interceptors.DateConvertEditor;
 import com.v5ent.rapid4j.web.model.Role;
 import com.v5ent.rapid4j.web.model.RoleExample;
-import com.v5ent.rapid4j.web.security.PermissionSign;
-import com.v5ent.rapid4j.web.security.RoleSign;
+import com.v5ent.rapid4j.web.rbac.PermissionSign;
+import com.v5ent.rapid4j.web.rbac.RoleSign;
 import com.v5ent.rapid4j.web.service.RoleService;
 
 /**

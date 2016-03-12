@@ -19,7 +19,7 @@ import com.v5ent.rapid4j.core.result.Result;
 import com.v5ent.rapid4j.web.model.Permission;
 import com.v5ent.rapid4j.web.model.PermissionExample;
 import com.v5ent.rapid4j.web.model.PermissionExample.Criteria;
-import com.v5ent.rapid4j.web.security.RoleSign;
+import com.v5ent.rapid4j.web.rbac.RoleSign;
 import com.v5ent.rapid4j.web.service.PermissionService;
 
 /**

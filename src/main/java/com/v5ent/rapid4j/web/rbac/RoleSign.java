@@ -1,4 +1,4 @@
-package com.v5ent.rapid4j.web.security;
+package com.v5ent.rapid4j.web.rbac;
 
 /**
  * 角色标识配置类, <br>

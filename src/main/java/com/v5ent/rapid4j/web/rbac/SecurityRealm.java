@@ -1,4 +1,4 @@
-package com.v5ent.rapid4j.web.security;
+package com.v5ent.rapid4j.web.rbac;
 
 import java.util.List;
 

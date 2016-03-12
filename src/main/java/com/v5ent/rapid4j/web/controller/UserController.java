@@ -24,8 +24,8 @@ import com.v5ent.rapid4j.core.orm.paging.Page;
 import com.v5ent.rapid4j.core.result.Result;
 import com.v5ent.rapid4j.web.model.User;
 import com.v5ent.rapid4j.web.model.UserExample;
-import com.v5ent.rapid4j.web.security.PermissionSign;
-import com.v5ent.rapid4j.web.security.RoleSign;
+import com.v5ent.rapid4j.web.rbac.PermissionSign;
+import com.v5ent.rapid4j.web.rbac.RoleSign;
 import com.v5ent.rapid4j.web.service.UserService;
 
 /**

@@ -1,4 +1,4 @@
-package com.v5ent.rapid4j.web.security;
+package com.v5ent.rapid4j.web.rbac;
 
 /**
  * 权限标识配置类, <br>
@@ -20,7 +20,7 @@ public class PermissionSign {
     /**
      * 用户新增权限 标识
      */
-    public static final String USER_CREATE = "user:create";
+    public static final String USER_CREATE = Resource.USER+OperationType.CREATE;
 
     /**
      * 用户删除权限 标识
