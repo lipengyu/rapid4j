@@ -6,7 +6,6 @@ import org.apache.ibatis.session.RowBounds;
 
 import com.v5ent.rapid4j.core.generic.GenericService;
 import com.v5ent.rapid4j.web.model.User;
-import com.v5ent.rapid4j.web.model.UserExample;
 
 /**
  * 用户 业务 接口
@@ -14,7 +13,7 @@ import com.v5ent.rapid4j.web.model.UserExample;
  * @author Mignet
  * @since 2014年7月5日 上午11:53:33
  **/
-public interface UserService extends GenericService<User, Long> {
+public interface UserService extends GenericService<User, Integer> {
 
     /**
      * 用户验证
@@ -24,19 +23,20 @@ public interface UserService extends GenericService<User, Long> {
      */
     User authentication(User user);
 
-    /**
-     * 根据用户名查询用户
-     * 
-     * @param username
-     * @return
-     */
-    User selectByUsername(String username);
 
     /**
-     * 查询用户
-     * @param example
+     * 根据用户名查询用户列表
+     * @param username
      * @param page
      * @return
      */
-	List<User> selectByExample(UserExample example, RowBounds page);
+	List<User> selectListByName(String username, RowBounds page);
+
+	/**
+     * 根据用户名查询用户
+     * @param username
+     * @param page
+     * @return
+     */
+	User selectByUsername(String username);
 }

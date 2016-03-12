@@ -8,7 +8,6 @@ import com.v5ent.rapid4j.core.generic.GenericService;
 import com.v5ent.rapid4j.web.datatable.DataTable;
 import com.v5ent.rapid4j.web.datatable.DataTableReturn;
 import com.v5ent.rapid4j.web.model.Role;
-import com.v5ent.rapid4j.web.model.RoleExample;
 
 /**
  * 角色 业务接口
@@ -16,16 +15,14 @@ import com.v5ent.rapid4j.web.model.RoleExample;
  * @author Mignet
  * @since 2014年6月10日 下午4:15:01
  **/
-public interface RoleService extends GenericService<Role, Long> {
+public interface RoleService extends GenericService<Role, Integer> {
     /**
      * 通过用户id 查询用户 拥有的角色
      * 
      * @param userId
      * @return
      */
-    List<Role> selectRolesByUserId(Long userId);
-
-	List<Role> selectByExample(RoleExample example, RowBounds page);
+    List<Role> selectRolesByUserId(Integer userId);
 
 	/**
 	 * 查询角色列表,为data tables封装

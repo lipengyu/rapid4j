@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
@@ -23,7 +22,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.v5ent.rapid4j.core.orm.paging.Page;
 import com.v5ent.rapid4j.core.result.Result;
 import com.v5ent.rapid4j.web.model.User;
-import com.v5ent.rapid4j.web.model.UserExample;
 import com.v5ent.rapid4j.web.rbac.PermissionSign;
 import com.v5ent.rapid4j.web.rbac.RoleSign;
 import com.v5ent.rapid4j.web.service.UserService;
@@ -66,20 +64,15 @@ public class UserController {
     @ResponseBody
     public Page<User> userLists(@RequestParam("pageNo") int pageNo,@RequestParam("pageSize") int pageSize,
     		@RequestParam("username") String username) {
-    	UserExample example = new UserExample();
     	Page<User> page = new Page<User>(pageNo,pageSize);
-    	if(StringUtils.isNotBlank(username)){
-    		example.createCriteria().andUsernameLike("%" + username + "%");
-    	}
-    	example.setOrderByClause("id");
-    	List<User> users = userService.selectByExample(example,page);  
+    	List<User> users = userService.selectListByName(username,page);  
     	LOGGER.debug("userService.selectList() size:"+users);
     	return page;
     }
 
     /**
      * 基于权限标识的权限控制案例<br>
-     * 这里使用PUT请求并且路径是/{id}才是Restful的
+     * <如果>这里使用PUT请求并且路径是/{id}<才是>Restful的
      */
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
@@ -132,12 +125,12 @@ public class UserController {
     @ResponseBody
     @RequiresPermissions(value = PermissionSign.USER_CREATE)
     public Result delete(@PathVariable("id") String id) {
-    	User u  =userService.selectById(Long.valueOf(id));
+    	User u  =userService.selectById(Integer.valueOf(id));
     	Subject currentUser = SecurityUtils.getSubject();
     	if(currentUser.getPrincipal().equals(u.getUsername())){
     		return new Result(false,401,"不允许删除自己的用户!");
     	}
-    	int i = userService.delete(Long.valueOf(id));
+    	int i = userService.delete(Integer.valueOf(id));
     	if(i==1){
     		return new Result(true,"删除用户成功!");
     	}else{
@@ -152,14 +145,14 @@ public class UserController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public User get(@PathVariable("id") String id) {
-    	return userService.selectById(Long.valueOf(id));
+    	return userService.selectById(Integer.valueOf(id));
     }
     
     @RequestMapping(value = "/check", method = RequestMethod.GET)
     @ResponseBody
     public boolean canUsed(@RequestParam("username") String username) {
-    	User u =  userService.selectByUsername(username);
-    	if(u!=null){
+    	List<User> u =  userService.selectListByName(username,new Page<User>(1,10));
+    	if(u!=null&&u.size()>=1){
     		return false;
     	}else{
     		return true;

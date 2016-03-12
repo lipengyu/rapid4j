@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.v5ent.rapid4j.core.orm.paging.Page;
 import com.v5ent.rapid4j.core.result.Result;
 import com.v5ent.rapid4j.web.model.Permission;
-import com.v5ent.rapid4j.web.model.PermissionExample;
-import com.v5ent.rapid4j.web.model.PermissionExample.Criteria;
 import com.v5ent.rapid4j.web.rbac.RoleSign;
 import com.v5ent.rapid4j.web.service.PermissionService;
 
@@ -45,10 +43,8 @@ public class PermissionController {
     @RequestMapping(value="",   method=RequestMethod.GET)  
     @ResponseBody
     public Page<Permission> getPermissions(@RequestParam("pageNo") int pageNo,@RequestParam("pageSize") int pageSize) {
-    	PermissionExample example = new PermissionExample();
     	Page<Permission> page = new Page<Permission>(pageNo,pageSize);
-    	example.setOrderByClause("id");
-    	List<Permission> users = permissionService.selectByExample(example,page);  
+    	List<Permission> users = permissionService.selectList(page);  
     	LOGGER.debug("PermissionService.selectList() :"+users);
         return page;
     }  
@@ -93,7 +89,7 @@ public class PermissionController {
     @ResponseBody
     @RequiresRoles(value = RoleSign.ADMIN)
     public Result delete(@PathVariable("id") String id) {
-    	int i = permissionService.delete(Long.valueOf(id));
+    	int i = permissionService.delete(Integer.valueOf(id));
     	if(i==1){
     		return new Result(true,"删除成功!");
     	}else{
@@ -108,16 +104,13 @@ public class PermissionController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Permission get(@PathVariable("id") String id) {
-    	return permissionService.selectById(Long.valueOf(id));
+    	return permissionService.selectById(Integer.valueOf(id));
     }
     
     @RequestMapping(value = "/check", method = RequestMethod.GET)
     @ResponseBody
     public boolean canUsed(@RequestParam("permissionName") String permissionName) {
-    	PermissionExample example = new PermissionExample();
-    	Criteria c = example.createCriteria();
-    	c.andPermissionNameEqualTo(permissionName);
-    	List<Permission> u =  permissionService.selectByExample(example);
+    	List<Permission> u =  permissionService.selectByName(permissionName);
     	if(u!=null&&u.size()>=1){
     		return false;
     	}else{

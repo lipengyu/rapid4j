@@ -40,4 +40,9 @@ public class Role {
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
     }
+    
+    @Override
+    public String toString() {
+        return "Role [id=" + id + ", roleName=" + roleName + ", roleSign=" + roleSign + ", description=" + description + "]";
+    }
 }

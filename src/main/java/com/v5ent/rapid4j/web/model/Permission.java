@@ -40,4 +40,9 @@ public class Permission {
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
     }
+    
+    @Override
+    public String toString() {
+        return "Permission [id=" + id + ", permissionName=" + permissionName + ", permissionSign=" + permissionSign + ", description=" + description + "]";
+    }
 }

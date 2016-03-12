@@ -31,7 +31,6 @@ import com.v5ent.rapid4j.web.datatable.OrderInfo;
 import com.v5ent.rapid4j.web.datatable.SearchInfo;
 import com.v5ent.rapid4j.web.interceptors.DateConvertEditor;
 import com.v5ent.rapid4j.web.model.Role;
-import com.v5ent.rapid4j.web.model.RoleExample;
 import com.v5ent.rapid4j.web.rbac.PermissionSign;
 import com.v5ent.rapid4j.web.rbac.RoleSign;
 import com.v5ent.rapid4j.web.service.RoleService;
@@ -63,14 +62,12 @@ public class RoleController {
 	}
 
     /**
-     * 基于角色 比如拥有admin角色，才可以查看用户列表
+     * 基于角色 比如拥有admin角色，才可以查看用户列表.
      */
     @RequestMapping(value="",   method=RequestMethod.GET)
     @RequiresRoles(value = RoleSign.ADMIN)
     public String roles(Model model) {
-    	RoleExample example = new RoleExample();
-    	Page<Role> page = new Page<Role>(1,10);
-    	List<Role> roles = roleService.selectByExample(example,page);
+    	List<Role> roles = roleService.selectList();//empty
     	LOGGER.debug("roleService.selectList() size:"+roles);
     	model.addAttribute("roles",roles);
     	return "sys/role-list";
@@ -116,7 +113,7 @@ public class RoleController {
 
 	@RequestMapping("/del/{id}")
 	@ResponseBody
-	public Object delete(@PathVariable Long id) {
+	public Object delete(@PathVariable Integer id) {
 		if (id == null) {
 			return new JQReturn(false, "主键不能为空!");
 		}

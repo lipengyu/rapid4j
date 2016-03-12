@@ -6,7 +6,6 @@ import org.apache.ibatis.session.RowBounds;
 
 import com.v5ent.rapid4j.core.generic.GenericService;
 import com.v5ent.rapid4j.web.model.Permission;
-import com.v5ent.rapid4j.web.model.PermissionExample;
 
 /**
  * 权限 业务接口
@@ -14,7 +13,7 @@ import com.v5ent.rapid4j.web.model.PermissionExample;
  * @author Mignet
  * @since 2014年6月10日 下午12:02:39
  **/
-public interface PermissionService extends GenericService<Permission, Long> {
+public interface PermissionService extends GenericService<Permission, Integer> {
 
     /**
      * 通过角色id 查询角色 拥有的权限
@@ -22,10 +21,15 @@ public interface PermissionService extends GenericService<Permission, Long> {
      * @param roleId
      * @return
      */
-    List<Permission> selectPermissionsByRoleId(Long roleId);
+    List<Permission> selectPermissionsByRoleId(Integer roleId);
 
-	List<Permission> selectByExample(PermissionExample example, RowBounds rb);
+    /**
+     * 查询所有数据<翻页>
+     * @param page
+     * @return
+     */
+	List<Permission> selectList(RowBounds page);
 
-	List<Permission> selectByExample(PermissionExample example);
+	List<Permission> selectByName(String permissionName);
 
 }

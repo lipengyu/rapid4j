@@ -15,7 +15,15 @@ public class User {
 
     private String description;
 
-    public Integer getId() {
+    public User(){
+    }
+    
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+	public Integer getId() {
         return id;
     }
 
@@ -61,5 +69,10 @@ public class User {
 
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
+    }
+    
+    @Override
+    public String toString() {
+        return "User [id=" + id + ", username=" + username + ", password=" + password + ", state=" + state + ", createTime=" + createTime + "]";
     }
 }

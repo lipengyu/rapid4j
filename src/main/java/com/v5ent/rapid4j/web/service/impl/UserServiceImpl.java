@@ -11,7 +11,6 @@ import com.v5ent.rapid4j.core.generic.GenericDao;
 import com.v5ent.rapid4j.core.generic.GenericServiceImpl;
 import com.v5ent.rapid4j.web.dao.UserMapper;
 import com.v5ent.rapid4j.web.model.User;
-import com.v5ent.rapid4j.web.model.UserExample;
 import com.v5ent.rapid4j.web.service.UserService;
 
 /**
@@ -21,7 +20,7 @@ import com.v5ent.rapid4j.web.service.UserService;
  * @since 2014年7月5日 上午11:54:24
  */
 @Service
-public class UserServiceImpl extends GenericServiceImpl<User, Long> implements UserService {
+public class UserServiceImpl extends GenericServiceImpl<User, Integer> implements UserService {
 
     @Resource
     private UserMapper userMapper;
@@ -37,7 +36,7 @@ public class UserServiceImpl extends GenericServiceImpl<User, Long> implements U
     }
 
     @Override
-    public int delete(Long id) {
+    public int delete(Integer id) {
         return userMapper.deleteByPrimaryKey(id);
     }
 
@@ -47,26 +46,23 @@ public class UserServiceImpl extends GenericServiceImpl<User, Long> implements U
     }
 
     @Override
-    public User selectById(Long id) {
+    public User selectById(Integer id) {
         return userMapper.selectByPrimaryKey(id);
     }
 
     @Override
-	public List<User> selectByExample(UserExample example,RowBounds rb) {
-		return userMapper.selectByExampleAndPage(example,rb);
-	}
-
-    @Override
-    public GenericDao<User, Long> getDao() {
+    public GenericDao<User, Integer> getDao() {
         return userMapper;
     }
 
-    @Override
-    public User selectByUsername(String username) {
-        UserExample example = new UserExample();
-        example.createCriteria().andUsernameEqualTo(username);
-        final List<User> list = userMapper.selectByExample(example);
-        return list.size()>0?list.get(0):null;
-    }
+	@Override
+	public List<User> selectListByName(String username, RowBounds page) {
+		return userMapper.selectListByUsername(username,page);
+	}
+
+	@Override
+	public User selectByUsername(String username) {
+		return userMapper.selectByUsername(username);
+	}
 
 }

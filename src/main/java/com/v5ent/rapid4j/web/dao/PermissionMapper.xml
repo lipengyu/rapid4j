@@ -16,6 +16,20 @@
     from public.tsys_permission
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.tsys_permission
+    where permission_name = #{permissionName}
+  </select>
+  
+  <!-- 无条件查询所有 -->
+  <select id="selectList" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.tsys_permission
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from public.tsys_permission
     where id = #{id,jdbcType=INTEGER}
@@ -79,4 +93,9 @@
       description = #{description,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <!-- 通过角色id 查询角色 拥有的权限 -->
+    <select id="selectPermissionsByRoleId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        SELECT p.* FROM tsys_permission p LEFT JOIN tsys_role_permission rp ON rp.permission_id = p.id
+        WHERE rp.role_id =#{id,jdbcType=BIGINT}
+    </select>
 </mapper>

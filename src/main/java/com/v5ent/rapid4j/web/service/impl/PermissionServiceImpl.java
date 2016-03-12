@@ -13,7 +13,6 @@ import com.v5ent.rapid4j.core.generic.GenericDao;
 import com.v5ent.rapid4j.core.generic.GenericServiceImpl;
 import com.v5ent.rapid4j.web.dao.PermissionMapper;
 import com.v5ent.rapid4j.web.model.Permission;
-import com.v5ent.rapid4j.web.model.PermissionExample;
 import com.v5ent.rapid4j.web.service.PermissionService;
 
 /**
@@ -23,33 +22,32 @@ import com.v5ent.rapid4j.web.service.PermissionService;
  * @since 2014年6月10日 下午12:05:03
  */
 @Service
-public class PermissionServiceImpl extends GenericServiceImpl<Permission, Long> implements PermissionService {
+public class PermissionServiceImpl extends GenericServiceImpl<Permission, Integer> implements PermissionService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(PermissionServiceImpl.class);
 	
     @Resource
     private PermissionMapper permissionMapper;
 
-
     @Override
-    public GenericDao<Permission, Long> getDao() {
+    public GenericDao<Permission, Integer> getDao() {
         return permissionMapper;
     }
 
     @Override
-    public List<Permission> selectPermissionsByRoleId(Long roleId) {
+    public List<Permission> selectPermissionsByRoleId(Integer roleId) {
         return permissionMapper.selectPermissionsByRoleId(roleId);
     }
 
 	@Override
-	public List<Permission> selectByExample(PermissionExample example,RowBounds rb) {
-		return permissionMapper.selectByExampleAndPage(example,rb);
+	public List<Permission> selectList(RowBounds page) {
+		LOGGER.debug(" 测试自动分页:%d,%d",page.getLimit(),page.getOffset());
+		return permissionMapper.selectList(page);
 	}
 
 	@Override
-	public List<Permission> selectByExample(PermissionExample example) {
-		LOGGER.debug("param:"+example);
-		return permissionMapper.selectByExample(example);
+	public List<Permission> selectByName(String permissionName) {
+		return permissionMapper.selectByName(permissionName);
 	}
 	
 }

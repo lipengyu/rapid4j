@@ -79,4 +79,27 @@
       description = #{description,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <!-- 通过用户id 查询用户 拥有的角色 -->
+    <select id="selectRolesByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT
+        r.*
+		FROM tsys_role r LEFT JOIN tsys_user_role ur ON r.id = ur.role_id
+        WHERE ur.user_id = #{id,jdbcType=BIGINT}
+    </select>
+    <!-- 分页条件查询 -->
+    <select id="selectBySearchInfo" resultMap="BaseResultMap" parameterType="com.v5ent.rapid4j.web.datatable.DataTable">
+        select
+        <include refid="Base_Column_List" />
+        from tsys_role
+        <where> 
+        <if test="dt.search!=null">  
+                role_name like CONCAT('%','${dt.search.value}','%' )  
+		        or 
+		        role_sign like CONCAT('%','${dt.search.value}','%' )  
+		        or
+		        description like CONCAT('%','${dt.search.value}','%' )  
+         </if>  
+        </where>
+        limit ${dt.length} offset ${dt.start}
+    </select>
 </mapper>
