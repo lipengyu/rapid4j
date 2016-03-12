@@ -40,10 +40,20 @@
         </javaClientGenerator>
 
         <!--对应数据库表名 -->
-        <table schema="c2c" tableName="account" domainObjectName="Account"
+        <table schema="public" tableName="tsys_user" domainObjectName="User"
 		    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
 		    enableSelectByExample="false" selectByExampleQueryId="false" >
-		    <property name="useActualColumnNames" value="true"/>
+		    <!-- <columnOverride column="id" javaType="java.lang.String"/> -->
+		</table>
+        <table schema="public" tableName="tsys_role" domainObjectName="Role"
+		    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		    enableSelectByExample="false" selectByExampleQueryId="false" >
+		    <!-- <columnOverride column="id" javaType="java.lang.String"/> -->
+		</table>
+        <table schema="public" tableName="tsys_permission" domainObjectName="Permission"
+		    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		    enableSelectByExample="false" selectByExampleQueryId="false" >
+		    <!-- <columnOverride column="id" javaType="java.lang.String"/> -->
 		</table>
     </context>
 </generatorConfiguration>

@@ -1,52 +1,17 @@
 package com.v5ent.rapid4j.web.dao;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.session.RowBounds;
-
-import com.v5ent.rapid4j.core.generic.GenericDao;
 import com.v5ent.rapid4j.web.model.Permission;
-import com.v5ent.rapid4j.web.model.PermissionExample;
-import com.v5ent.rapid4j.web.model.RoleExample;
 
-/**
- * 权限 Dao 接口
- * 
- * @author Mignet
- * @since 2014年7月5日 上午11:59:03
- **/
-public interface PermissionMapper extends GenericDao<Permission, Long> {
-    int countByExample(PermissionExample example);
-
-    int deleteByExample(PermissionExample example);
-
-    int deleteByPrimaryKey(Long id);
+public interface PermissionMapper {
+    int deleteByPrimaryKey(Integer id);
 
     int insert(Permission record);
 
     int insertSelective(Permission record);
 
-    List<Permission> selectByExample(PermissionExample example);
-
-    Permission selectByPrimaryKey(Long id);
-
-    int updateByExampleSelective(@Param("record") Permission record, @Param("example") PermissionExample example);
-
-    int updateByExample(@Param("record") Permission record, @Param("example") PermissionExample example);
+    Permission selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(Permission record);
 
     int updateByPrimaryKey(Permission record);
-
-    /**
-     * 通过角色id 查询角色 拥有的权限
-     * 
-     * @param roleId
-     * @return
-     */
-    List<Permission> selectPermissionsByRoleId(Long roleId);
-
-	List<Permission> selectByExampleAndPage(PermissionExample example,	RowBounds rb);
-
 }

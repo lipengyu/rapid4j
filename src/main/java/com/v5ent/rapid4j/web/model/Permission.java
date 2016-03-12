@@ -1,13 +1,7 @@
 package com.v5ent.rapid4j.web.model;
 
-/**
- * 权限模型
- * 
- * @author Mignet
- * @since 2014年7月17日 下午1:02:55
- **/
 public class Permission {
-    private Long id;
+    private Integer id;
 
     private String permissionName;
 
@@ -15,11 +9,11 @@ public class Permission {
 
     private String description;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -46,10 +40,4 @@ public class Permission {
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
     }
-
-    @Override
-    public String toString() {
-        return "Permission [id=" + id + ", permissionName=" + permissionName + ", permissionSign=" + permissionSign + ", description=" + description + "]";
-    }
-
 }

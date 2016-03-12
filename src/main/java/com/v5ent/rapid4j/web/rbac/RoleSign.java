@@ -33,9 +33,9 @@ public class RoleSign {
     public static final String VIP_USER = "vip_user";
 
     /**
-     * 商家 标识
+     * 供应商 标识
      */
-    public static final String MERCHANT = "merchant";
+    public static final String SUPPLIER = "supplier";
 
     /**
      * 添加更多...
