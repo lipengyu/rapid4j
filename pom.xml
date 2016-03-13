@@ -403,9 +403,8 @@
             <url>https://repo.spring.io/libs-release</url>
         </repository>
         <repository>
-			<id>maven-restlet</id>
-			<name>Public online Restlet repository</name>
-			<url>http://maven.restlet.org</url>
+			<id>maven-central</id>
+			<url>http://mvnrepository.com/maven2/</url>
 		</repository>
     </repositories>
     <pluginRepositories>
