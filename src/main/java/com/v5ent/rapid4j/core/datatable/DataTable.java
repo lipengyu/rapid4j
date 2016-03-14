@@ -1,4 +1,4 @@
-package com.v5ent.rapid4j.web.datatable;
+package com.v5ent.rapid4j.core.datatable;
 
 import java.util.List;
 

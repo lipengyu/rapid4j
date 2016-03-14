@@ -87,7 +87,7 @@
         WHERE ur.user_id = #{id,jdbcType=BIGINT}
     </select>
     <!-- 分页条件查询 -->
-    <select id="selectBySearchInfo" resultMap="BaseResultMap" parameterType="com.v5ent.rapid4j.web.datatable.DataTable">
+    <select id="selectBySearchInfo" resultMap="BaseResultMap" parameterType="com.v5ent.rapid4j.core.datatable.DataTable">
         select
         <include refid="Base_Column_List" />
         from tsys_role
