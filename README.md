@@ -18,15 +18,11 @@
 >* Simple,Rapid,Effective
 
 ## Quick Start
-> * 1 git clone https://github.com/Mignet/rapid4j
-> * 2 execute src/test/resources/rapid4j.sql in your PostgreSQL database
-> * 3 change src/main/resources/application.properties to your database configuration
+> * 1 git clone `https://github.com/Mignet/rapid4j`
+> * 2 execute `src/test/resources/rapid4j.sql` in your PostgreSQL database
+> * 3 edit `src/main/resources/application.properties` to your database configuration
 > * 4 cd rapid4j
-> * 5 mvn clean package -Dmaven.test.skip=true
-> * 6 deploy rapid4j/target/rapid4j.war to your web-server, e.g.Tomcat
-> * 7 browse http://localhost:8080/ to login
-> * 8 run Provider.java as java application and then run Consumer.java,you can see a red `Hello World` in Console.it means Dubbo is all right.
-> * 9 Congratulations
+> * 5 `mvn jetty:run`
 
 ## RoadMap
 >* Example of CRUD with Twitter Bootstrap => completed,more info to see users
