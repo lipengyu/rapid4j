@@ -32,7 +32,7 @@
         <property name="cacheManagerConfigFile" value="classpath:ehcache-shiro.xml"/>
     </bean>
 
-    <!-- 会话DAO -->
+    <!-- 默认的Session DAO -->
     <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.MemorySessionDAO"/>
 
     <!-- 会话管理器 -->
