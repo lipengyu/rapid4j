@@ -13,22 +13,22 @@ import javax.annotation.Resource;
  * @author Mignet
  * @since 2015-03-20 10:32
  */
-public class RedisCacheTest extends TestSupport {
+public class RedisManagerTest extends TestSupport {
 
 
     @Resource
-    private RedisManager redisCache;
+    private RedisManager redisManager;
 
 
     @Test
     public void testSet() {
-    	redisCache.init();
-        redisCache.set("anchor".getBytes(), "Mignet".getBytes(), 1 * 60 * 24);
+    	redisManager.init();
+    	redisManager.set("anchor".getBytes(), "Mignet".getBytes(), 1 * 60 * 24);
     }
 
     @Test
     public void testGet() {
-    	redisCache.init();
-        System.out.printf("anchor:%s \n",redisCache.get("anchor".getBytes()));
+    	redisManager.init();
+        System.out.printf("anchor:%s \n",redisManager.get("anchor".getBytes()));
     }
 }
