@@ -1,11 +1,12 @@
 package com.v5ent.rapid4j.plugin.jedis;
 
-import com.v5ent.rapid4j.plugin.redis.RedisManager;
-import com.v5ent.rapid4j.test.TestSupport;
+import javax.annotation.Resource;
 
 import org.junit.Test;
 
-import javax.annotation.Resource;
+import com.v5ent.rapid4j.core.util.SerializeUtils;
+import com.v5ent.rapid4j.plugin.redis.RedisManager;
+import com.v5ent.rapid4j.test.TestSupport;
 
 /**
  * JedisTest : 测试 jedis 功能
@@ -21,14 +22,30 @@ public class RedisManagerTest extends TestSupport {
 
 
     @Test
+    public void testSetObject() {
+    	redisManager.init();
+    	User u = new User();
+    	u.setId(1001);
+    	u.setUsername("Mignet");
+    	u.setState("N");
+    	redisManager.set("user:1001".getBytes(), SerializeUtils.serialize(u), 1 * 60 * 24);
+    }
+    
+    @Test
+    public void testGetObject() {
+    	redisManager.init();
+        System.out.printf("[user:1001]:%s \n",SerializeUtils.deserialize(redisManager.get("user:1001".getBytes())));
+    }
+    
+    @Test
     public void testSet() {
     	redisManager.init();
-    	redisManager.set("anchor".getBytes(), "Mignet".getBytes(), 1 * 60 * 24);
+    	redisManager.set("anchor", "Mignet", 1 * 60 * 24);
     }
 
     @Test
     public void testGet() {
     	redisManager.init();
-        System.out.printf("anchor:%s \n",redisManager.get("anchor".getBytes()));
+        System.out.printf("anchor:%s \n",redisManager.get("anchor"));
     }
 }

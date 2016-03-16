@@ -132,7 +132,51 @@ public class RedisManager {
 		}
 		return value;
 	}
+	
+	/**
+	 * <p>通过key获取储存在redis中的value</p>
+	 * <p>并释放连接</p>
+	 * @param bs
+	 * @return 成功返回value 失败返回null
+	 */
+	public String get(String bs){
+		Jedis jedis = null;
+		String value = null;
+		try {
+			jedis = pool.getResource();
+			value = jedis.get(bs);
+		} catch (Exception e) {
+			pool.returnBrokenResource(jedis);
+			e.printStackTrace();
+		} finally {
+			returnResource(pool, jedis);
+		}
+		return value;
+	}
 
+	/**
+	 * <p>向redis存入key和value,并释放连接资源</p>
+	 * <p>如果key已经存在 则覆盖</p>
+	 * @param key
+	 * @param value
+	 * @param seconds
+	 * @return 成功 返回OK 失败返回 0
+	 */
+	public String set(String key, String value, int seconds) {
+		Jedis jedis = null;
+		try {
+			jedis = pool.getResource();
+			String result = jedis.set(key, value);
+	        jedis.expire(key, seconds);
+			return result;
+		} catch (Exception e) {
+			pool.returnBrokenResource(jedis);
+			e.printStackTrace();
+			return "0";
+		} finally {
+			returnResource(pool, jedis);
+		}
+	}
 	/**
 	 * <p>向redis存入key和value,并释放连接资源</p>
 	 * <p>如果key已经存在 则覆盖</p>
