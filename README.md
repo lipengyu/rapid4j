@@ -21,8 +21,9 @@
 > * 1 git clone `https://github.com/Mignet/rapid4j`
 > * 2 execute `src/test/resources/rapid4j.sql` in your PostgreSQL database
 > * 3 edit `src/main/resources/application.properties` to your database configuration
-> * 4 cd rapid4j
-> * 5 `mvn jetty:run`
+> * 4 edit `src/main/resources/redis.properties` to your redis server and `cd rapid4j`
+> * 5 `mvn jetty:run  -Djetty.port=8080`
+> * 6 `mvn jetty:run  -Djetty.port=8082`
 
 ## RoadMap
 >* Example of CRUD with Twitter Bootstrap => completed,more info to see users

@@ -453,12 +453,12 @@
 					<stopPort>9966</stopPort>
 					<stopKey>foo</stopKey>
 					<scanIntervalSeconds>0</scanIntervalSeconds>
-					<connectors>
+					<!-- <connectors>
 						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
 							<port>8888</port>
 							<maxIdleTime>60000</maxIdleTime>
 						</connector>
-					</connectors>
+					</connectors> -->
 					<webAppConfig>
 						<allowDuplicateFragmentNames>true</allowDuplicateFragmentNames>
 						<contextPath>/</contextPath>
