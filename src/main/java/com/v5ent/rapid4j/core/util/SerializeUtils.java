@@ -23,7 +23,7 @@ public class SerializeUtils {
             byte[] bytes = baos.toByteArray();
             return bytes;
         } catch (Exception e) {
-
+        	e.printStackTrace();
         }
         return null;
     }
@@ -37,13 +37,14 @@ public class SerializeUtils {
     public static Object deserialize(byte[] bytes) {
         ByteArrayInputStream bais = null;
         try {
+        	if(bytes==null)return null;
             // 反序列化
             bais = new ByteArrayInputStream(bytes);
             ObjectInputStream ois = new ObjectInputStream(bais);
             return ois.readObject();
         } catch (Exception e) {
-
-        }
+        	e.printStackTrace();
+        } 
         return null;
     }
 }

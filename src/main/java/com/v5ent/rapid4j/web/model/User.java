@@ -1,9 +1,15 @@
 package com.v5ent.rapid4j.web.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class User {
-    private Integer id;
+public class User implements Serializable{
+    /**
+	 * 序列化
+	 */
+	private static final long serialVersionUID = 2958662941039937962L;
+
+	private Integer id;
 
     private String username;
 

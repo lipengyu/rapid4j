@@ -13,7 +13,7 @@ import com.v5ent.rapid4j.plugin.redis.RedisManager;
 
 public class RedisCacheManager implements CacheManager{
 
-	private static final Logger logger = LoggerFactory
+	private static final Logger LOGGER = LoggerFactory
 			.getLogger(RedisCacheManager.class);
 
 	// fast lookup by name map
@@ -46,18 +46,13 @@ public class RedisCacheManager implements CacheManager{
 	
 	@Override
 	public <K, V> Cache<K, V> getCache(String name) throws CacheException {
-		logger.debug("获取名称为: " + name + " 的RedisCache实例");
-		
+		LOGGER.debug("获取名称为: " + name + " 的RedisCache实例");
 		Cache c = caches.get(name);
-		
 		if (c == null) {
-
 			// initialize the Redis manager instance
 			redisManager.init();
-			
 			// create a new cache instance
 			c = new RedisCache<K, V>(redisManager, keyPrefix);
-			
 			// add it to the cache collection
 			caches.put(name, c);
 		}

@@ -7,7 +7,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.commons.lang.SerializationUtils;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
 import org.apache.shiro.util.CollectionUtils;
@@ -67,9 +66,7 @@ public class RedisCache<K,V> implements Cache<K,V> {
 	 */
 	public RedisCache(RedisManager cache, 
 				String prefix){
-		 
 		this( cache );
-		
 		// set the prefix
 		this.keyPrefix = prefix;
 	}
@@ -93,7 +90,7 @@ public class RedisCache<K,V> implements Cache<K,V> {
 	        }else{
 	        	byte[] rawValue = cache.get(getByteKey(key));
 	        	@SuppressWarnings("unchecked")
-				V value = (V)SerializationUtils.deserialize(rawValue);
+				V value = (V)SerializeUtils.deserialize(rawValue);
 	        	return value;
 	        }
 		} catch (Throwable t) {
