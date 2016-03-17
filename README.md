@@ -2,7 +2,7 @@
 
 ------
 
-**Rapid4J** is a `Rapid` Seed Project for building a `Java` Modern Application
+**Rapid4J** is a `Rapid` Seed Project for building a `Java` Modern (Distributed) Application
 
 ------
 
