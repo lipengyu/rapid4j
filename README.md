@@ -7,7 +7,7 @@
 ------
 
 ## It Contains
->* PostgreSQL,Redis
+>* PostgreSQL,Redis,ActiveMQ
 >* Mybatis for ORMapping and Physical Pagination
 >* Spring MVC for Controller and Restful API
 >* Apache Shiro for RBAC(Role-Based Access Control)
