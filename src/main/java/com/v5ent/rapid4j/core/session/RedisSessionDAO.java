@@ -13,7 +13,11 @@ import org.slf4j.LoggerFactory;
 
 import com.v5ent.rapid4j.core.util.SerializeUtils;
 import com.v5ent.rapid4j.plugin.redis.RedisManager;
-
+/**
+ * 重写Session的存储，将其存入Redis以便分布式系统公用
+ * @author Mignet
+ * @since 2015-03-20 11:12
+ */
 public class RedisSessionDAO extends AbstractSessionDAO {
 
 	private static Logger logger = LoggerFactory.getLogger(RedisSessionDAO.class);
