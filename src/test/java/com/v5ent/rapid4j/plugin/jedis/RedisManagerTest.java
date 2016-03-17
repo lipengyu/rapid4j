@@ -23,7 +23,6 @@ public class RedisManagerTest extends TestSupport {
 
     @Test
     public void testSetObject() {
-    	redisManager.init();
     	User u = new User();
     	u.setId(1001);
     	u.setUsername("Mignet");
@@ -33,19 +32,16 @@ public class RedisManagerTest extends TestSupport {
     
     @Test
     public void testGetObject() {
-    	redisManager.init();
         System.out.printf("[user:1001]:%s \n",SerializeUtils.deserialize(redisManager.get("user:1001".getBytes())));
     }
     
     @Test
     public void testSet() {
-    	redisManager.init();
     	redisManager.set("anchor", "Mignet", 1 * 60 * 24);
     }
 
     @Test
     public void testGet() {
-    	redisManager.init();
         System.out.printf("anchor:%s \n",redisManager.get("anchor"));
     }
 }

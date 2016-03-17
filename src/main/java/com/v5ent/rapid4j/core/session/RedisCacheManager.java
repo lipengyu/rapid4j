@@ -49,8 +49,6 @@ public class RedisCacheManager implements CacheManager{
 		LOGGER.debug("获取名称为: " + name + " 的RedisCache实例");
 		Cache c = caches.get(name);
 		if (c == null) {
-			// initialize the Redis manager instance
-			redisManager.init();
 			// create a new cache instance
 			c = new RedisCache<K, V>(redisManager, keyPrefix);
 			// add it to the cache collection

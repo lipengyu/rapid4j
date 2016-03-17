@@ -24,10 +24,11 @@ public class RedisManager {
 	private JedisPool pool = null;
 	private  String host = "127.0.0.1";
 	private  int port = 6379;
+	private  String password = null;
 	//6分钟
 	private int expire = 360;//过期时间，秒
 	
-	public void init() {
+	private void init() {
 		Properties prop = new Properties();
 		 try {
 			prop.load(this.getClass().getResource("/redis.properties").openStream());
@@ -36,6 +37,7 @@ public class RedisManager {
 		}
 		host = prop.getProperty("redis.host");
 		port = Integer.valueOf(prop.getProperty("redis.port"));
+		password = prop.getProperty("redis.password");
 	}
 	
 	public RedisManager(){
@@ -52,7 +54,7 @@ public class RedisManager {
 			// 在borrow一个jedis实例时，是否提前进行validate操作；如果为true，则得到的jedis实例均是可用的；
 			config.setTestOnBorrow(true);
 			// pool = new JedisPool(config, "192.168.0.121", 6379, 100000);
-			pool = new JedisPool(config, host, port, 100000);
+			pool = password==null?new JedisPool(config, host, port, 100000):new JedisPool(config, host, port, 100000,password);
 		}
 	}
 	/**
