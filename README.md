@@ -43,5 +43,8 @@
 * File -> Import -> Existing Maven Projects  -> select rapid4j folder -> ...
 
 ## If you have a better suggestion,Please feel free to contract me Or open a issue.
-> Author ：Charley
-> Email  ：mignetwee@gmail.com
+>* Author ：Charley
+>* Email  ：mignetwee@gmail.com
+
+## For Architect
+>* move to https://github.com/Mignet/eshop
