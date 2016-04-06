@@ -1,7 +1,14 @@
 package com.v5ent.rapid4j.web.model;
 
-public class Role {
-    private Integer id;
+import java.io.Serializable;
+
+public class Role implements Serializable{
+    /**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = 2703979603896541414L;
+
+	private Integer id;
 
     private String roleName;
 

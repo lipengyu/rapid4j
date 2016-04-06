@@ -2,12 +2,12 @@
 
 ------
 
-**Rapid4J** is a `Rapid` Seed Project for building a `Java` Modern Application
+**Rapid4J** is a `Rapid` Seed Project for building a `Java` Modern (Distributed) Application
 
 ------
 
 ## It Contains
->* PostgreSQL,Redis
+>* PostgreSQL,Redis,ActiveMQ
 >* Mybatis for ORMapping and Physical Pagination
 >* Spring MVC for Controller and Restful API
 >* Apache Shiro for RBAC(Role-Based Access Control)
@@ -18,15 +18,12 @@
 >* Simple,Rapid,Effective
 
 ## Quick Start
-> * 1 git clone https://github.com/Mignet/rapid4j
-> * 2 execute src/test/resources/rapid4j.sql in your PostgreSQL database
-> * 3 change src/main/resources/application.properties to your database configuration
-> * 4 cd rapid4j
-> * 5 mvn clean package -Dmaven.test.skip=true
-> * 6 deploy rapid4j/target/rapid4j.war to your web-server, e.g.Tomcat
-> * 7 browse http://localhost:8080/ to login
-> * 8 run Provider.java as java application and then run Consumer.java,you can see a red `Hello World` in Console.it means Dubbo is all right.
-> * 9 Congratulations
+> * 1 git clone `https://github.com/Mignet/rapid4j`
+> * 2 execute `src/test/resources/rapid4j.sql` in your PostgreSQL database
+> * 3 edit `src/main/resources/application.properties` to your database configuration
+> * 4 edit `src/main/resources/redis.properties` to your redis server and `cd rapid4j`
+> * 5 `mvn jetty:run  -Djetty.port=8080`
+> * 6 `mvn jetty:run  -Djetty.port=8082`
 
 ## RoadMap
 >* Example of CRUD with Twitter Bootstrap => completed,more info to see users
@@ -46,5 +43,8 @@
 * File -> Import -> Existing Maven Projects  -> select rapid4j folder -> ...
 
 ## If you have a better suggestion,Please feel free to contract me Or open a issue.
-> Author ：Charley
-> Email  ：mignetwee@gmail.com
+>* Author ：Charley
+>* Email  ：mignetwee@gmail.com
+
+## For Architect
+>* move to https://github.com/Mignet/eshop

@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.v5ent.rapid4j.core.datatable.DataTable;
 import com.v5ent.rapid4j.core.generic.GenericDao;
 import com.v5ent.rapid4j.core.orm.paging.Page;
-import com.v5ent.rapid4j.web.datatable.DataTable;
 import com.v5ent.rapid4j.web.model.Role;
 
 public interface RoleMapper extends GenericDao<Role, Integer>{

@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
 
+import com.v5ent.rapid4j.core.datatable.DataTable;
+import com.v5ent.rapid4j.core.datatable.DataTableReturn;
 import com.v5ent.rapid4j.core.generic.GenericService;
-import com.v5ent.rapid4j.web.datatable.DataTable;
-import com.v5ent.rapid4j.web.datatable.DataTableReturn;
 import com.v5ent.rapid4j.web.model.Role;
 
 /**

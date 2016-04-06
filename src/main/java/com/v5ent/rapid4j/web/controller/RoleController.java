@@ -21,14 +21,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.v5ent.rapid4j.core.orm.paging.Page;
+import com.v5ent.rapid4j.core.datatable.DataTable;
+import com.v5ent.rapid4j.core.datatable.DataTableReturn;
 import com.v5ent.rapid4j.core.result.JQReturn;
 import com.v5ent.rapid4j.core.util.JsonUtils;
-import com.v5ent.rapid4j.web.datatable.ColumnInfo;
-import com.v5ent.rapid4j.web.datatable.DataTable;
-import com.v5ent.rapid4j.web.datatable.DataTableReturn;
-import com.v5ent.rapid4j.web.datatable.OrderInfo;
-import com.v5ent.rapid4j.web.datatable.SearchInfo;
 import com.v5ent.rapid4j.web.interceptors.DateConvertEditor;
 import com.v5ent.rapid4j.web.model.Role;
 import com.v5ent.rapid4j.web.rbac.PermissionSign;
@@ -62,7 +58,7 @@ public class RoleController {
 	}
 
     /**
-     * 基于角色 比如拥有admin角色，才可以查看用户列表.
+     * 基于角色 比如拥有admin角色，才可以查看角色列表.
      */
     @RequestMapping(value="",   method=RequestMethod.GET)
     @RequiresRoles(value = RoleSign.ADMIN)

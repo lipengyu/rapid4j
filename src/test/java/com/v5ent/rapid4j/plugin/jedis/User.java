@@ -1,19 +1,17 @@
-package com.v5ent.rapid4j.web.model;
+package com.v5ent.rapid4j.plugin.jedis;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class User implements Serializable{
+public class User  implements Serializable{
     /**
 	 * 序列化
 	 */
-	private static final long serialVersionUID = 2958662941039937962L;
+	private static final long serialVersionUID = 40904219175691506L;
 
 	private Integer id;
 
     private String username;
-
-    private String password;
 
     private String state;
 
@@ -24,11 +22,6 @@ public class User implements Serializable{
     public User(){
     }
     
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
-
 	public Integer getId() {
         return id;
     }
@@ -43,14 +36,6 @@ public class User implements Serializable{
 
     public void setUsername(String username) {
         this.username = username == null ? null : username.trim();
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
     }
 
     public String getState() {
@@ -79,6 +64,6 @@ public class User implements Serializable{
     
     @Override
     public String toString() {
-        return "User [id=" + id + ", username=" + username + ", password=" + password + ", state=" + state + ", createTime=" + createTime + "]";
+        return "User [id=" + id + ", username=" + username + ", state=" + state + ", createTime=" + createTime + "]";
     }
 }

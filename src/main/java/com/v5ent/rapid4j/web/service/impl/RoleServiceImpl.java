@@ -8,11 +8,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.v5ent.rapid4j.core.datatable.DataTable;
+import com.v5ent.rapid4j.core.datatable.DataTableReturn;
 import com.v5ent.rapid4j.core.generic.GenericDao;
 import com.v5ent.rapid4j.core.generic.GenericServiceImpl;
 import com.v5ent.rapid4j.web.dao.RoleMapper;
-import com.v5ent.rapid4j.web.datatable.DataTable;
-import com.v5ent.rapid4j.web.datatable.DataTableReturn;
 import com.v5ent.rapid4j.web.model.Role;
 import com.v5ent.rapid4j.web.service.RoleService;
 

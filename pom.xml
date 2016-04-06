@@ -403,9 +403,8 @@
             <url>https://repo.spring.io/libs-release</url>
         </repository>
         <repository>
-			<id>maven-restlet</id>
-			<name>Public online Restlet repository</name>
-			<url>http://maven.restlet.org</url>
+			<id>maven-central</id>
+			<url>http://mvnrepository.com/maven2/</url>
 		</repository>
     </repositories>
     <pluginRepositories>
@@ -454,12 +453,12 @@
 					<stopPort>9966</stopPort>
 					<stopKey>foo</stopKey>
 					<scanIntervalSeconds>0</scanIntervalSeconds>
-					<connectors>
+					<!-- <connectors>
 						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
 							<port>8888</port>
 							<maxIdleTime>60000</maxIdleTime>
 						</connector>
-					</connectors>
+					</connectors> -->
 					<webAppConfig>
 						<allowDuplicateFragmentNames>true</allowDuplicateFragmentNames>
 						<contextPath>/</contextPath>

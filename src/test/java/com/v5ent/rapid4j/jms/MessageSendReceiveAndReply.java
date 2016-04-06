@@ -1,4 +1,4 @@
-package com.v5ent.rapid4j.mq;
+package com.v5ent.rapid4j.jms;
 
 import javax.jms.Connection;
 import javax.jms.JMSException;

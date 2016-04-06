@@ -1,7 +1,14 @@
 package com.v5ent.rapid4j.web.model;
 
-public class Permission {
-    private Integer id;
+import java.io.Serializable;
+
+public class Permission implements Serializable{
+    /**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = -7913577338679487221L;
+
+	private Integer id;
 
     private String permissionName;
 
