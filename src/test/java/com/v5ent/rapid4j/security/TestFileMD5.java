@@ -88,7 +88,9 @@ public class TestFileMD5 {
 	public static void main(String [] args) throws Exception{
 		System.out.println("-----测试创建文件的md5后缀----------");
 		
-		File file = new File("/home/mignet/文档/projects/rustful/test.jpg");
+//		File file = new File("/home/mignet/文档/projects/rustful/test.jpg");
+//		File file = new File("C:\\Users\\Mignet\\Pictures\\12544655_980x1200_0.jpg");
+		File file = new File("C:\\Users\\Mignet\\Pictures\\73daacfab6ae5784b9463333f098650b.jpg");
 		
 		if(!file.exists()){
 			file.createNewFile();
@@ -105,6 +107,9 @@ public class TestFileMD5 {
 		//93d97357be249c61407fa21aa434e72f
 		System.out.println("-----获取的md5：" + md5);
 		
+		System.out.println(md5);
+		System.out.println(Integer.parseInt(md5.substring(0, 3),16)/4);
+		System.out.println(Integer.parseInt(md5.substring(3, 6),16)/4);
 		//组装
 		File md5File = new File(parent + fileName +".md5");
 		if(md5File.exists()){
