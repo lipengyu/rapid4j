@@ -29,20 +29,20 @@
     </bean>
 
     <!-- 默认的缓存管理器 -->
-    <bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+    <!-- <bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
         <property name="cacheManagerConfigFile" value="classpath:ehcache-shiro.xml"/>
-    </bean>
-    <!-- 自定义redis缓存管理器 -->  
-    <!-- <bean id="redisCacheManager" class="com.v5ent.rapid4j.core.session.RedisCacheManager">  
-        <property name="redisManager" ref="redisManager" />  
     </bean> -->
+    <!-- 自定义redis缓存管理器 -->  
+    <bean id="redisCacheManager" class="com.v5ent.rapid4j.core.session.RedisCacheManager">  
+        <property name="redisManager" ref="redisManager" />  
+    </bean>
 
     <!-- 默认的Session DAO -->
-    <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.MemorySessionDAO"/>
+    <!-- <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.MemorySessionDAO"/> -->
     <!-- 集群要求session能够共享，我们自定义RedisSessionDAO继承自AbstractSessionDAO，实现基于Redis对session的操作 -->
-    <!-- <bean id="sessionDAO" class="com.v5ent.rapid4j.core.session.RedisSessionDAO">  
+    <bean id="sessionDAO" class="com.v5ent.rapid4j.core.session.RedisSessionDAO">  
         <property name="redisManager" ref="redisManager" />  
-    </bean>  -->
+    </bean> 
 
     <!-- 默认的会话管理器 -->
     <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
@@ -77,9 +77,9 @@
             </list>
         </property>
         <!-- cacheManager,集合spring缓存工厂 -->
-        <property name="cacheManager" ref="shiroEhcacheManager" />
+        <!-- <property name="cacheManager" ref="shiroEhcacheManager" /> -->
         <!-- 重写缓存，让集群共享 -->
-       <!--  <property name="cacheManager" ref="redisCacheManager" /> -->
+        <property name="cacheManager" ref="redisCacheManager" />
         <property name="sessionManager" ref="sessionManager" />
     </bean>
 

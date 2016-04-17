@@ -3,11 +3,13 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
     <!-- Spring -->
     <!-- 配置Spring的配置文件路径 -->
+    <!-- 服务器集群的话要使用redisCache处理session, 即applicationContext-redisCache-shiro.xml -->
+    <!-- 单个服务器的话可以直接使用applicationContext-shiro.xml-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
             classpath*:applicationContext.xml
-            classpath*:applicationContext-shiro.xml
+            classpath*:applicationContext-redisCache-shiro.xml
         </param-value>
     </context-param>
     <!-- 配置Spring上下文监听器 -->

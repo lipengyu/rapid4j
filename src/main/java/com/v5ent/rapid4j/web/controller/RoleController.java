@@ -63,9 +63,9 @@ public class RoleController {
     @RequestMapping(value="",   method=RequestMethod.GET)
     @RequiresRoles(value = RoleSign.ADMIN)
     public String roles(Model model) {
-    	List<Role> roles = roleService.selectList();//empty
-    	LOGGER.debug("roleService.selectList() size:"+roles);
-    	model.addAttribute("roles",roles);
+//    	List<Role> roles =new ArrayList<Role> roleService.selectList();//empty
+//    	LOGGER.debug("roleService.selectList() size:"+roles);
+//    	model.addAttribute("roles",roles);
     	return "sys/role-list";
     }
 
