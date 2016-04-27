@@ -32,7 +32,7 @@ COMMENT ON COLUMN tsys_user.create_time IS '创建时间';
 ALTER SEQUENCE seq_user_id OWNED BY tsys_user.id;
 
 /*Data for the table `user` */
-INSERT INTO "tsys_user" (username,password,state,create_time)VALUES ('kermit', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', NULL, '2014-7-17 12:59:08');
+INSERT INTO "tsys_user" (username,password,state,create_time)VALUES ('kermit', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'Y', '2014-7-17 12:59:08');
 
 -- Table: tsys_role
 DROP SEQUENCE IF EXISTS seq_role_id CASCADE ;
