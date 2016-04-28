@@ -1,6 +1,7 @@
 package com.v5ent.rapid4j.jms;
 
 import javax.jms.Connection;
+import javax.jms.DeliveryMode;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
@@ -58,6 +59,8 @@ public class TopicTest {
        
         //创建一个生产者，然后发送多个消息。
         MessageProducer producer = session.createProducer(topic);
+        //持久化
+        producer.setDeliveryMode(DeliveryMode.PERSISTENT);
         for(int i=0; i<10; i++){
             producer.send(session.createTextMessage("Message:" + i));
         }
