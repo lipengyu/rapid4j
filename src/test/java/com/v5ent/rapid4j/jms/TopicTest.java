@@ -9,6 +9,8 @@ import javax.jms.MessageProducer;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.jms.Topic;
+
+import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQTopic;
 /**
@@ -18,7 +20,9 @@ import org.apache.activemq.command.ActiveMQTopic;
  */
 public class TopicTest {
     public static void main(String[] args) throws Exception {
-        ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory("vm://localhost");
+//        ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory("vm://localhost");
+    	//先启动本地MQ服务
+        ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_BROKER_URL);
    
         Connection connection = factory.createConnection();
         connection.start();
